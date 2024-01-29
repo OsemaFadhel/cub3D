@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/29 12:09:28 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:45:09 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <math.h>
 #include <string.h>
 #include <errno.h>
-#include "../minilibx-linux/mlx.h"
+//#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 
 # define UP 126
@@ -29,7 +29,6 @@
 # define RIGHT 124
 
 # define ESC 53
-
 
 typedef struct s_game
 {
@@ -51,7 +50,8 @@ typedef struct s_game
 	int		map_height;
 	int		start;
 	int		enemy_move;
-	t_check	check;
 }				t_game;
+
+int	key(int keycode, t_game *game);
 
 #endif

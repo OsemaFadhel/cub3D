@@ -6,46 +6,82 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/01/29 12:08:20 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/01/29 15:55:06 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+# colours
+
+RED = \033[1;31m
+
+GREEN = \033[1;32m
+
+YELLOW = \033[1;33m
+
+DEFAULT = \033[0m
+
+# name
+
+NAME		= cub3D
+
+# libft
 
 LIBFT_PATH 	= ./libft
 
-LIBFT 	= $(LIBFT_PATH)
+LIBFT 		= $(LIBFT_PATH)/libft.a
 
-SRC = main.c
+# mlx
 
-OBJ		= 	$(SRC:.c=.o)
+MLX_PATH	= ./mlx-linux/
+
+MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a
+
+MLX			= $(MLX_PATH)/libmlx.a
+
+# src
+
+SRC 		= main.c key.c
+
+SRC_DIR		= src
+
+OBJ_DIR		= obj
+
+OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+
+
+# compiler
 
 CC = gcc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS		=	-Wall -Wextra -Werror -g
 
-MLX				=	./libmlx.dylib
+# rules
 
-CFLAGS			=	-Wall -Wextra -Werror -g
+.c.o:
+	${CC} ${CFLAGS} -c$< -o ${<:.c=.o}
 
-%.o: %.c
-	$(CC) -Imlx -c $< -o $@
 
-all:			$(NAME)
+all:	 $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(COLOUR_YELLOW)COMPILING...$(COLOUR_END)"
-	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(COLOUR_GREEN)READY TO GO!$(COLOUR_END)"
+		@echo "$(YELLOW)LIBFT...$(DEFAULT)"
+		make -C $(LIBFT_PATH)
+		@echo "$(YELLOW)COMPILING...$(DEFAULT)"
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -L $(MLX_PATH) -lm -lbsd -lX11 -lXext -o $(NAME)
+		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
+
+$(OBJ_DIR)/%.o: %.c
+		@mkdir -p $(OBJ_DIR)
+		$(CC) -I/usr/includesude -Imlx_linux-c -c $< -o $@
+		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 clean:
-	make fclean -C ${LIBFT_PATH}
-	rm -rf ${OBJ}
+		make fclean -C ${LIBFT_PATH}
+		make clean -C ${MLX_PATH}
+		rm -rf obj
 
-fclean:			clean
-
-	rm -rf ${NAME}
+fclean:	clean
+		rm -rf ${NAME}
 
 re:				fclean all
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "include/cub3d.h"
 
 void	free_map_check(t_check *check)
 {

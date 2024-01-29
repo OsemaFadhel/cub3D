@@ -6,9 +6,19 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 14:53:32 by ofadhel           #+#    #+#              #
-#    Updated: 2023/11/28 16:32:22 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/01/29 15:54:23 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# colours
+
+RED = \033[1;31m
+
+GREEN = \033[1;32m
+
+YELLOW = \033[1;33m
+
+DEFAULT = \033[0m
 
 SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
@@ -22,7 +32,9 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 					ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-OBJS			= $(SRCS:.c=.o)
+OBJ_DIR			= obj
+
+OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 CC				= gcc
 
@@ -31,7 +43,7 @@ RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
 
 .c.o:
-	${CC} ${FLAGS} -g -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 NAME			= libft.a
 
@@ -39,9 +51,14 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
+				@echo "$(GREEN)LIBFT READY!$(DEFAULT)"
+
+$(OBJ_DIR)/%.o: %.c
+		@mkdir -p $(OBJ_DIR)
+		$(CC) -c $< -o $@
 
 clean:
-				$(RM) $(OBJS)
+				$(RM) -rf $(OBJ_DIR)
 
 fclean:			clean
 				$(RM) $(NAME)
