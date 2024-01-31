@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/01/29 15:55:06 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/01/31 10:32:05 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 
 # mlx
 
-MLX_PATH	= ./mlx-linux/
+MLX_PATH	= ./mlx-linux
 
 MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a
 
@@ -76,9 +76,9 @@ $(OBJ_DIR)/%.o: %.c
 		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 clean:
+		rm -rf obj
 		make fclean -C ${LIBFT_PATH}
 		make clean -C ${MLX_PATH}
-		rm -rf obj
 
 fclean:	clean
 		rm -rf ${NAME}

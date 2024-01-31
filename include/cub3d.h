@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/29 14:45:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:54:07 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <math.h>
 #include <string.h>
 #include <errno.h>
-//#include "../minilibx-linux/mlx.h"
+#include "../mlx-linux/mlx.h"
 #include "../libft/libft.h"
 
 # define UP 126
@@ -35,6 +35,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	char	**map;
+	char	**file;
 	int		player_x;
 	int		player_y;
 	int		coin_count;

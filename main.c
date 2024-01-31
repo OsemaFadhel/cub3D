@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/29 15:05:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:53:53 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	check_map_name(av[1]);
-	//game.map = read_map(av[1], &game);
+	game.file = read_map(av[1], &game);
 	//init(&game);
 	game.mlx = mlx_init();
 	//map_size(&game);
