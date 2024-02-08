@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 14:53:32 by ofadhel           #+#    #+#              #
-#    Updated: 2024/01/29 15:54:23 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/08 15:28:16 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_printf.c ft_putchars.c ft_puthex.c ft_putnbrs.c \
 					ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 					ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
-					ft_lstmap.c ft_lstnew.c ft_lstsize.c
+					ft_lstmap.c ft_lstnew.c ft_lstsize.c \
+					get_next_line.c get_next_line_utils.c
 
 OBJ_DIR			= obj
 

@@ -6,11 +6,27 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 15:15:08 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:34:22 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
+
+void	init(t_game *game)
+{
+	game->moves = 0;
+	game->player_x = 0;
+	game->player_y = 0;
+	game->coin_count = 0;
+	game->start = 0;
+	game->coin = 0;
+	game->floor = 0;
+	game->exit = 0;
+	game->player = 0;
+	game->map_width = 0;
+	game->map_height = 0;
+	game->enemy_move = 0;
+}
 
 void	check_map_name(char *str)
 {
@@ -25,13 +41,6 @@ void	check_map_name(char *str)
 	}
 }
 
-/*int	close_game(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	free_map(game);
-	exit(1);
-}*/
-
 int ft_exit(t_game *game, int i)
 {
 	if (i == 1)
@@ -43,17 +52,32 @@ int ft_exit(t_game *game, int i)
 	exit(1);
 }
 
+int	print_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	printf("matrix:\n");
+	while (matrix[i])
+	{
+		printf("%s\n", matrix[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	game;
 
 	if (ac != 2)
 	{
-		ft_printf("Error: no map or too many arguments\n");
+		printf("Error: no map or too many arguments\n");
 		return (1);
 	}
 	check_map_name(av[1]);
-	game.file = read_map(av[1], &game);
+	game.file = read_file(av[1], &game);
+	print_matrix(game.file);
 	//init(&game);
 	game.mlx = mlx_init();
 	//map_size(&game);
