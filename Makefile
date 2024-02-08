@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/02/08 16:41:03 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/08 16:43:07 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ $(NAME): $(OBJ)
 		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 clean:
-		rm -rf obj
+		rm -rf $(OBJ)
 		make fclean -C $(LIBFT_PATH)
 
 fclean:	clean
