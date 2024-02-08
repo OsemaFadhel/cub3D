@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/02/08 15:13:54 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/08 16:41:03 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,11 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 
 # src
 
-SRC 		= main.c key.c read_map.c
+SRC 		= main.c movement/key.c parser/read_map.c
 
 SRC_DIR		= src
 
-OBJ_DIR		= obj
-
-OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ			= $(SRC:.c=.o)
 
 
 # compiler
@@ -69,8 +67,7 @@ $(NAME): $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
 
-$(OBJ_DIR)/%.o: %.c
-		@mkdir -p $(OBJ_DIR)
+%.o: %.c
 		$(CC) -I/usr/includesude -Imlx_linux-c -c $< -o $@
 		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 

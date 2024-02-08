@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 10:30:18 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 16:12:27 by ofadhel          ###   ########.fr       */
+/*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
+/*   Updated: 2024/02/08 16:37:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
-char	**read_file(char *file, t_game *game)
+int	key(int keycode, t_game *game)
 {
-	int		fd;
-	char	*line;
-	char	**map;
-	int		i = 0;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_exit(game, 1);
-	line = get_next_line(fd);
-	printf("line: %s\n", line);
-	close(fd);
-	return (map);
+	/*if (keycode == ESC)
+		close_game(game);*/
+	/*if (keycode == UP)
+		game->moves += move_up(game);
+	if (keycode == DOWN)
+		game->moves += move_down(game);
+	if (keycode == LEFT)
+		game->moves += move_left(game);
+	if (keycode == RIGHT)
+		game->moves += move_right(game);
+	set_win(game);*/
+	return (0);
 }
+
