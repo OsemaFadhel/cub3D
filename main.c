@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/31 10:53:53 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:15:08 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ void	check_map_name(char *str)
 	exit(1);
 }*/
 
+int ft_exit(t_game *game, int i)
+{
+	if (i == 1)
+	{
+		ft_printf("Error: map not found\n");
+		exit(1);
+	}
+	mlx_destroy_window(game->mlx, game->win);
+	exit(1);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -47,12 +58,11 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	//map_size(&game);
 	//checks(&game);
-	game.win = mlx_new_window(game.mlx, 20,
-			20, "cub3D");
+	game.win = mlx_new_window(game.mlx, 1920, 1080, "Cub3D");
 	//xpm_img(&game);
 	//set_win(&game);
 	mlx_key_hook(game.win, key, &game);
-	//mlx_hook(game.win, 17, 0, close_game, &game);
+	mlx_hook(game.win, 17, 0, ft_exit, &game);
 	mlx_loop(game.mlx);
 	free(game.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/31 10:54:07 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:12:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <math.h>
 #include <string.h>
 #include <errno.h>
-#include "../mlx-linux/mlx.h"
+#include <mlx.h>
 #include "../libft/libft.h"
 
 # define UP 126
@@ -54,5 +54,7 @@ typedef struct s_game
 }				t_game;
 
 int	key(int keycode, t_game *game);
+int ft_exit(t_game *game, int i);
+
 
 #endif

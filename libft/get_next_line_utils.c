@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 10:30:18 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 15:14:10 by ofadhel          ###   ########.fr       */
+/*   Created: 2023/03/07 11:31:20 by ofadhel           #+#    #+#             */
+/*   Updated: 2024/02/08 15:05:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "get_next_line.h"
 
-
-char	**read_map(char *file, t_game *game)
+char	*ft_remove_line(char *s1)
 {
-	int		fd;
-	char	*line;
-	char	**map;
+	int		i;
+	int		j;
+	char	*new;
 
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_exit(game, 1);
-	return (map);
+	i = 0;
+	while (s1[i] && s1[i] != '\n')
+		i++;
+	if (!s1[i])
+	{
+		free(s1);
+		return (NULL);
+	}
+	new = (char *)malloc(sizeof(char) * (ft_strlen(s1) - i + 1));
+	if (!new)
+		return (NULL);
+	i++;
+	j = 0;
+	while (s1[i])
+		new[j++] = s1[i++];
+	new[j] = '\0';
+	free(s1);
+	return (new);
 }

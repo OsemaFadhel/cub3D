@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:10:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2023/11/28 16:33:46 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:03:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {

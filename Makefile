@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/01/31 10:32:05 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/08 15:13:54 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,15 +32,14 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 
 # mlx
 
-MLX_PATH	= ./mlx-linux
+#MLX_PATH	= ./mlx-linux
 
-MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a
+#MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a
 
-MLX			= $(MLX_PATH)/libmlx.a
 
 # src
 
-SRC 		= main.c key.c
+SRC 		= main.c key.c read_map.c
 
 SRC_DIR		= src
 
@@ -53,7 +52,7 @@ OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 CC = gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -lmlx -framework OpenGL -framework AppKit
 
 # rules
 
@@ -67,7 +66,7 @@ $(NAME): $(OBJ)
 		@echo "$(YELLOW)LIBFT...$(DEFAULT)"
 		make -C $(LIBFT_PATH)
 		@echo "$(YELLOW)COMPILING...$(DEFAULT)"
-		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -L $(MLX_PATH) -lm -lbsd -lX11 -lXext -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
 
 $(OBJ_DIR)/%.o: %.c
@@ -77,11 +76,10 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 		rm -rf obj
-		make fclean -C ${LIBFT_PATH}
-		make clean -C ${MLX_PATH}
+		make fclean -C $(LIBFT_PATH)
 
 fclean:	clean
-		rm -rf ${NAME}
+		rm -rf $(NAME)
 
 re:				fclean all
 
