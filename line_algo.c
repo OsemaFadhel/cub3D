@@ -6,13 +6,13 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:48 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/01/29 12:36:34 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:56:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-function line(int x0, int x1, int y0, int y1)
+/*function line(int x0, int x1, int y0, int y1)
 {
 	int deltax := abs(x1 - x0)
 	int deltay := abs(y1 - y0)
@@ -34,4 +34,4 @@ function line(int x0, int x1, int y0, int y1)
 			error := error - (deltax + 1)
 		}
 	}
-}
+}*/

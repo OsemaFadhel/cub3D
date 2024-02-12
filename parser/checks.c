@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 16:33:07 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:00:13 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	check_textures(t_game *game)
 		else if (game->file[i][0] == 'C')
 			game->c = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
 		else if (game->file[i][0] == '1' || game->file[i][0] == ' ')
-			break;
+			break ;
 		i++;
 	}
 	if (i != 6)
 		ft_exit(game, 2);
 }
 
-void check_closed2(t_game *game, int i, int l)
+void	check_closed2(t_game *game, int i, int l)
 {
 	int	j;
 	int	k;
@@ -61,7 +61,7 @@ void check_closed2(t_game *game, int i, int l)
 	while (game->file[i - 1][j])
 	{
 		if (game->file[i - 1][j] == '1' || game->file[i - 1][j] == ' ')
-		;
+			;
 		else
 			ft_exit(game, 3);
 		j++;
@@ -79,7 +79,7 @@ void check_closed2(t_game *game, int i, int l)
 	}
 }
 
-void check_closed(t_game *game, int i)
+void	check_closed(t_game *game, int i)
 {
 	int	j;
 	int	l;

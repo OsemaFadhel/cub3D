@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 16:37:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:41:30 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	key(int keycode, t_game *game)
 	set_win(game);*/
 	return (0);
 }
-

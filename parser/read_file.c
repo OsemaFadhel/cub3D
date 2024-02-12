@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 16:20:50 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:01:59 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	read__file2(char *file, t_game *game, int i)
 	game->file = malloc(sizeof(char *) * (i + 1));
 	fd = open(file, O_RDONLY);
 	i = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (line[0] != '\n')
 		{
@@ -31,6 +32,7 @@ void	read__file2(char *file, t_game *game, int i)
 			i++;
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	game->file[i] = NULL;
 	close(fd);
@@ -46,9 +48,11 @@ void	read_file(char *file, t_game *game)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, 1);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		free(line);
+		line = get_next_line(fd);
 		i++;
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 16:25:37 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:54:47 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	init(t_game *game)
 	game->enemy_move = 0;
 }
 
-
-
 void	free_matrix(char **matrix)
 {
 	int	i;
@@ -46,7 +44,7 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int ft_exit(t_game *game, int i)
+void	ft_exit(t_game *game, int i)
 {
 	if (i == 1)
 	{

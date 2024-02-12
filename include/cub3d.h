@@ -6,22 +6,22 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 16:29:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:55:47 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <string.h>
-#include <errno.h>
-#include <mlx.h>
-#include "../libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <math.h>
+# include <string.h>
+# include <errno.h>
+# include <mlx.h>
+# include "../libft/libft.h"
 
 # define UP 126
 # define DOWN 125
@@ -61,7 +61,7 @@ typedef struct s_game
 
 int		key(int keycode, t_game *game);
 void	init(t_game *game);
-int 	ft_exit(t_game *game, int i);
+void	ft_exit(t_game *game, int i);
 int		print_matrix(char **matrix);
 
 /* parser */

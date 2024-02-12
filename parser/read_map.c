@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_game.file.c                                         :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 10:30:18 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 16:35:52 by ofadhel          ###   ########.fr       */
+/*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
+/*   Updated: 2024/02/12 18:48:04 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,56 @@ int	get_map_size(t_game *game)
 	return (j);
 }
 
-void	parse_map(t_game *game, int i)
+int	get_map_width(t_game *game, int i)
 {
 	int	j;
 	int	k;
+	int	width;
 
 	j = 0;
 	k = 0;
-	j = get_map_size(game);
-	check_closed(game, i);
-	game->map = malloc(sizeof(char *) * (j + 1));
-	//now parse map filling spaces with 1 and malloc all same size
+	width = 0;
 	while (game->file[i])
 	{
-		game->map[k] = ft_strdup(game->file[i]);
+		if (width < ft_strlen(game->file[i]))
+			width = ft_strlen(game->file[i]);
+		i++;
+	}
+	return (width);
+}
+
+void	parse_map(t_game *game, int i)
+{
+	int	j;
+	int	l;
+	int	k;
+	int	width;
+
+	j = 0;
+	k = 0;
+	width = get_map_width(game, i);
+	j = get_map_size(game);
+	check_closed(game, i);
+
+	game->map = malloc(sizeof(char *) * (j + 1));
+	while (game->file[i])
+	{
+		l = 0;
+		game->map[k] = malloc(sizeof(char) * (width + 1));
+		while (game->file[i][l])
+		{
+			if (game->file[i][l] == ' ')
+				game->map[k][l] = '1';
+			else
+				game->map[k][l] = game->file[i][l];
+			l++;
+		}
+		while (l < width)
+		{
+			game->map[k][l] = '1';
+			l++;
+		}
+		game->map[k][l] = '\0';
 		i++;
 		k++;
 	}
@@ -75,6 +111,6 @@ void	parser(char **av, t_game *game)
 	check_map_name(av[1]);
 	read_file(av[1], game);
 	check_file(game);
-	//print_matrix(game->map);
+	print_matrix(game->map);
 	//checkmap(game);
 }
