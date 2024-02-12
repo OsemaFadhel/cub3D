@@ -104,14 +104,70 @@ void	check_textures(t_game *game)
 		ft_exit(game, 2);
 }
 
-void	check_file(t_game *game)
+void check_closed(t_game *game, int i)
 {
-	int	i;
+	int	j;
+	int	l;
+	int	k;
+
+	l = i;
+	j = 0;
+	while (game->file[i][j])
+	{
+		if (game->file[i][j] == '1' || game->file[i][j] == ' ')
+			;
+		else
+			ft_exit(game, 2);
+		j++;
+	}
+	j = 0;
+	while (game->file[i])
+		i++;
+	while (game->file[i - 1][j])
+	{
+		if (game->file[i - 1][j] == '1' || game->file[i - 1][j] == ' ')
+		;
+		else
+			ft_exit(game, 2);
+		j++;
+	}
+	while (game->file[l])
+	{
+		k = ft_strlen(game->file[l]) - 1;
+		if (game->file[l][0] == '1' || game->file[l][0] == ' ')
+			;
+		if (game->file[l][k] == '1' || game->file[l][k] == ' ')
+			;
+		else
+			ft_exit(game, 2);
+		l++;
+	}
+}
+
+void	parse_map(t_game *game, int i)
+{
 	int	j;
 	int	k;
 
-	i = 0;
+	j = 0;
 	k = 0;
+	j = get_map_size(game);
+	check_closed(game, i);
+	game->map = malloc(sizeof(char *) * (j + 1));
+	while (game->file[i])
+	{
+		game->map[k] = ft_strdup(game->file[i]);
+		i++;
+		k++;
+	}
+	game->map[k] = NULL;
+}
+
+void	check_file(t_game *game)
+{
+	int	i;
+
+	i = 0;
 	check_textures(game);
 	while (game->file[i])
 	{
@@ -121,16 +177,7 @@ void	check_file(t_game *game)
 			break;
 		i++;
 	}
-	j = get_map_size(game);
-	game->map = malloc(sizeof(char *) * (j + 1));
-	while (game->file[i])
-	{
-		game->map[k] = ft_strdup(game->file[i]);
-		i++;
-		k++;
-	}
-	game->map[k] = NULL;
-
+	parse_map(game, i);
 }
 
 void	parser(char **av, t_game *game)
@@ -138,6 +185,6 @@ void	parser(char **av, t_game *game)
 	check_map_name(av[1]);
 	read_file(av[1], game);
 	check_file(game);
-	print_matrix(game->map);
+	//print_matrix(game->map);
 	//checkmap(game);
 }
