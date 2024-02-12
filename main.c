@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 14:58:59 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:13:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	init(t_game *game)
 {
 	game->moves = 0;
+	game->no = NULL;
+	game->so = NULL;
+	game->ea = NULL;
+	game->we = NULL;
+	game->f = NULL;
+	game->c = NULL;
 	game->player_x = 0;
 	game->player_y = 0;
 	game->coin_count = 0;

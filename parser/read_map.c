@@ -154,6 +154,7 @@ void	parse_map(t_game *game, int i)
 	j = get_map_size(game);
 	check_closed(game, i);
 	game->map = malloc(sizeof(char *) * (j + 1));
+	//now parse map filling spaces with 1 and malloc all same size
 	while (game->file[i])
 	{
 		game->map[k] = ft_strdup(game->file[i]);
@@ -171,7 +172,7 @@ void	check_file(t_game *game)
 	check_textures(game);
 	while (game->file[i])
 	{
-		if ((!game->no) || (!game->ea) || (!game->so) || (!game->we) || (!game->c) || (!game->f))
+		if (!game->no || !game->ea || !game->so || !game->we || !game->c || !game->f)
 			ft_exit(game, 2);
 		else if (game->file[i][0] == '1' || game->file[i][0] == ' ')
 			break;
