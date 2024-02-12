@@ -35,11 +35,14 @@ void	read_file(char *file, t_game *game)
 	i = 0;
 	while ((line = get_next_line(fd)))
 	{
-		game->file[i] = ft_strdup(line);
+		if (line[0] != '\n')
+		{
+			game->file[i] = ft_strdup(line);
+			j = ft_strlen(game->file[i]);
+			game->file[i][j - 1] = '\0';
+			i++;
+		}
 		free(line);
-		j = ft_strlen(game->file[i]);
-		game->file[i][j - 1] = '\0';
-		i++;
 	}
 	game->file[i] = NULL;
 	close(fd);
@@ -74,6 +77,36 @@ int	get_map_size(t_game *game)
 	return (j);
 }
 
+void	check_textures(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->file[i])
+	{
+		printf("%s\n", game->file[i]);
+		if (game->file[i][0] == 'N' && game->file[i][1] == 'O')
+			game->
+		else if (game->file[i][0] == 'S' && game->file[i][1] == 'O')
+			(game, game->file[i], 1);
+		else if (game->file[i][0] == 'W' && game->file[i][1] == 'E')
+			(game, game->file[i], 2);
+		else if (game->file[i][0] == 'E' && game->file[i][1] == 'A')
+			(game, game->file[i], 3);
+		else if (game->file[i][0] == 'S' && game->file[i][1] == ' ')
+			(game, game->file[i], 4);
+		else if (game->file[i][0] == 'F')
+			get_color(game, game->file[i], 0);
+		else if (game->file[i][0] == 'C')
+			get_color(game, game->file[i], 1);
+		else if (game->file[i][0] == '1' || game->file[i][0] == ' ')
+			break;
+		i++;
+	}
+	if (i != 6)
+		ft_exit(game, 2);
+}
+
 void	check_file(t_game *game)
 {
 	int	i;
@@ -82,6 +115,7 @@ void	check_file(t_game *game)
 
 	i = 0;
 	k = 0;
+	check_textures(game);
 	while (game->file[i])
 	{
 		if (game->file[i][0] == 'N' && game->file[i][1] == 'O')
@@ -119,5 +153,6 @@ void	parser(char **av, t_game *game)
 	check_map_name(av[1]);
 	read_file(av[1], game);
 	check_file(game);
+	print_matrix(game->map);
 	//checkmap(game);
 }

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 14:10:57 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:37:14 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,27 @@ void	check_map_name(char *str)
 	}
 }
 
+void	free_matrix(char **matrix)
+{
+	int	i;
+
+	i = -1;
+	while (matrix[++i])
+		free(matrix[i]);
+	free(matrix);
+}
+
 int ft_exit(t_game *game, int i)
 {
 	if (i == 1)
 	{
 		ft_printf("Error: map not found\n");
+		exit(1);
+	}
+	if (i == 2)
+	{
+		printf("Error: map textures\n");
+		free_matrix(game->file);
 		exit(1);
 	}
 	mlx_destroy_window(game->mlx, game->win);
