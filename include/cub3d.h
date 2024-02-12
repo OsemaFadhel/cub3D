@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 14:51:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:29:36 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_game
 	char	*ea;
 	char	*we;
 	char	*f;
-	char	*c;	
+	char	*c;
 	int		player_x;
 	int		player_y;
 	int		coin_count;
@@ -60,12 +60,17 @@ typedef struct s_game
 }				t_game;
 
 int		key(int keycode, t_game *game);
-int 	ft_exit(t_game *game, int i);
-void	read_file(char *file, t_game *game);
-void	parser(char **av, t_game *game);
-void	check_map_name(char *str);
 void	init(t_game *game);
+int 	ft_exit(t_game *game, int i);
 int		print_matrix(char **matrix);
 
+/* parser */
+
+void	read_file(char *file, t_game *game);
+void	parser(char **av, t_game *game);
+void	read_file(char *file, t_game *game);
+void	check_textures(t_game *game);
+void	check_closed(t_game *game, int i);
+void	check_map_name(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 16:13:56 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:25:37 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,7 @@ void	init(t_game *game)
 	game->enemy_move = 0;
 }
 
-void	check_map_name(char *str)
-{
-	int	i;
 
-	i = ft_strlen(str);
-	if (str[i - 1] != 'b' || str[i - 2] != 'u' || str[i - 3] != 'c'
-		|| str[i - 4] != '.')
-	{
-		ft_printf("Error: map name must be .cub\n");
-		exit(1);
-	}
-}
 
 void	free_matrix(char **matrix)
 {
@@ -67,6 +56,12 @@ int ft_exit(t_game *game, int i)
 	if (i == 2)
 	{
 		printf("Error: map textures\n");
+		free_matrix(game->file);
+		exit(1);
+	}
+	if (i == 3)
+	{
+		printf("Error: map not closed\n");
 		free_matrix(game->file);
 		exit(1);
 	}
