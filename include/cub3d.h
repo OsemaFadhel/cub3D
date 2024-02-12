@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 14:45:03 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:51:09 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct s_game
 	void	*win;
 	char	**map;
 	char	**file;
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+	char	*f;
+	char	*c;	
 	int		player_x;
 	int		player_y;
 	int		coin_count;
