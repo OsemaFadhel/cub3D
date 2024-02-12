@@ -54,9 +54,9 @@ CFLAGS		=	-Wall -Wextra -Werror -g -lmlx -framework OpenGL -framework AppKit
 
 # rules
 
-.c.o:
-	${CC} ${CFLAGS} -c$< -o ${<:.c=.o}
-
+%.o: %.c
+		$(CC) -I/usr/includesude -Imlx_linux-c -c $< -o $@
+		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 all:	 $(NAME)
 
@@ -67,9 +67,6 @@ $(NAME): $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
 
-%.o: %.c
-		$(CC) -I/usr/includesude -Imlx_linux-c -c $< -o $@
-		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 clean:
 		rm -rf $(OBJ)

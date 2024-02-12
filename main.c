@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 16:32:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:10:57 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ int	print_matrix(char **matrix)
 	int	i;
 
 	i = 0;
-	printf("matrix:\n");
 	while (matrix[i])
 	{
-		printf("%s", matrix[i]);
+		printf("%s\n", matrix[i]);
 		i++;
 	}
 	return (0);
@@ -75,13 +74,9 @@ int	main(int ac, char **av)
 		printf("Error: no map or too many arguments\n");
 		return (1);
 	}
-	check_map_name(av[1]);
-	game.file = read_file(av[1], &game);
-	print_matrix(game.file);
-	//init(&game);
+	init(&game);
+	parser(av, &game);
 	game.mlx = mlx_init();
-	//map_size(&game);
-	//checks(&game);
 	game.win = mlx_new_window(game.mlx, 1920, 1080, "Cub3D");
 	//xpm_img(&game);
 	//set_win(&game);

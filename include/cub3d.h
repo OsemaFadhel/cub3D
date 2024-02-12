@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/08 15:30:28 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:59:34 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ typedef struct s_game
 	int		enemy_move;
 }				t_game;
 
-int	key(int keycode, t_game *game);
-int ft_exit(t_game *game, int i);
-char	**read_file(char *file, t_game *game);
+int		key(int keycode, t_game *game);
+int 	ft_exit(t_game *game, int i);
+void	read_file(char *file, t_game *game);
+void	parser(char **av, t_game *game);
+void	check_map_name(char *str);
+void	init(t_game *game);
+int		print_matrix(char **matrix);
 
 
 #endif
