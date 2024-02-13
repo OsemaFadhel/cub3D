@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 18:00:13 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:48:41 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	check_closed2(t_game *game, int i, int l)
 		k = ft_strlen(game->file[l]) - 1;
 		if (game->file[l][0] == '1' || game->file[l][0] == ' ')
 			;
+		else
+			ft_exit(game, 3);
 		if (game->file[l][k] == '1' || game->file[l][k] == ' ')
 			;
 		else

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 18:48:04 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:49:58 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	parse_map(t_game *game, int i)
 		while (game->file[i][l])
 		{
 			if (game->file[i][l] == ' ')
-				game->map[k][l] = '1';
+				game->map[k][l] = '0';
 			else
 				game->map[k][l] = game->file[i][l];
 			l++;
 		}
 		while (l < width)
 		{
-			game->map[k][l] = '1';
+			game->map[k][l] = '0';
 			l++;
 		}
 		game->map[k][l] = '\0';
@@ -104,6 +104,7 @@ void	check_file(t_game *game)
 		i++;
 	}
 	parse_map(game, i);
+	//check now that is full closed. look zero and see if it has all around 1
 }
 
 void	parser(char **av, t_game *game)

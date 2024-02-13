@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 17:55:47 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:44:54 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_game
 
 int		key(int keycode, t_game *game);
 void	init(t_game *game);
-void	ft_exit(t_game *game, int i);
+int	ft_exit(t_game *game, int i);
 int		print_matrix(char **matrix);
 
 /* parser */
