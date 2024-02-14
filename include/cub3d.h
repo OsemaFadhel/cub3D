@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 17:11:57 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 18:01:17 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_game
 	void	*win;
 	char	**map;
 	t_pars	pars;
+	int	ceil_color;
+	int	floor_color;
 	void	*floor_texture;
 	void	*ceil_texture;
 	void	*north_texture;

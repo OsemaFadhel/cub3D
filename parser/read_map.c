@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 17:15:11 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 18:02:55 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,26 @@ void	check_file(t_game *game)
 	//check now that is full closed. look zero and see if it has all around 1
 }
 
+/*void	xpm_img(t_game *game)
+{
+	game->north_texture = mlx_xpm_file_to_image(game->mlx, game->pars.no,
+			1920, 1080);
+	if (!game->north_texture)
+		ft_exit(game, 2);
+	game->south_texture = mlx_xpm_file_to_image(game->mlx, game->pars.so,
+			1920, 1080);
+	if (!game->south_texture)
+		ft_exit(game, 2);
+	game->east_texture = mlx_xpm_file_to_image(game->mlx, game->pars.ea,
+			1920, 1080);
+	if (!game->east_texture)
+		ft_exit(game, 2);
+	game->west_texture = mlx_xpm_file_to_image(game->mlx, game->pars.we,
+			1920, 1080);
+	if (!game->west_texture)
+		ft_exit(game, 2);
+}*/
+
 void	parser(char **av, t_game *game)
 {
 	check_map_name(av[1]);
@@ -115,4 +135,5 @@ void	parser(char **av, t_game *game)
 	print_matrix(game->map);
 	//checkmap(game);
 	set_rgb(game);
+	//xpm_img(game);
 }
