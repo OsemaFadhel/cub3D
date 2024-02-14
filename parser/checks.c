@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/13 12:48:41 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:14:32 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,53 @@ void	check_map_name(char *str)
 void	check_textures(t_game *game)
 {
 	int	i;
+	char *str;
 
 	i = 0;
 	while (game->file[i])
 	{
-		if (game->file[i][0] == 'N' && game->file[i][1] == 'O')
-			game->no = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
-		else if (game->file[i][0] == 'S' && game->file[i][1] == 'O')
-			game->so = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
-		else if (game->file[i][0] == 'W' && game->file[i][1] == 'E')
-			game->we = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
-		else if (game->file[i][0] == 'E' && game->file[i][1] == 'A')
-			game->ea = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
-		else if (game->file[i][0] == 'F')
-			game->f = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
-		else if (game->file[i][0] == 'C')
-			game->c = ft_strdup(ft_strchr(game->file[i], ' ') + 1);
+		if (game->file[i][0] == 'N' && game->file[i][1] == 'O' && game->file[i][2] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->no = ft_strdup(str + 1);
+		}
+		else if (game->file[i][0] == 'S' && game->file[i][1] == 'O' && game->file[i][2] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->so = ft_strdup(str + 1);
+		}
+		else if (game->file[i][0] == 'W' && game->file[i][1] == 'E' && game->file[i][2] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->we = ft_strdup(str + 1);
+		}
+		else if (game->file[i][0] == 'E' && game->file[i][1] == 'A' && game->file[i][2] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->ea = ft_strdup(str + 1);
+		}
+		else if (game->file[i][0] == 'F' && game->file[i][1] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->f = ft_strdup(str + 1);
+		}
+		else if (game->file[i][0] == 'C' && game->file[i][1] == ' ')
+		{
+			str = ft_strchr(game->file[i], ' ');
+			if (!str)
+				ft_exit(game, 2);
+			game->c = ft_strdup(str + 1);
+		}
 		else if (game->file[i][0] == '1' || game->file[i][0] == ' ')
 			break ;
 		i++;

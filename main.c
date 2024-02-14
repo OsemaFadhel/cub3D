@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/13 12:44:44 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 15:54:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init(t_game *game)
 	game->coin_count = 0;
 	game->start = 0;
 	game->coin = 0;
-	game->floor = 0;
+	game->floor_texture = 0;
 	game->exit = 0;
 	game->player = 0;
 	game->map_width = 0;

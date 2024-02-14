@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/13 12:44:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 15:55:11 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ typedef struct s_game
 	char	*we;
 	char	*f;
 	char	*c;
+	int		ceil[3];
+	int		floor[3];
 	int		player_x;
 	int		player_y;
 	int		coin_count;
 	int		moves;
-	void	*floor;
+	void	*floor_texture;
 	void	*wall;
 	void	*coin;
 	void	*exit;
@@ -72,5 +74,7 @@ void	read_file(char *file, t_game *game);
 void	check_textures(t_game *game);
 void	check_closed(t_game *game, int i);
 void	check_map_name(char *str);
+void	set_rgb(t_game *game);
+
 
 #endif

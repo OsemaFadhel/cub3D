@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/13 12:49:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:01:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void	parser(char **av, t_game *game)
 	check_file(game);
 	print_matrix(game->map);
 	//checkmap(game);
+	set_rgb(game);
 }

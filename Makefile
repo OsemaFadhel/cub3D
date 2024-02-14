@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/02/12 16:32:38 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/14 16:02:10 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,7 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 # src
 
 SRC 		= 	main.c movement/key.c parser/read_map.c parser/read_file.c \
-				parser/checks.c
-
-SRC_DIR		= src
+				parser/checks.c parser/set_rgb.c
 
 OBJ			= $(SRC:.c=.o)
 
