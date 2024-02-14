@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 18:01:59 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:08:09 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	read__file2(char *file, t_game *game, int i)
 	char	*line;
 	int		j;
 
-	game->file = malloc(sizeof(char *) * (i + 1));
+	game->pars.file = malloc(sizeof(char *) * (i + 1));
 	fd = open(file, O_RDONLY);
 	i = 0;
 	line = get_next_line(fd);
@@ -26,15 +26,15 @@ void	read__file2(char *file, t_game *game, int i)
 	{
 		if (line[0] != '\n')
 		{
-			game->file[i] = ft_strdup(line);
-			j = ft_strlen(game->file[i]);
-			game->file[i][j - 1] = '\0';
+			game->pars.file[i] = ft_strdup(line);
+			j = ft_strlen(game->pars.file[i]);
+			game->pars.file[i][j - 1] = '\0';
 			i++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	game->file[i] = NULL;
+	game->pars.file[i] = NULL;
 	close(fd);
 }
 

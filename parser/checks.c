@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/13 14:14:32 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:08:37 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,51 +31,51 @@ void	check_textures(t_game *game)
 	char *str;
 
 	i = 0;
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
-		if (game->file[i][0] == 'N' && game->file[i][1] == 'O' && game->file[i][2] == ' ')
+		if (game->pars.file[i][0] == 'N' && game->pars.file[i][1] == 'O' && game->pars.file[i][2] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->no = ft_strdup(str + 1);
+			game->pars.no = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == 'S' && game->file[i][1] == 'O' && game->file[i][2] == ' ')
+		else if (game->pars.file[i][0] == 'S' && game->pars.file[i][1] == 'O' && game->pars.file[i][2] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->so = ft_strdup(str + 1);
+			game->pars.so = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == 'W' && game->file[i][1] == 'E' && game->file[i][2] == ' ')
+		else if (game->pars.file[i][0] == 'W' && game->pars.file[i][1] == 'E' && game->pars.file[i][2] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->we = ft_strdup(str + 1);
+			game->pars.we = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == 'E' && game->file[i][1] == 'A' && game->file[i][2] == ' ')
+		else if (game->pars.file[i][0] == 'E' && game->pars.file[i][1] == 'A' && game->pars.file[i][2] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->ea = ft_strdup(str + 1);
+			game->pars.ea = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == 'F' && game->file[i][1] == ' ')
+		else if (game->pars.file[i][0] == 'F' && game->pars.file[i][1] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->f = ft_strdup(str + 1);
+			game->pars.f = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == 'C' && game->file[i][1] == ' ')
+		else if (game->pars.file[i][0] == 'C' && game->pars.file[i][1] == ' ')
 		{
-			str = ft_strchr(game->file[i], ' ');
+			str = ft_strchr(game->pars.file[i], ' ');
 			if (!str)
 				ft_exit(game, 2);
-			game->c = ft_strdup(str + 1);
+			game->pars.c = ft_strdup(str + 1);
 		}
-		else if (game->file[i][0] == '1' || game->file[i][0] == ' ')
+		else if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
 			break ;
 		i++;
 	}
@@ -89,22 +89,22 @@ void	check_closed2(t_game *game, int i, int l)
 	int	k;
 
 	j = 0;
-	while (game->file[i - 1][j])
+	while (game->pars.file[i - 1][j])
 	{
-		if (game->file[i - 1][j] == '1' || game->file[i - 1][j] == ' ')
+		if (game->pars.file[i - 1][j] == '1' || game->pars.file[i - 1][j] == ' ')
 			;
 		else
 			ft_exit(game, 3);
 		j++;
 	}
-	while (game->file[l])
+	while (game->pars.file[l])
 	{
-		k = ft_strlen(game->file[l]) - 1;
-		if (game->file[l][0] == '1' || game->file[l][0] == ' ')
+		k = ft_strlen(game->pars.file[l]) - 1;
+		if (game->pars.file[l][0] == '1' || game->pars.file[l][0] == ' ')
 			;
 		else
 			ft_exit(game, 3);
-		if (game->file[l][k] == '1' || game->file[l][k] == ' ')
+		if (game->pars.file[l][k] == '1' || game->pars.file[l][k] == ' ')
 			;
 		else
 			ft_exit(game, 3);
@@ -119,16 +119,16 @@ void	check_closed(t_game *game, int i)
 
 	l = i;
 	j = 0;
-	while (game->file[i][j])
+	while (game->pars.file[i][j])
 	{
-		if (game->file[i][j] == '1' || game->file[i][j] == ' ')
+		if (game->pars.file[i][j] == '1' || game->pars.file[i][j] == ' ')
 			;
 		else
 			ft_exit(game, 3);
 		j++;
 	}
 	j = 0;
-	while (game->file[i])
+	while (game->pars.file[i])
 		i++;
 	check_closed2(game, i, l);
 }

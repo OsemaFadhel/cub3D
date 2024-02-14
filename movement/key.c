@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 18:41:30 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:14:46 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	key(int keycode, t_game *game)
 {
-	/*if (keycode == ESC)
-		close_game(game);*/
+	if (keycode == ESC)
+		exit(0);
 	/*if (keycode == UP)
 		game->moves += move_up(game);
 	if (keycode == DOWN)

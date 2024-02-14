@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 16:01:44 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:15:11 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	get_map_size(t_game *game)
 	int	j;
 
 	i = 0;
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
-		if (game->file[i][0] == '1' || game->file[i][0] == ' ')
+		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
 			break;
 		i++;
 	}
 	j = 0;
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
 		j++;
 		i++;
@@ -42,10 +42,10 @@ int	get_map_width(t_game *game, int i)
 	j = 0;
 	k = 0;
 	width = 0;
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
-		if (width < ft_strlen(game->file[i]))
-			width = ft_strlen(game->file[i]);
+		if (width < ft_strlen(game->pars.file[i]))
+			width = ft_strlen(game->pars.file[i]);
 		i++;
 	}
 	return (width);
@@ -65,16 +65,16 @@ void	parse_map(t_game *game, int i)
 	check_closed(game, i);
 
 	game->map = malloc(sizeof(char *) * (j + 1));
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
 		l = 0;
 		game->map[k] = malloc(sizeof(char) * (width + 1));
-		while (game->file[i][l])
+		while (game->pars.file[i][l])
 		{
-			if (game->file[i][l] == ' ')
+			if (game->pars.file[i][l] == ' ')
 				game->map[k][l] = '0';
 			else
-				game->map[k][l] = game->file[i][l];
+				game->map[k][l] = game->pars.file[i][l];
 			l++;
 		}
 		while (l < width)
@@ -95,11 +95,11 @@ void	check_file(t_game *game)
 
 	i = 0;
 	check_textures(game);
-	if (!game->no || !game->ea || !game->so || !game->we || !game->c || !game->f)
+	if (!game->pars.no || !game->pars.ea || !game->pars.so || !game->pars.we || !game->pars.c || !game->pars.f)
 		ft_exit(game, 2);
-	while (game->file[i])
+	while (game->pars.file[i])
 	{
-		if (game->file[i][0] == '1' || game->file[i][0] == ' ')
+		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
 			break;
 		i++;
 	}

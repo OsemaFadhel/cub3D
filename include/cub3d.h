@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 15:55:11 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:11:57 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@
 
 # define ESC 53
 
-typedef struct s_game
+typedef struct s_pars
 {
-	void	*mlx;
-	void	*win;
-	char	**map;
 	char	**file;
 	char	*no;
 	char	*so;
@@ -44,27 +41,27 @@ typedef struct s_game
 	char	*c;
 	int		ceil[3];
 	int		floor[3];
-	int		player_x;
-	int		player_y;
-	int		coin_count;
-	int		moves;
+}				t_pars;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	char	**map;
+	t_pars	pars;
 	void	*floor_texture;
-	void	*wall;
-	void	*coin;
-	void	*exit;
-	void	*player;
-	void	*enemy;
-	void	*enemy_1;
-	int		map_width;
-	int		map_height;
-	int		start;
-	int		enemy_move;
+	void	*ceil_texture;
+	void	*north_texture;
+	void	*south_texture;
+	void	*east_texture;
+	void	*west_texture;
 }				t_game;
 
 int		key(int keycode, t_game *game);
 void	init(t_game *game);
-int	ft_exit(t_game *game, int i);
+int		ft_exit(t_game *game, int i);
 int		print_matrix(char **matrix);
+void	free_matrix(char **matrix);
 
 /* parser */
 
