@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:54:45 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 18:03:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/17 16:12:49 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	get_color(t_game *game)
 {
 	game->ceil_color = create_rgb(0, game->pars.ceil[0], game->pars.ceil[1], game->pars.ceil[2]);
 	game->floor_color = create_rgb(0, game->pars.floor[0], game->pars.floor[1], game->pars.floor[2]);
-	printf("ceil_color: %d\n", game->ceil_color);
-	printf("floor_color: %d\n", game->floor_color);
 }
 
 void	set_rgb(t_game *game)

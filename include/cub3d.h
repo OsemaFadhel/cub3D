@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 18:01:17 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/18 02:25:00 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,35 @@
 
 # define ESC 53
 
+typedef struct s_axis
+{
+	int x;
+	int y;
+}				t_axis;
+
+typedef struct s_dbl
+{
+	double x;
+	double y;
+}				t_dbl;
+
+typedef struct s_ray
+{
+	double	distance;
+	double	line_len;
+	t_dbl	dir;
+	t_dbl	step_size;
+	t_dbl	touch_point;
+ 	t_dbl	start;
+	t_dbl	len;
+	t_axis	map_check;
+	t_axis	step;
+	//t_bool	hit;  //se trova un muro
+	int hit;
+	int vertical;
+	//t_bool	vertical;
+}				t_ray;
+
 typedef struct s_pars
 {
 	char	**file;
@@ -47,10 +76,17 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
 	char	**map;
+	char	**map_array;
 	t_pars	pars;
-	int	ceil_color;
-	int	floor_color;
+	t_axis	*map_axis;
+	t_dbl	player_axis;
+	int		ceil_color;
+	int		floor_color;
+	int		size_line;
+	int 	bpp;
+	char	*data_addr;
 	void	*floor_texture;
 	void	*ceil_texture;
 	void	*north_texture;
@@ -75,5 +111,12 @@ void	check_closed(t_game *game, int i);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
 
+/* raycasting */
+
+void	initialize_ray(t_game *game, t_ray *ray, double angle);
+double	raylen(t_game *game, t_ray *ray, double angle);
+void	ray_casting(t_game *game, t_ray *ray);
+int		ft_max(int a, int b);
+void	draw_background(t_game *game, int j, int k);
 
 #endif

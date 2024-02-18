@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 17:54:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/18 02:24:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	ft_exit(t_game *game, int i)
 		exit(1);
 	}
 	mlx_destroy_window(game->mlx, game->win);
+	free_matrix(game->pars.file);
+	free(game->map);
 	exit(1);
 }
 
@@ -94,6 +96,8 @@ int	main(int ac, char **av)
 	parser(av, &game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 1920, 1080, "Cub3D");
+	game.img = mlx_new_image(game.mlx, 1920, 1080);
+	draw_background(&game, 0, 0);
 	//xpm_img(&game);
 	//set_win(&game);
 	mlx_key_hook(game.win, key, &game);
