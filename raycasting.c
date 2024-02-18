@@ -73,22 +73,9 @@ void	initialize_ray(t_game *game, t_ray *ray, double angle)
 	ray->step.y = 1 - (ray->dir.y < 0) * 2;
 }
 
-void	ft_put_pixel(t_game *game, int x, int y, int color)
-{
-	int	i;
-
-	if (x >= 0 && x < 1280 && y >= 0 && y < 720)
-	{
-		i = (x * game->bpp / 8) + (y * game->size_line);
-		game->data_addr[i] = color;
-		game->data_addr[++i] = color >> 8;
-		game->data_addr[++i] = color >> 16;
-	}
-}
-
 void	draw_background(t_game *game, int j, int k)
 {
-	while (k < 1920)
+	while (k < 1920) //change 1920 with size of the window
 	{
 		mlx_pixel_put(game->mlx, game->win, k, j, game->ceil_color);
 		while (j < 540)
@@ -112,7 +99,7 @@ void	draw_background(t_game *game, int j, int k)
 		j = 540;
 		k++;
 	}
-
+	//now raycasting for the walls
 }
 
 /*int main()

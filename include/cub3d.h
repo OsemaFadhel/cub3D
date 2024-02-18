@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/18 02:25:00 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/18 02:56:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_game
 	t_pars	pars;
 	t_axis	*map_axis;
 	t_dbl	player_axis;
+	int		win_width;
+	int		win_height;
 	int		ceil_color;
 	int		floor_color;
 	int		size_line;

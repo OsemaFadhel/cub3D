@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/18 02:24:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/18 02:57:01 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	init_parser(t_game *game)
 void	init(t_game *game)
 {
 	init_parser(game);
+	game->map = NULL;
+	game->win_height = 1080;
+	game->win_width = 1920;
 	game->ceil_color = 0;
 	game->floor_color = 0;
 	game->floor_texture = 0;
