@@ -102,20 +102,3 @@ void	draw_background(t_game *game, int j, int k)
 	//now raycasting for the walls
 }
 
-/*int main()
-{
-	t_game game;
-	game.player_axis.x = 2.0;
-	game.player_axis.y = 2.0;
-
-	t_ray ray;
-
-	double angles[] = {0.0, M_PI / 4.0, M_PI / 2.0, 3.0 * M_PI / 4.0};
-
-	for (int i = 0; i < sizeof(angles) / sizeof(angles[0]); ++i)
-	{
-		double angle = angles[i];
-		double len = raylen(&game, &ray, angle);
-	}
-	return 0;
-}*/

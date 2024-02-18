@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/14 17:14:46 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/18 03:26:01 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	key(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		exit(0);
-	/*if (keycode == UP)
-		game->moves += move_up(game);
+	if (keycode == UP)
+		game->player_axis.y += 10;
 	if (keycode == DOWN)
-		game->moves += move_down(game);
+		game->player_axis.y -= 10;
 	if (keycode == LEFT)
-		game->moves += move_left(game);
+		game->player_axis.x -= 10;
 	if (keycode == RIGHT)
-		game->moves += move_right(game);
-	set_win(game);*/
+		game->player_axis.x += 10;
+	//raycasting(game);
 	return (0);
 }
