@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/18 03:23:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/19 19:29:40 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_pars
 	char	*we;
 	char	*f;
 	char	*c;
+	t_dbl   plane;
+	t_dbl   dir;
 	int		ceil[3];
 	int		floor[3];
 }				t_pars;
@@ -115,10 +117,12 @@ void	set_rgb(t_game *game);
 
 /* raycasting */
 
-void	initialize_ray(t_game *game, t_ray *ray, double angle);
+void	initialize_ray(t_game *game, int x, t_ray *ray);
 double	raylen(t_game *game, t_ray *ray, double angle);
 void	ray_casting(t_game *game, t_ray *ray);
 int		ft_max(int a, int b);
 void	draw_background(t_game *game, int j, int k);
+int		 draw_map(void *param);
+void	raycasting(t_game *game);
 
 #endif

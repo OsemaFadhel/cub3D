@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/18 02:57:01 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/19 19:42:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int	main(int ac, char **av)
 	draw_background(&game, 0, 0);
 	//xpm_img(&game);
 	//set_win(&game);
+	//raycasting(&game);
 	mlx_key_hook(game.win, key, &game);
 	mlx_hook(game.win, 17, 0, ft_exit, &game);
 	mlx_loop(game.mlx);
-	free(game.mlx);
 	return (0);
 }
