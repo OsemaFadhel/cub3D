@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/19 19:42:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:33:46 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,13 @@ int	print_matrix(char **matrix)
 	return (0);
 }
 
+int	render(t_game *game)
+{
+	raycasting(game);
+	//mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -100,12 +107,12 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 1920, 1080, "Cub3D");
 	game.img = mlx_new_image(game.mlx, 1920, 1080);
-	draw_background(&game, 0, 0);
+	game.data_addr = mlx_get_data_addr(game.img, &game.bpp, &game.size_line, &game.endian);
 	//xpm_img(&game);
 	//set_win(&game);
-	//raycasting(&game);
-	mlx_key_hook(game.win, key, &game);
+	mlx_loop_hook(game.mlx, render, &game);
 	mlx_hook(game.win, 17, 0, ft_exit, &game);
+	mlx_key_hook(game.win, key, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

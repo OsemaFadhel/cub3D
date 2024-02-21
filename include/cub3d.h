@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/19 19:29:40 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:23:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,21 @@ typedef struct s_dbl
 typedef struct s_ray
 {
 	double	distance;
-	double	line_len;
+	double	min_line_len;
 	t_dbl	dir;
 	t_dbl	step_size;
-	t_dbl	touch_point;
- 	t_dbl	start;
-	t_dbl	len;
+	int		touch_point;
+ 	t_dbl	start_end;
+	t_dbl	movement;
+	t_dbl	vec;
+	t_dbl	plane;
 	t_axis	map_check;
 	t_axis	step;
-	//t_bool	hit;  //se trova un muro
-	int hit;
-	int vertical;
-	//t_bool	vertical;
+	t_axis	cube;
+	int		hit;
+	int		vertical;
+	int		start;
+	int		end;
 }				t_ray;
 
 typedef struct s_pars
@@ -82,14 +85,16 @@ typedef struct s_game
 	char	**map;
 	char	**map_array;
 	t_pars	pars;
+	t_ray	*ray;
 	t_axis	*map_axis;
-	t_dbl	player_axis;
+	t_dbl	player_dbl;
 	int		win_width;
 	int		win_height;
 	int		ceil_color;
 	int		floor_color;
 	int		size_line;
 	int 	bpp;
+	int		endian;
 	char	*data_addr;
 	void	*floor_texture;
 	void	*ceil_texture;
@@ -117,12 +122,15 @@ void	set_rgb(t_game *game);
 
 /* raycasting */
 
-void	initialize_ray(t_game *game, int x, t_ray *ray);
+void	initialize_ray(t_game *game, int x);
 double	raylen(t_game *game, t_ray *ray, double angle);
 void	ray_casting(t_game *game, t_ray *ray);
 int		ft_max(int a, int b);
 void	draw_background(t_game *game, int j, int k);
 int		 draw_map(void *param);
 void	raycasting(t_game *game);
+void	get_minlen(t_game *game);
+void	get_y_axis(t_ray *ray);
+void	draw_backdrop(t_game *game, int *x, int y);
 
 #endif

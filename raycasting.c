@@ -1,123 +1,5 @@
 #include "include/cub3d.h"
 
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-/*void	ray_casting(t_game *game, t_ray *ray)
-{
-	double	max;  ///maximum distance, returns the largest from the width or height of the map
-
-	max = (double)ft_max(game->map_axis->y, game->map_axis->x);
-	while (!ray->hit && ray->distance < max)
-	{
-		if (ray->len.x < ray->len.y)
-		{
-			ray->map_check.x += ray->step.x;
-			ray->distance = ray->len.x;
-			ray->vertical = 1;
-			ray->len.x += ray->step_size.x;
-		}
-		else
-		{
-			ray->map_check.y += ray->step.y;
-			ray->distance = ray->len.y;
-			ray->vertical = 0;
-			ray->len.y += ray->step_size.y;
-		}
-		if (ray->map_check.x >= 0 && ray->map_check.x < game->map_axis->x && ray->map_check.y >= 0
-			&& ray->map_check.y < game->map_axis->y && game->map[ray->map_check.y][ray->map_check.x] == '1')
-				ray->hit = 1;
-	}
-}
-
-double	raylen(t_game *game, t_ray *ray, double angle) //per ottenere il len del ray (lana del ray) finche non tocca il muro
-{
-	double	len;
-
-	initialize_ray(game, ray, angle);
-	ray_casting(game, ray);
-	if (ray->hit)
-	{
-		ray->touch_point.x = ray->dir.x * ray->distance + ray->start.x;
-		ray->touch_point.y = ray->dir.y * ray->distance + ray->start.y;
-	}
-	len = sqrt(pow(ray->touch_point.x - ray->start.x, 2) + pow(ray->touch_point.y - ray->start.y, 2));
-	return (len);
-}*/
-
-
-/*void	initialize_ray(t_game *game, t_ray *ray, double angle)
-{
-	ray->hit = 0;
-	ray->vertical = 0;
-	ray->dir.x = cos(angle);
-	ray->dir.y = sin(angle);
-	ray->step_size.x = sqrt(1.0 + pow(ray->dir.y / ray->dir.x, 2));
-	ray->step_size.y = sqrt(1.0 + pow(ray->dir.x / ray->dir.y, 2));
-	ray->start = game->player_axis;
-	ray->map_check.x = (int)ray->start.x;
-	ray->map_check.y = (int)ray->start.y;
-	if (ray->dir.x < 0)
-		ray->len.x = (ray->start.x - (double)ray->map_check.x) * ray->step_size.x;
-	else
-		ray->len.x = ((double)(ray->map_check.x + 1) - ray->start.x) * ray->step_size.x;
-	ray->step.x = 1 - (ray->dir.x < 0) * 2;
-	if (ray->dir.y < 0)
-		ray->len.y = (ray->start.y - (double)ray->map_check.y) * ray->step_size.y;
-	else
-		ray->len.y = ((double)(ray->map_check.y + 1) - ray->start.y) * ray->step_size.y;
-	ray->step.y = 1 - (ray->dir.y < 0) * 2;
-}*/
-
-void	initialize_ray(t_game *game, int x, t_ray *ray)
-{
-	// Calculate the ray's direction in camera space
-	double camera_x = 2 * x / (double)game->win_width - 1;
-	ray->dir.x = game->pars.dir.x + game->pars.plane.x * camera_x;
-	ray->dir.y = game->pars.dir.y + game->pars.plane.y * camera_x;
-
-	// Map position of the player (initial position of the ray)
-	ray->touch_point.x = (int)game->player_axis.x;
-	ray->touch_point.y = (int)game->player_axis.y;
-
-	// Length of the ray from one x or y-side to the next x or y-side
-	ray->len.x = sqrt(1 + (ray->dir.y * ray->dir.y) / (ray->dir.x * ray->dir.x));
-	ray->len.y = sqrt(1 + (ray->dir.x * ray->dir.x) / (ray->dir.y * ray->dir.y));
-
-	// Calculate the step and initial values for DDA
-	if (ray->dir.x < 0)
-	{
-		ray->step.x = -1;
-		ray->step_size.x = (game->player_axis.x - ray->touch_point.x) * ray->len.x;
-	}
-	else
-	{
-		ray->step.x = 1;
-		ray->step_size.x = (ray->touch_point.x + 1.0 - game->player_axis.x) * ray->len.x;
-	}
-
-	if (ray->dir.y < 0)
-	{
-		ray->step.y = -1;
-		ray->step_size.y = (game->player_axis.y - ray->touch_point.y) * ray->len.y;
-	}
-	else
-	{
-		ray->step.y = 1;
-		ray->step_size.y = (ray->touch_point.y + 1.0 - game->player_axis.y) * ray->len.y;
-	}
-
-	// Initialize other ray parameters
-	ray->hit = 0;
-	ray->vertical = 0;
-	ray->distance = 0;
-	ray->line_len = 0;
-}
-
 void	draw_background(t_game *game, int j, int k)
 {
 	while (k < 1920) //change 1920 with size of the window
@@ -147,76 +29,93 @@ void	draw_background(t_game *game, int j, int k)
 	//now raycasting for the walls
 }
 
-void	draw_walls(t_game *game, int x, t_ray *ray)
+
+
+void	initialize_ray(t_game *game, int x)
 {
-	int		wall_height;
-	int		draw_start;
-	int		draw_end;
+	//game->ray->distance = 2 * (double)(x) / (double)1980 - 1;
+	game->ray->dir.x = game->ray->vec.x + game->ray->plane.x * game->ray->distance;
+	game->ray->dir.y = game->ray->vec.y + game->ray->plane.y * game->ray->distance;
+	game->ray->cube.x = (int) game->player_dbl.x;
+	game->ray->cube.y = (int) game->player_dbl.y;
+}
 
-	// Calculate the height of the wall on the screen
-	wall_height = (int)(game->win_height / ray->distance);
+void	get_x_axis(t_ray *ray)
+{
+	if (ray->dir.x == 0)
+		ray->start_end.x = 1e30;
+	else
+		ray->start_end.x = fabs(1 / ray->dir.x);
+	if (ray->dir.y == 0)
+		ray->start_end.y = 1e30;
+	else
+		ray->start_end.y = fabs(1 / ray->dir.y);
+}
 
-	// Calculate the drawing boundaries on the screen
-	draw_start = -wall_height / 2 + game->win_height / 2;
-	draw_end = wall_height / 2 + game->win_height / 2;
-
-	// Ensure the drawing boundaries are within the screen limits
-	draw_start = (draw_start < 0) ? 0 : draw_start;
-	draw_end = (draw_end >= game->win_height) ? game->win_height - 1 : draw_end;
-
-	// Draw the wall line
-	while (draw_start < draw_end)
+void	get_step_size(t_game *game)
+{
+	if (game->ray->dir.x < 0)
 	{
-		mlx_pixel_put(game->mlx, game->win, x, draw_start, 0xFFFFFF);
-		draw_start++;
+		game->ray->step_size.x = -1;
+		game->ray->movement.x = (game->player_dbl.x - game->ray->cube.x) * game->ray->start_end.x;
+	}
+	else
+	{
+		game->ray->step_size.x = 1;
+		game->ray->movement.x = (game->ray->cube.x + 1.0 - game->player_dbl.x) * game->ray->start_end.x;
+	}
+	if (game->ray->dir.y < 0)
+	{
+		game->ray->step_size.y = -1;
+		game->ray->movement.y = (game->player_dbl.y - game->ray->cube.y) * game->ray->start_end.y;
+	}
+	else
+	{
+		game->ray->step_size.y = 1;
+		game->ray->movement.y = (game->ray->cube.y + 1.0 - game->player_dbl.y) * game->ray->start_end.y;
 	}
 }
 
-void	cast_ray(t_game *game, int x, t_ray *ray)
+void	lodev_algorithm(t_game *game)
 {
-	printf("enters cast ray");
-	initialize_ray(game, x, ray);  // Initialize ray parameters based on player's position and direction
-
-	while (ray->hit == 0)
+	game->ray->hit = 0;
+	while (game->ray->hit == 0)
 	{
-		// Perform DDA (Digital Differential Analyzer) steps to find the intersection with a wall
-		if (ray->len.x < ray->len.y)
+		if (game->ray->movement.x < game->ray->movement.y)
 		{
-			ray->len.x += ray->step_size.x;
-			ray->touch_point.x += ray->step.x;
-			ray->vertical = 0;
+			game->ray->movement.x += game->ray->start_end.x;
+			game->ray->cube.x += game->ray->step_size.x;
+			game->ray->touch_point = 0;
 		}
 		else
 		{
-			ray->len.y += ray->step_size.y;
-			ray->touch_point.y += ray->step.y;
-			ray->vertical = 1;
+			game->ray->movement.y += game->ray->start_end.y;
+			game->ray->cube.y += game->ray->step_size.y;
+			game->ray->touch_point = 1;
 		}
-
-		// Check if the ray hit a wall
-		if (game->map_array[(int)ray->touch_point.y][(int)ray->touch_point.x] == '1')
-			ray->hit = 1;
+		if (game->map[game->ray->cube.x][game->ray->cube.y] == '1')
+		{
+			game->ray->hit = 1;
+		}
 	}
-
-	// Calculate distance to the wall
-	ray->distance = (ray->vertical) ? fabs((ray->touch_point.y - game->player_axis.y) / ray->dir.y)
-									 : fabs((ray->touch_point.x - game->player_axis.x) / ray->dir.x);
-
-	// Draw the wall on the screen
-	draw_walls(game, x, ray);
 }
 
 void	raycasting(t_game *game)
 {
-	printf("enters raycasting function");
-	int		x;
-	t_ray	ray;
+	int			x;
 
 	x = 0;
-	while (x < game->win_width)
+	initialize_ray(game, x);
+	while (x <= 1980)
 	{
-		cast_ray(game, x, &ray);
-		x++;
+		initialize_ray(game, x);
+		get_x_axis(game->ray);
+		get_step_size(game);
+		lodev_algorithm(game);
+		get_minlen(game);
+		get_y_axis(game->ray);
+		draw_backdrop(game, &x, 0);
+		++x;
 	}
-}
 
+}
