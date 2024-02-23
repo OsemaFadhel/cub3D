@@ -88,6 +88,7 @@ int	print_matrix(char **matrix)
 
 int	render(t_game *game)
 {
+
 	raycasting(game);
 	//mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
@@ -106,11 +107,11 @@ int	main(int ac, char **av)
 	parser(av, &game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 1920, 1080, "Cub3D");
-	game.img = mlx_new_image(game.mlx, 1920, 1080);
-	game.data_addr = mlx_get_data_addr(game.img, &game.bpp, &game.size_line, &game.endian);
+	game.img = mlx_new_image(game.mlx, 300, 300);
 	//xpm_img(&game);
 	//set_win(&game);
-	mlx_loop_hook(game.mlx, render, &game);
+	//mlx_loop_hook(game.mlx, render, &game);
+	render(&game);
 	mlx_hook(game.win, 17, 0, ft_exit, &game);
 	mlx_key_hook(game.win, key, &game);
 	mlx_loop(game.mlx);

@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/02/21 22:06:33 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/02/23 22:38:08 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 
 SRC 		= 	main.c movement/key.c parser/read_map.c parser/read_file.c \
 				parser/checks.c parser/set_rgb.c raycasting.c \
-				draw.c \
+				draw.c textures.c \
 
 OBJ			= $(SRC:.c=.o)
 
