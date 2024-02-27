@@ -288,10 +288,10 @@ int	game_loop(t_game *game)
 
 int	run_mlx(t_mlx *mlx, t_game *game)
 {
-	//mlx_hook(mlx->win, ON_DESTROY, 0, ft_close, game);
-	//mlx_hook(mlx->win, ON_KEYDOWN, 0, key_pressed, game);
 	mlx_loop_hook(mlx->init, game_loop, game);
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
+	mlx_hook(game->mlx.win, 17, 0, ft_exit, &game);
+	mlx_key_hook(game->mlx.win, key, &game);
 	mlx_loop(mlx->init);
 	return (1);
 }
@@ -360,17 +360,17 @@ int	init_mlx(t_mlx *mlx, t_game *game)
 			&mlx->line_length, &mlx->endian);
 	// if (!mlx->address)
 	// 	error(0, "MLX ERROR\n", 0);
-	to_xpm(mlx, game);
-	return (run_mlx(mlx, game));
+	//to_xpm(mlx, game);
+	run_mlx(mlx, game);
+	return (0);
 }
 
-void	init_struc(char *av)
+void	init_struc(char **av, t_game *game)
 {
-	t_game	game;
-	init(&game);
-	parser(&av, &game);
-	init_camera_position(&game.player, &game.map, &game.camera);
-	init_mlx(&game.mlx, &game);
+	init(game);
+	parser(av, game);
+	init_camera_position(&game->player, &game->map, &game->camera);
+	init_mlx(&game->mlx, game);
 }
 
 
@@ -383,6 +383,6 @@ int	main(int ac, char **av)
 		printf("Error: no map or too many arguments\n");
 		return (1);
 	}
-	init_struc(av[1]);
+	init_struc(av, &game);
 	return (0);
 }

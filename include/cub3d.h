@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/18 03:23:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/02/27 23:17:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,10 +153,6 @@ typedef struct s_pars
 
 typedef struct s_game
 {
-	//void	*mlx;
-	void	*win;
-	void	*img;
-	// char	**map;
 	t_map map;
 	t_pars	pars;
 	t_wall		wall;
@@ -192,7 +188,7 @@ void	free_matrix(char **matrix);
 
 /* parser */
 
-void	init_struc(char *av);
+void	init_struc(char **av, t_game *game);
 void	read_file(char *file, t_game *game);
 void	parser(char **av, t_game *game);
 void	read_file(char *file, t_game *game);
@@ -209,6 +205,6 @@ double	raylen(t_game *game, t_ray *ray, double angle);
 void	ray_casting(t_game *game, t_ray *ray);
 int		ft_max(int a, int b);
 void	draw_background(t_game *game, int j, int k);
-int draw_map(void *param);
+int		 draw_map(void *param);
 
 #endif
