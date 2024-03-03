@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:49:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:27:43 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,10 @@ void	check_textures(t_game *game);
 void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
+
+/* image_convert.c */
+
+void	to_xpm(t_mlx *mlx, t_game *game);
 
 /* raycasting.c */
 

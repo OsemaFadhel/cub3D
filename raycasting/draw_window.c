@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:54:20 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:33:53 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	fill_wall_texture(t_game *game, int *x_coord, int y)
 	y = game->draw.start_pos;
 	while (y < game->draw.end_pos)
 	{
+		printf("game->textures.x: %d\n", game->textures.x);
 		game->textures.y = (int)(y * 2 - 1080 + game->draw.line_height)
 			* (game->textures.height / 2) / game->draw.line_height;
 		if (game->wall.which_side_hit == NORTH_SOUTH
@@ -40,8 +41,7 @@ int	fill_wall_texture(t_game *game, int *x_coord, int y)
 			game->textures.choice = 2;
 		if (game->wall.which_side_hit == EAST_WEST && game->ray.direction_x < 0)
 			game->textures.choice = 3;
-		game->textures.colour = ((unsigned int *)game
-				->textures.stored[game->textures.choice])
+		game->textures.colour = ((unsigned int *)game->textures.stored[game->textures.choice])
 		[game->textures.x + game->textures.y * game->textures.width];
 		my_mlx_put_pixel(&game->mlx, *x_coord, y, game->textures.colour);
 		++y;

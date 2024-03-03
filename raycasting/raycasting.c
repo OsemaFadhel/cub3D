@@ -1,8 +1,8 @@
 #include "../include/cub3d.h"
 
-void	instantiate_ray(t_game *game, int *x)
+void	instantiate_ray(t_game *game, int *x_coord)
 {
-	game->camera.current_x = 2 * (double)(*x) / (double)1920 - 1;
+	game->camera.current_x = 2 * (double)(*x_coord) / (double)1920 - 1;
 	game->ray.direction_x = game->player.director_vector_x
 		+ game->camera.plane_x * game->camera.current_x;
 	game->ray.direction_y = game->player.director_vector_y
