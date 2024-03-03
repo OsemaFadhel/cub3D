@@ -6,11 +6,11 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:00:47 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:01:22 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 22:35:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
 static void	init_camera_position_ns(t_player *player, t_map *map,
 	t_camera *camera)

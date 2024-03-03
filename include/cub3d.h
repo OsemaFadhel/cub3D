@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:19:32 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 22:49:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,8 @@ void	set_rgb(t_game *game);
 
 /* raycasting.c */
 
-int		run_mlx(t_mlx *mlx, t_game *game);
+int		game_loop(t_game *game);
+void	draw_columns(t_game *game, int *x_coord);
 
 /* movement */
 

@@ -6,11 +6,21 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:20:46 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 22:35:41 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
+
+int	run_mlx(t_mlx *mlx, t_game *game)
+{
+	mlx_loop_hook(mlx->init, game_loop, game); //raycasting.c
+	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
+	//mlx_hook(game->mlx.win, 17, 0, ft_exit, &game);
+	mlx_key_hook(game->mlx.win, ft_key, &game);
+	mlx_loop(mlx->init);
+	return (1);
+}
 
 int	init_mlx(t_mlx *mlx, t_game *game)
 {
@@ -27,7 +37,8 @@ int	init_mlx(t_mlx *mlx, t_game *game)
 			&mlx->line_length, &mlx->endian);
 	if (!mlx->address)
 		ft_exit(game, 4);
-	//to_xpm(mlx, game); //in parse there is already one, well se later when we create the textures
+	//to_xpm(mlx, game); // parser/image_convert.c
+						//in parse there is already one, well se later when we create the textures
 	run_mlx(mlx, game); //raycasting.c
 	return (0);
 }
