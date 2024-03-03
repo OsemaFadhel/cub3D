@@ -2,7 +2,7 @@
 
 void	instantiate_ray(t_game *game, int *x_coord)
 {
-	game->camera.current_x = 2 * (double)(*x_coord) / (double)1920 - 1;
+	game->camera.current_x = 2 * (double)(*x_coord) / (double)1366 - 1;
 	game->ray.direction_x = game->player.director_vector_x
 		+ game->camera.plane_x * game->camera.current_x;
 	game->ray.direction_y = game->player.director_vector_y
@@ -88,13 +88,13 @@ void	calculate_closest_point_to_wall(t_wall *wall, t_ray *ray)
 
 void	calculate_height_line(t_wall *wall, t_draw *draw)
 {
-	draw->line_height = abs((int)(1080 / wall->shortest_dist_to_wall));
-	draw->start_pos = -draw->line_height / 2 + (double)1080 / 2;
+	draw->line_height = abs((int)(769 / wall->shortest_dist_to_wall));
+	draw->start_pos = -draw->line_height / 2 + (double)769 / 2;
 	if (draw->start_pos < 0)
 		draw->start_pos = 0;
-	draw->end_pos = draw->line_height / 2 + (double)1080 / 2;
-	if (draw->end_pos >= 1080)
-		draw->end_pos = 1080 - 1;
+	draw->end_pos = draw->line_height / 2 + (double)769 / 2;
+	if (draw->end_pos >= 769)
+		draw->end_pos = 769 - 1;
 }
 
 void	raycasting(t_game *game)
@@ -102,7 +102,7 @@ void	raycasting(t_game *game)
 	int			x_coord;
 
 	x_coord = 0;
-	while (x_coord <= 1920)
+	while (x_coord <= 1366)
 	{
 		instantiate_ray(game, &x_coord);
 		calculate_length_to_next_x(&game->ray);

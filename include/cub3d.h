@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 23:27:43 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:59:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@
 # include <mlx.h>
 # include "../libft/libft.h"
 
-# define UP 126
-# define DOWN 125
 # define LEFT 123
 # define RIGHT 124
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+
 
 # define ESC 53
 

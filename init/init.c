@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 23:04:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:48:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	init(t_game *game)
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);
-	game->win_width = 1920;
-	game->win_height = 1080;
+	game->win_width = 1366;
+	game->win_height = 769;
 	game->size_line = 0;
 	game->bpp = 0;
 	game->endian = 0;

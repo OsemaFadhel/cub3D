@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 23:33:53 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:49:30 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= 1920 || y < 0 || y >= 1080)
+	if (x < 0 || x >= 1366 || y < 0 || y >= 766)
 		return ;
 	dst = data->address + (y * data->line_length + x
 			* (data->bits_per_pixel / 8));
@@ -28,8 +28,7 @@ int	fill_wall_texture(t_game *game, int *x_coord, int y)
 	y = game->draw.start_pos;
 	while (y < game->draw.end_pos)
 	{
-		printf("game->textures.x: %d\n", game->textures.x);
-		game->textures.y = (int)(y * 2 - 1080 + game->draw.line_height)
+		game->textures.y = (int)(y * 2 - 1366 + game->draw.line_height)
 			* (game->textures.height / 2) / game->draw.line_height;
 		if (game->wall.which_side_hit == NORTH_SOUTH
 			&& game->ray.direction_y > 0)
@@ -52,12 +51,12 @@ int	fill_wall_texture(t_game *game, int *x_coord, int y)
 void	fill_floor_and_ceiling(t_game *game, int *x_coord, int y)
 {
 	if (game->draw.end_pos < 0)
-		game->draw.end_pos = 1080;
+		game->draw.end_pos = 1366;
 	y = game->draw.end_pos;
-	while (y < 1080)
+	while (y < 769)
 	{
 		my_mlx_put_pixel(&game->mlx, *x_coord, y, game->textures.floor);
-		my_mlx_put_pixel(&game->mlx, *x_coord, 1080 - y - 1,
+		my_mlx_put_pixel(&game->mlx, *x_coord, 769 - y - 1,
 			game->textures.ceil);
 		++y;
 	}
