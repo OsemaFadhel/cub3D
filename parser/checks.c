@@ -20,7 +20,7 @@ void	check_map_name(char *str)
 	if (str[i - 1] != 'b' || str[i - 2] != 'u' || str[i - 3] != 'c'
 		|| str[i - 4] != '.')
 	{
-		ft_printf("Error: map name must be .game\n");
+		ft_printf("Error: map name must be .cub\n");
 		exit(1);
 	}
 }
