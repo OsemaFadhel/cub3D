@@ -68,6 +68,22 @@ void	draw_columns(t_game *game, int *x_coord)
 
 	y = 0;
 
+	if (game->wall.which_side_hit == EAST_WEST)
+	{
+		game->textures.wall_x = game->map.player_y
+			+ game->wall.shortest_dist_to_wall * game->ray.direction_y;
+	}
+	else
+		game->textures.wall_x = game->map.player_x
+			+ game->wall.shortest_dist_to_wall * game->ray.direction_x;
+	game->textures.wall_x -= floor(game->textures.wall_x);
+	game->textures.x = (int)(game->textures.wall_x
+			* (double)game->textures.width);
+	if (game->wall.which_side_hit == NORTH_SOUTH && game->ray.direction_y < 0)
+		game->textures.x = game->textures.width - game->textures.x - 1;
+	if (game->wall.which_side_hit == EAST_WEST && game->ray.direction_x > 0)
+		game->textures.x = game->textures.width - game->textures.x - 1;
+
 	y += fill_wall_texture(game, x_coord, y);
 	fill_floor_and_ceiling(game, x_coord, y);
 }

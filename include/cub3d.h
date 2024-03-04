@@ -204,7 +204,9 @@ void	draw_columns(t_game *game, int *x_coord);
 
 /* movement */
 
-int		ft_key(int keycode, t_game *game);
+int		ft_key_press(int keycode, t_game *game);
+int		ft_key_release(int	keycode, t_game *game);
+
 
 /* exit.c */
 
