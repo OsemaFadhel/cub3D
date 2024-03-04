@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 23:59:42 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/04 16:50:34 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,9 @@ void	draw_columns(t_game *game, int *x_coord);
 
 /* movement */
 
-int		ft_key(int keycode, t_game *game);
+int		ft_key_press(int keycode, t_game *game);
+int		ft_key_release(int	keycode, t_game *game);
+
 
 /* exit.c */
 
