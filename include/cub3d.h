@@ -211,6 +211,14 @@ int		ft_key_release(int	keycode, t_game *game);
 /* exit.c */
 
 int		ft_exit(t_game *game, int i);
+int		ft_key_press(int keycode, t_game *game);
+void	ft_front(t_game *game);
+void	ft_back(t_game *game);
+void	ft_left(t_game *game);
+void	ft_right(t_game *game);
+void	cam_left(t_game *game);
+void	cam_right(t_game *game);
+
 
 
 #endif

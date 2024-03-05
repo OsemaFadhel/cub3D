@@ -40,7 +40,7 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 # src
 
 SRC 		=	main.c init/init.c init/init_pos.c \
-				movement/key.c \
+				movement/key.c movement/line_algo.c \
 				parser/read_map.c parser/read_file.c parser/checks.c parser/set_rgb.c \
 				parser/image_convert.c \
 				raycasting/raycasting.c raycasting/draw_window.c \

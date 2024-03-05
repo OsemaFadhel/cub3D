@@ -17,17 +17,17 @@ int	ft_key_press(int keycode, t_game *game)
 	if (keycode == ESC)
 		exit(0);
 	if (keycode == W)
-		game->player.current_square_y += 1;
+		ft_front(game);
 	if (keycode == S)
-		game->player.current_square_y -= 1;
+		ft_back(game);
 	if (keycode == A)
-		game->player.current_square_x -= 1;
+		ft_left(game);
 	if (keycode == D)
-		game->player.current_square_x += 1;
-	if (keycode == LEFT){}
-	//
-	if (keycode == RIGHT){}
-	//
+		ft_right(game);
+	if (keycode == LEFT)
+		cam_left(game);
+	if (keycode == RIGHT)
+		cam_right(game);
 	return (0);
 }
 
