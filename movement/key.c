@@ -17,13 +17,17 @@ int	ft_key_press(int keycode, t_game *game)
 	if (keycode == ESC)
 		exit(0);
 	if (keycode == W)
-		ft_front(game);
+		game->player.move_flag_y = 1;
+		//ft_front(game);
 	if (keycode == S)
-		ft_back(game);
+		game->player.move_flag_y = -1;
+		//ft_back(game);
 	if (keycode == A)
-		ft_left(game);
+		game->player.move_flag_x = -1;
+		//ft_left(game);
 	if (keycode == D)
-		ft_right(game);
+		game->player.move_flag_x = 1;
+		//ft_right(game);
 	if (keycode == LEFT)
 		cam_left(game);
 	if (keycode == RIGHT)
@@ -34,13 +38,13 @@ int	ft_key_press(int keycode, t_game *game)
 int	ft_key_release(int	keycode, t_game *game)
 {
 	if (keycode == W)
-		game->player.map_y = 0;
+		game->player.move_flag_y = 0;
 	if (keycode == S)
-		game->player.map_y = 0;
+		game->player.move_flag_y = 0;
 	if (keycode == A)
-		game->player.map_x = 0;
+		game->player.move_flag_x = 0;
 	if (keycode == D)
-		game->player.map_x = 0;
+		game->player.move_flag_x = 0;
 	if (keycode == LEFT){}
 	//
 	if (keycode == RIGHT){}

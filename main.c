@@ -14,9 +14,10 @@
 
 int	run_mlx(t_mlx *mlx, t_game *game)
 {
+	mlx_loop_hook(mlx->init, game_loop, game);
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
-	mlx_loop_hook(mlx->init, game_loop, game);
+	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);

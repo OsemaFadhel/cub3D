@@ -51,6 +51,8 @@ typedef struct s_dbl
 
 typedef struct s_player
 {
+	int		move_flag_x;
+	int		move_flag_y;
 	double	director_vector_x;
 	double	director_vector_y;
 	int		map_x;
@@ -206,6 +208,9 @@ void	draw_columns(t_game *game, int *x);
 
 int		ft_key_press(int keycode, t_game *game);
 int		ft_key_release(int	keycode, t_game *game);
+
+void	ft_ismoving(t_game *game);
+
 
 
 /* exit.c */

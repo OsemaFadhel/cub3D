@@ -106,6 +106,17 @@ void	cam_right(t_game *game)
 	game->camera.plane_y = planeX * sin (-0.1) + game->camera.plane_y * cos(-0.1);
 }
 
+void	ft_ismoving(t_game *game)
+{
+	if (game->player.move_flag_y == 1) 
+		ft_front(game);
+	else if (game->player.move_flag_y == -1) 
+		ft_back(game);
+	else if (game->player.move_flag_x == -1) 
+		ft_left(game);
+	else if (game->player.move_flag_x == 1) 
+		ft_right(game);
+}
 /*function line(int x0, int x1, int y0, int y1)
 {
 	int deltax := abs(x1 - x0)

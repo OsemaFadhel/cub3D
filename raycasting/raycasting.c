@@ -102,6 +102,7 @@ void	raycasting(t_game *game)
 	int			x;
 
 	x = 0;
+	ft_ismoving(game);
 	while (x <= 1366)
 	{
 		ray_pos_and_dir(game, &x);
