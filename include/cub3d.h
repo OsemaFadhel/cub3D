@@ -53,8 +53,8 @@ typedef struct s_player
 {
 	double	director_vector_x;
 	double	director_vector_y;
-	int		current_square_x;
-	int		current_square_y;
+	int		map_x;
+	int		map_y;
 }	t_player;
 
 typedef struct s_camera
@@ -66,21 +66,21 @@ typedef struct s_camera
 
 typedef struct s_ray
 {
-	double	direction_x;
-	double	direction_y;
-	double	move_to_next_x;
-	double	move_to_next_y;
-	double	distance_to_next_x;
-	double	distance_to_next_y;
-	int		step_in_x;
-	int		step_in_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
 }	t_ray;
 
 typedef struct s_wall
 {
-	double	shortest_dist_to_wall;
-	int		is_hit;
-	int		which_side_hit;
+	double	perp_wall_dist;
+	int		hit;
+	int		side;
 }	t_wall;
 
 typedef struct s_draw
@@ -200,7 +200,7 @@ void	to_xpm(t_mlx *mlx, t_game *game);
 /* raycasting.c */
 
 int		game_loop(t_game *game);
-void	draw_columns(t_game *game, int *x_coord);
+void	draw_columns(t_game *game, int *x);
 
 /* movement */
 

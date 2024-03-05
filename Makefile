@@ -69,6 +69,16 @@ $(NAME): $(OBJ)
 		@echo "$(YELLOW)COMPILING...$(DEFAULT)"
 		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
+		@echo "\033[0;31m___  ____       _        _   _      _ _\033[0m"
+			@echo "\033[0;31m|  \/  (_)     (_)      | | | |    | | |\033[0m"
+			@echo "\033[0;31m| .  . |_ _ __  _ ______| |_| | ___| | |\033[0m"
+			@echo "\033[0;31m| |\/| | | '_ \| |______|  _  |/ _ \ | |\033[0m"
+			@echo "\033[0;31m| |  | | | | | | |      | | | |  __/ | |\033[0m"
+			@echo "\033[0;31m\_|  |_/_|_| |_|_|      \_| |_/\___|_|_|\033[0m"
+			@echo "                                        "
+			@echo "                                        "
+			@echo "\033[0;32mLinked into executable \033[0m\033[0;32mcub3d\033[0m."
+		
 
 
 clean:

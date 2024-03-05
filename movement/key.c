@@ -34,13 +34,13 @@ int	ft_key_press(int keycode, t_game *game)
 int	ft_key_release(int	keycode, t_game *game)
 {
 	if (keycode == W)
-		game->player.current_square_y = 0;
+		game->player.map_y = 0;
 	if (keycode == S)
-		game->player.current_square_y = 0;
+		game->player.map_y = 0;
 	if (keycode == A)
-		game->player.current_square_x = 0;
+		game->player.map_x = 0;
 	if (keycode == D)
-		game->player.current_square_x = 0;
+		game->player.map_x = 0;
 	if (keycode == LEFT){}
 	//
 	if (keycode == RIGHT){}
