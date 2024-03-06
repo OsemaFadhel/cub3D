@@ -16,17 +16,22 @@ int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		exit(0);
-	if (keycode == W)
-		game->player.move_flag_y = 1;
+	if (keycode == W && game->player.move_flag_y < 1)
+		game->player.move_flag_y += 1;
 		//ft_front(game);
-	if (keycode == S)
-		game->player.move_flag_y = -1;
+	if (keycode == S && game->player.move_flag_y > -1)
+		game->player.move_flag_y -= 1;
 		//ft_back(game);
 	if (keycode == A)
 		game->player.move_flag_x = -1;
 		//ft_left(game);
 	if (keycode == D)
 		game->player.move_flag_x = 1;
+	if (keycode == 257)
+	{
+		game->run = 1;
+	}
+
 		//ft_right(game);
 	if (keycode == LEFT)
 		cam_left(game);
@@ -45,9 +50,11 @@ int	ft_key_release(int	keycode, t_game *game)
 		game->player.move_flag_x = 0;
 	if (keycode == D)
 		game->player.move_flag_x = 0;
-	if (keycode == LEFT){}
-	//
-	if (keycode == RIGHT){}
-	//
+	if (keycode == 257)
+		game->run = 0;
+	if (keycode == LEFT)
+		game->player.move_flag_x = 0;
+	if (keycode == RIGHT)
+		game->player.move_flag_x = 0;
 	return (0);
 }

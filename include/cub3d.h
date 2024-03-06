@@ -154,8 +154,9 @@ typedef struct s_pars
 
 typedef struct s_game
 {
-	t_map map;
-	t_pars	pars;
+	int 		run;
+	t_map 		map;
+	t_pars		pars;
 	t_wall		wall;
 	t_player	player;
 	t_camera	camera;

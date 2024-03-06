@@ -87,6 +87,7 @@ void	init(t_game *game)
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);
+	game->run = 0;
 	game->win_width = 1366;
 	game->win_height = 769;
 	game->size_line = 0;
