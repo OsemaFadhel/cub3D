@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/08 16:56:23 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/08 17:43:16 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,16 @@ int	get_map_width2(t_game *game)
 
 	i = 0;
 	width = 0;
-	while (game->map[i])
+	while (game->map.map[i])
 	{
-		if (width < ft_strlen(game->map[i]))
-			width = ft_strlen(game->map[i]);
+		if (width < ft_strlen(game->map.map[i]))
+			width = ft_strlen(game->map.map[i]);
 		i++;
 	}
 	return (width);
 }
 
-void flood_fill(char **map, int x, int y)
+void flood_fill(t_game *game, int x, int y)
 {
 	int	width;
 	int size;
@@ -110,14 +110,19 @@ void flood_fill(char **map, int x, int y)
 	width = get_map_width2(game);
 
 	if (x < 0 || y < 0 || x >= width || y >= size)
-		ft_exit(3);
-	if (map[y][x] != '0')
+		return;
+	if (game->map.map[y][x] != '0' && game->map.map[y][x] != 'W' && game->map.map[y][x] != 'E'
+			&& game->map.map[y][x] != 'S' && game->map.map[y][x] != 'N')
 		return ;
-    map[y][x] = 'X';
-    flood_fill(map, x + 1, y);
-    flood_fill(map, x - 1, y);
-    flood_fill(map, x, y + 1);
-    flood_fill(map, x, y - 1);
+    game->map.map[y][x] = 'X';
+    flood_fill(game, x + 1, y);
+    flood_fill(game, x - 1, y);
+    flood_fill(game, x, y + 1);
+    flood_fill(game, x, y - 1);
+	flood_fill(game, x + 1, y + 1);
+	flood_fill(game, x - 1, y - 1);
+	flood_fill(game, x + 1, y - 1);
+	flood_fill(game, x - 1, y + 1);
 }
 
 void	check_closed(t_game *game)
@@ -130,11 +135,11 @@ void	check_closed(t_game *game)
 	size = get_map_size(game);
 	width = get_map_width2(game);
 
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < size; i++)
 	{
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < width; j++)
 		{
-			if (game->map[i][j] == 'S' || game->map[i][j] == 'N' || game->map[i][j] == 'E' || game->map[i][j] == 'W' || )
+			if (game->map.map[i][j] == 'S' || game->map.map[i][j] == 'N' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
 				player_x = j;
 				player_y = i;
@@ -142,14 +147,18 @@ void	check_closed(t_game *game)
 			}
 		}
 	}
-    flood_fill(game->map, player_x, player_y)
-    for (int i = 0; i < ROWS; i++)
+    flood_fill(game, player_x, player_y);
+	print_matrix(game->map.map);
+    for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < COLS; j++)
+		for (int j = 0; j < width; j++)
 		{
-			if (game->map[i][j] == '0')
-				ft_exit(3);
-        }
+			if (game->map.map[i][j] == '0')
+			{
+				printf("qowf\n");
+				ft_exit(game, 3);
+			}
+		}
     }
 }
 
@@ -159,7 +168,7 @@ void	check_closed(t_game *game)
 	int	k;
 
 	j = 0;
-	while (game->map.map[i - 1][j])
+	while (game->map.map.map[i - 1][j])
 	{
 		if (game->map.map[i - 1][j] == '1' || game->map.map[i - 1][j] == ' ')
 			;
