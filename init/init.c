@@ -88,12 +88,6 @@ void	init(t_game *game)
 	init_ray_and_player(game);
 	init_textures(game);
 	game->run = 0;
-	game->win_width = 1366;
-	game->win_height = 769;
-	game->size_line = 0;
-	game->bpp = 0;
-	game->endian = 0;
-	game->data_addr = NULL;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;

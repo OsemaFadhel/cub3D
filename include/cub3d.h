@@ -30,10 +30,7 @@
 # define A 0
 # define S 1
 # define D 2
-
-
 # define ESC 53
-
 #  define NORTH_SOUTH 1
 #  define EAST_WEST 0
 
@@ -100,7 +97,7 @@ typedef struct s_mlx
 	char	*address;
 	int		endian;
 	int		bits_per_pixel;
-	int		line_length;
+	int		size_line;
 }	t_mlx;
 
 typedef struct s_map
@@ -166,12 +163,6 @@ typedef struct s_game
 	t_mlx	mlx;
 	t_axis	*map_axis;
 	t_dbl	player_dbl;
-	int		win_width;
-	int		win_height;
-	int		size_line;
-	int 	bpp;
-	int		endian;
-	char	*data_addr;
 }				t_game;
 
 
@@ -198,7 +189,7 @@ void	set_rgb(t_game *game);
 
 /* image_convert.c */
 
-void	to_xpm(t_mlx *mlx, t_game *game);
+void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game);
 
 /* raycasting.c */
 

@@ -12,15 +12,15 @@
 
 #include "../include/cub3d.h"
 
-static void	check_size(int *width, int *height) // to change
+void	texture_check(int *x, int *y) // to change
 {
-	if (*width != 64)
+	if (*x != 64)
 		exit(1);
-	if (*height != 64)
+	if (*y != 64)
 		exit(1);
 }
 
-static void	to_xpm_suite(t_game *game)
+void	ft_xpm(t_game *game)
 {
 	int	x;
 	int	y;
@@ -44,19 +44,19 @@ static void	to_xpm_suite(t_game *game)
 		ft_exit(game, 4);
 }
 
-void	to_xpm(t_mlx *mlx, t_game *game)
+void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game)
 {
 	game->textures.wall_ea = mlx_xpm_file_to_image(mlx->init, game->pars.ea,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	texture_check(&game->textures.width, &game->textures.height);
 	game->textures.wall_no = mlx_xpm_file_to_image(mlx->init, game->pars.no,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	texture_check(&game->textures.width, &game->textures.height);
 	game->textures.wall_so = mlx_xpm_file_to_image(mlx->init, game->pars.so,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	texture_check(&game->textures.width, &game->textures.height);
 	game->textures.wall_we = mlx_xpm_file_to_image(mlx->init, game->pars.we,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
-	to_xpm_suite(game);
+	texture_check(&game->textures.width, &game->textures.height);
+	ft_xpm(game);
 }

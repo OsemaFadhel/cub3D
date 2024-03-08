@@ -35,10 +35,10 @@ int	init_mlx(t_mlx *mlx, t_game *game)
 	if (!mlx->img)
 		ft_exit(game, 4);
 	mlx->address = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
-			&mlx->line_length, &mlx->endian);
+			&mlx->size_line, &mlx->endian);
 	if (!mlx->address)
 		ft_exit(game, 4);
-	to_xpm(mlx, game); // parser/image_convert.c
+	ft_mlx_xpm_file_to_image(mlx, game); // parser/image_convert.c
 						//in parse there is already one, well se later when we create the textures
 	run_mlx(mlx, game); //raycasting.c
 	return (0);

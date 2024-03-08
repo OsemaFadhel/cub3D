@@ -18,7 +18,7 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 
 	if (x < 0 || x >= 1366 || y < 0 || y >= 766)
 		return ;
-	dst = data->address + (y * data->line_length + x
+	dst = data->address + (y * data->size_line + x
 			* (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

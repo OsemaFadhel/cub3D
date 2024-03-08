@@ -20,7 +20,7 @@ void	ft_front(t_game *game)
 
 	if (game->run == 1)
 	{
-		c = 0.05;
+		c = 0.1;
 	}
 
 	x = game->map.player_x + (game->player.director_vector_x + 0.01) * c;
