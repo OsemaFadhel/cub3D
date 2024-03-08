@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/08 17:43:16 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/08 18:53:01 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ void flood_fill(t_game *game, int x, int y)
 	width = get_map_width2(game);
 
 	if (x < 0 || y < 0 || x >= width || y >= size)
-		return;
-	if (game->map.map[y][x] != '0' && game->map.map[y][x] != 'W' && game->map.map[y][x] != 'E'
+		ft_exit(game, 3);
+	if (game->map.map[y][x] != '0' && game->map.map[y][x] != 'G' && game->map.map[y][x] != 'W' && game->map.map[y][x] != 'E'
 			&& game->map.map[y][x] != 'S' && game->map.map[y][x] != 'N')
 		return ;
     game->map.map[y][x] = 'X';
@@ -159,7 +159,7 @@ void	check_closed(t_game *game)
 				ft_exit(game, 3);
 			}
 		}
-    }
+	}
 }
 
 /*void	check_closed2(t_game *game, int i, int l)
