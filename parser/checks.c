@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 21:26:27 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/08 16:56:23 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,77 @@ void	check_textures(t_game *game)
 		ft_exit(game, 2);
 }
 
-void	check_closed2(t_game *game, int i, int l)
+int	get_map_width2(t_game *game)
+{
+	int	j;
+	int	i;
+	int	k;
+	int	width;
+
+	i = 0;
+	width = 0;
+	while (game->map[i])
+	{
+		if (width < ft_strlen(game->map[i]))
+			width = ft_strlen(game->map[i]);
+		i++;
+	}
+	return (width);
+}
+
+void flood_fill(char **map, int x, int y)
+{
+	int	width;
+	int size;
+
+	size = get_map_size(game);
+	width = get_map_width2(game);
+
+	if (x < 0 || y < 0 || x >= width || y >= size)
+		ft_exit(3);
+	if (map[y][x] != '0')
+		return ;
+    map[y][x] = 'X';
+    flood_fill(map, x + 1, y);
+    flood_fill(map, x - 1, y);
+    flood_fill(map, x, y + 1);
+    flood_fill(map, x, y - 1);
+}
+
+void	check_closed(t_game *game)
+{
+	int player_x;
+	int player_y;
+	int	width;
+	int size;
+
+	size = get_map_size(game);
+	width = get_map_width2(game);
+
+    for (int i = 0; i < ROWS; i++)
+	{
+        for (int j = 0; j < COLS; j++)
+		{
+			if (game->map[i][j] == 'S' || game->map[i][j] == 'N' || game->map[i][j] == 'E' || game->map[i][j] == 'W' || )
+			{
+				player_x = j;
+				player_y = i;
+				break;
+			}
+		}
+	}
+    flood_fill(game->map, player_x, player_y)
+    for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (game->map[i][j] == '0')
+				ft_exit(3);
+        }
+    }
+}
+
+/*void	check_closed2(t_game *game, int i, int l)
 {
 	int	j;
 	int	k;
@@ -135,4 +205,4 @@ void	check_closed(t_game *game)
 	while (game->map.map[i])
 		i++;
 	check_closed2(game, i, l);
-}
+}*/
