@@ -20,7 +20,7 @@ void	check_map_name(char *str)
 	if (str[i - 1] != 'b' || str[i - 2] != 'u' || str[i - 3] != 'c'
 		|| str[i - 4] != '.')
 	{
-		ft_printf("Error: map name must be .cub\n");
+		ft_printf("Error: map name must be .game\n");
 		exit(1);
 	}
 }
@@ -83,13 +83,92 @@ void	check_textures(t_game *game)
 		ft_exit(game, 2);
 }
 
-void	check_closed2(t_game *game, int i, int l)
+int	get_map_width2(t_game *game)
+{
+	int	j;
+	int	i;
+	int	k;
+	int	width;
+
+	i = 0;
+	width = 0;
+	while (game->map.map[i])
+	{
+		if (width < ft_strlen(game->map.map[i]))
+			width = ft_strlen(game->map.map[i]);
+		i++;
+	}
+	return (width);
+}
+
+void flood_fill(t_game *game, int x, int y)
+{
+	int	width;
+	int size;
+
+	size = get_map_size(game);
+	width = get_map_width2(game);
+
+	if (x < 0 || y < 0 || x >= width || y >= size)
+		ft_exit(game, 3);
+	if (game->map.map[y][x] != '0' && game->map.map[y][x] != 'G' && game->map.map[y][x] != 'W' && game->map.map[y][x] != 'E'
+			&& game->map.map[y][x] != 'S' && game->map.map[y][x] != 'N')
+		return ;
+    game->map.map[y][x] = 'X';
+    flood_fill(game, x + 1, y);
+    flood_fill(game, x - 1, y);
+    flood_fill(game, x, y + 1);
+    flood_fill(game, x, y - 1);
+	flood_fill(game, x + 1, y + 1);
+	flood_fill(game, x - 1, y - 1);
+	flood_fill(game, x + 1, y - 1);
+	flood_fill(game, x - 1, y + 1);
+}
+
+void	check_closed(t_game *game)
+{
+	int player_x;
+	int player_y;
+	int	width;
+	int size;
+
+	size = get_map_size(game);
+	width = get_map_width2(game);
+
+    for (int i = 0; i < size; i++)
+	{
+        for (int j = 0; j < width; j++)
+		{
+			if (game->map.map[i][j] == 'S' || game->map.map[i][j] == 'N' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
+			{
+				player_x = j;
+				player_y = i;
+				break;
+			}
+		}
+	}
+    flood_fill(game, player_x, player_y);
+	print_matrix(game->map.map);
+    for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			if (game->map.map[i][j] == '0')
+			{
+				printf("qowf\n");
+				ft_exit(game, 3);
+			}
+		}
+	}
+}
+
+/*void	check_closed2(t_game *game, int i, int l)
 {
 	int	j;
 	int	k;
 
 	j = 0;
-	while (game->map.map[i - 1][j])
+	while (game->map.map.map[i - 1][j])
 	{
 		if (game->map.map[i - 1][j] == '1' || game->map.map[i - 1][j] == ' ')
 			;
@@ -135,4 +214,4 @@ void	check_closed(t_game *game)
 	while (game->map.map[i])
 		i++;
 	check_closed2(game, i, l);
-}
+}*/
