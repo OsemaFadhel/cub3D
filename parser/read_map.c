@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 21:40:42 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/08 18:51:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ void	parse_map(t_game *game, int i)
 		while (game->pars.file[i][l])
 		{
 			if (game->pars.file[i][l] == ' ')
-				game->map.map[k][l] = '0';
+				game->map.map[k][l] = 'G';
 			else
 				game->map.map[k][l] = game->pars.file[i][l];
 			l++;
 		}
 		while (l < width)
 		{
-			game->map.map[k][l] = '0';
+			game->map.map[k][l] = 'G';
 			l++;
 		}
 		game->map.map[k][l] = '\0';
@@ -96,6 +96,8 @@ void	parse_map(t_game *game, int i)
 		k++;
 	}
 	game->map.map[k] = NULL;
+	print_matrix(game->map.map);
+	printf("\n");
 	check_closed(game);
 }
 

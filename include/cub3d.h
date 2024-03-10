@@ -186,6 +186,7 @@ void	check_textures(t_game *game);
 void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
+int		get_map_size(t_game *game);
 
 /* image_convert.c */
 
