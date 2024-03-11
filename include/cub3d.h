@@ -21,7 +21,8 @@
 # include <math.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 
 # define LEFT 123

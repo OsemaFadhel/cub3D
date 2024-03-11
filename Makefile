@@ -32,9 +32,9 @@ LIBFT 		= $(LIBFT_PATH)/libft.a
 
 # mlx
 
-#MLX_PATH	= ./mlx-linux
+MLX_PATH	= ./mlx_linux
 
-#MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a
+MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a $(MLX_PATH)/libmlx.a
 
 
 # src
@@ -53,12 +53,14 @@ OBJ			= $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g -lmlx -framework OpenGL -framework AppKit
+CFLAGS		=	-Wall -Wextra -Werror \
+	-I$(shell pwd) -I$(shell pwd)/libft -I$(shell pwd)/mlx_linux
+LDFLAGS = -L$(shell pwd)/libft -L$(shell pwd)/mlx_linux -lmlx -lft -lXext -lX11 -lm
 
 # rules
 
 %.o: %.c
-		$(CC) -I/usr/includesude -Imlx_linux-c -c $< -o $@
+		$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 		@echo "$(GREEN)OBJECTS READY!$(DEFAULT)"
 
 all:	 $(NAME)
@@ -67,7 +69,7 @@ $(NAME): $(OBJ)
 		@echo "$(YELLOW)LIBFT...$(DEFAULT)"
 		make -C $(LIBFT_PATH)
 		@echo "$(YELLOW)COMPILING...$(DEFAULT)"
-		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LDFLAGS) -o $(NAME)
 		@echo "$(GREEN)READY TO GO!$(DEFAULT)"
 			@echo "\033[0;31m                         88            ad888888b,           88\033[0m"
 			@echo "\033[0;31m                         88           d8"     "88           88\033[0m"
@@ -85,7 +87,7 @@ $(NAME): $(OBJ)
 
 clean:
 		rm -rf $(OBJ)
-		make fclean -C $(LIBFT_PATH)
+		make fclean -C $(LIBFT_PATH) 
 
 fclean:	clean
 		rm -rf $(NAME)
