@@ -97,4 +97,6 @@ void	init(t_game *game)
 	game->draw.end_pos = 0;
 	game->draw.start_pos = 0;
 	game->draw.line_height = 0;
+	game->player.move_flag_y = 0;
+	game->player.move_flag_x = 0;
 }

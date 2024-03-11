@@ -73,7 +73,7 @@ void	parse_map(t_game *game, int i)
 	width = get_map_width(game, i);
 	j = get_map_size(game);
 
-	game->map.map = malloc(sizeof(char *) * (j + 1));
+	game->map.map = malloc(sizeof(char *) * j);
 	while (game->pars.file[i])
 	{
 		l = 0;
