@@ -1,4 +1,5 @@
 #include "../include/cub3d.h"
+
 void	ray_pos_and_dir(t_game *game, int *x)
 {
 	game->camera.current_x = 2 * (double)(*x) / (double)1366 - 1;
@@ -128,3 +129,4 @@ int	game_loop(t_game *game)
 	render(game);
 	return (0);
 }
+

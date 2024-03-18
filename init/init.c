@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 15:42:12 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/18 16:41:29 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	init_ray_and_player(t_game *game)
 	game->player.map_y = 0;
 	game->player.director_vector_x = 0;
 	game->player.director_vector_y = 0;
+	game->player.move_flag_x = 0;
+	game->player.move_flag_y = 0;
 }
 
 void	init_textures(t_game *game)
