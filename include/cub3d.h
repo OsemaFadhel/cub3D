@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/08 16:28:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/18 15:40:22 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <math.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 
 # define LEFT 123
@@ -30,10 +31,7 @@
 # define A 0
 # define S 1
 # define D 2
-
-
 # define ESC 53
-
 #  define NORTH_SOUTH 1
 #  define EAST_WEST 0
 
@@ -51,10 +49,12 @@ typedef struct s_dbl
 
 typedef struct s_player
 {
+	int		move_flag_x;
+	int		move_flag_y;
 	double	director_vector_x;
 	double	director_vector_y;
-	int		current_square_x;
-	int		current_square_y;
+	int		map_x;
+	int		map_y;
 }	t_player;
 
 typedef struct s_camera
@@ -66,21 +66,21 @@ typedef struct s_camera
 
 typedef struct s_ray
 {
-	double	direction_x;
-	double	direction_y;
-	double	move_to_next_x;
-	double	move_to_next_y;
-	double	distance_to_next_x;
-	double	distance_to_next_y;
-	int		step_in_x;
-	int		step_in_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
 }	t_ray;
 
 typedef struct s_wall
 {
-	double	shortest_dist_to_wall;
-	int		is_hit;
-	int		which_side_hit;
+	double	perp_wall_dist;
+	int		hit;
+	int		side;
 }	t_wall;
 
 typedef struct s_draw
@@ -98,7 +98,7 @@ typedef struct s_mlx
 	char	*address;
 	int		endian;
 	int		bits_per_pixel;
-	int		line_length;
+	int		size_line;
 }	t_mlx;
 
 typedef struct s_map
@@ -152,8 +152,9 @@ typedef struct s_pars
 
 typedef struct s_game
 {
-	t_map map;
-	t_pars	pars;
+	int 		run;
+	t_map 		map;
+	t_pars		pars;
 	t_wall		wall;
 	t_player	player;
 	t_camera	camera;
@@ -163,12 +164,6 @@ typedef struct s_game
 	t_mlx	mlx;
 	t_axis	*map_axis;
 	t_dbl	player_dbl;
-	int		win_width;
-	int		win_height;
-	int		size_line;
-	int 	bpp;
-	int		endian;
-	char	*data_addr;
 }				t_game;
 
 
@@ -192,27 +187,36 @@ void	check_textures(t_game *game);
 void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
-int		get_map_width(t_game *game, int i);
 int		get_map_size(t_game *game);
 
 /* image_convert.c */
 
-void	to_xpm(t_mlx *mlx, t_game *game);
+void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game);
 
 /* raycasting.c */
 
 int		game_loop(t_game *game);
-void	draw_columns(t_game *game, int *x_coord);
+void	draw_columns(t_game *game, int *x);
 
 /* movement */
 
 int		ft_key_press(int keycode, t_game *game);
 int		ft_key_release(int	keycode, t_game *game);
 
+void	ft_ismoving(t_game *game);
+
+
 
 /* exit.c */
 
 int		ft_exit(t_game *game, int i);
+int		ft_key_press(int keycode, t_game *game);
+void	ft_front(t_game *game);
+void	ft_back(t_game *game);
+void	ft_left(t_game *game);
+void	ft_right(t_game *game);
+void	cam_left(t_game *game);
+void	cam_right(t_game *game);
 
 
 #endif

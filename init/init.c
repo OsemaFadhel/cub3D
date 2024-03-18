@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 23:48:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/18 15:42:12 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	init_map(t_game *game)
 
 void	init_ray_and_player(t_game *game)
 {
-	game->ray.direction_x = 0;
-	game->ray.direction_y = 0;
-	game->ray.move_to_next_x = 0;
-	game->ray.move_to_next_y = 0;
-	game->ray.distance_to_next_x = 0;
-	game->ray.distance_to_next_y = 0;
-	game->ray.step_in_x = 0;
-	game->ray.step_in_y = 0;
-	game->player.current_square_x = 0;
-	game->player.current_square_y = 0;
+	game->ray.ray_dir_x = 0;
+	game->ray.ray_dir_y = 0;
+	game->ray.side_dist_x = 0;
+	game->ray.side_dist_y = 0;
+	game->ray.delta_dist_x = 0;
+	game->ray.delta_dist_y = 0;
+	game->ray.step_x = 0;
+	game->ray.step_y = 0;
+	game->player.map_x = 0;
+	game->player.map_y = 0;
 	game->player.director_vector_x = 0;
 	game->player.director_vector_y = 0;
 }
@@ -87,18 +87,13 @@ void	init(t_game *game)
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);
-	game->win_width = 1366;
-	game->win_height = 769;
-	game->size_line = 0;
-	game->bpp = 0;
-	game->endian = 0;
-	game->data_addr = NULL;
+	game->run = 0;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;
-	game->wall.shortest_dist_to_wall = 0;
-	game->wall.is_hit = 0;
-	game->wall.which_side_hit = 0;
+	game->wall.perp_wall_dist = 0;
+	game->wall.hit = 0;
+	game->wall.side = 0;
 	game->draw.end_pos = 0;
 	game->draw.start_pos = 0;
 	game->draw.line_height = 0;
