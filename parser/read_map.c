@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 16:04:52 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/20 16:07:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,23 @@ int	get_map_width(t_game *game, int i)
 	int	width;
 
 	j = 0;
-	k = 0;
 	width = 0;
 	while (game->pars.file[i])
 	{
-		if (width < ft_strlen(game->pars.file[i]))
-			width = ft_strlen(game->pars.file[i]);
+		k = 0;
+		j = 0;
+		while (game->pars.file[i][j])
+		{
+			if (game->pars.file[i][j] == ' ')
+				k++;
+			else if (game->pars.file[i][j] == '\t')
+				k += 4;
+			else
+				k++;
+			j++;
+		}
+		if (k > width)
+			width = k;
 		i++;
 	}
 	return (width);
@@ -65,6 +76,7 @@ void	parse_map(t_game *game, int i)
 {
 	int	j;
 	int	l;
+	int	m;
 	int	k;
 	int	width;
 
@@ -77,14 +89,24 @@ void	parse_map(t_game *game, int i)
 	while (game->pars.file[i])
 	{
 		l = 0;
+		m = 0;
 		game->map.map[k] = malloc(sizeof(char) * (width + 1));
-		while (game->pars.file[i][l])
+		while (game->pars.file[i][m])
 		{
-			if (game->pars.file[i][l] == ' ')
+			if (game->pars.file[i][m] == ' ')
 				game->map.map[k][l] = '0';
+			else if (game->pars.file[i][m] == '\t')
+			{
+				game->map.map[k][l] = '0';
+				game->map.map[k][l + 1] = '0';
+				game->map.map[k][l + 2] = '0';
+				game->map.map[k][l + 3] = '0';
+				l += 3;
+			}
 			else
-				game->map.map[k][l] = game->pars.file[i][l];
+				game->map.map[k][l] = game->pars.file[i][m];
 			l++;
+			m++;
 		}
 		while (l < width)
 		{

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 16:02:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/20 15:34:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ void	init_struct(char **av)
 {
 	t_game	game;
 	init(&game); //init.c
+	printf("Parsing the map\n");
 	parser(av, &game); //parser osema
+	printf("Initializing the game\n");
 	init_camera_position(&game.player, &game.map, &game.camera); //init_pos.c
+	printf("Initializing mlx\n");
 	init_mlx(&game.mlx, &game); //main.c
 }
 
