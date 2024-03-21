@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/20 16:07:18 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/21 16:24:38 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ void	parse_map(t_game *game, int i)
 		while (game->pars.file[i][m])
 		{
 			if (game->pars.file[i][m] == ' ')
-				game->map.map[k][l] = '0';
+				game->map.map[k][l] = ' ';
 			else if (game->pars.file[i][m] == '\t')
 			{
-				game->map.map[k][l] = '0';
-				game->map.map[k][l + 1] = '0';
-				game->map.map[k][l + 2] = '0';
-				game->map.map[k][l + 3] = '0';
+				game->map.map[k][l] = ' ';
+				game->map.map[k][l + 1] = ' ';
+				game->map.map[k][l + 2] = ' ';
+				game->map.map[k][l + 3] = ' ';
 				l += 3;
 			}
 			else
@@ -110,7 +110,7 @@ void	parse_map(t_game *game, int i)
 		}
 		while (l < width)
 		{
-			game->map.map[k][l] = '0';
+			game->map.map[k][l] = ' ';
 			l++;
 		}
 		game->map.map[k][l] = '\0';
@@ -120,7 +120,7 @@ void	parse_map(t_game *game, int i)
 	game->map.map[k] = NULL;
 	print_matrix(game->map.map);
 	printf("\n");
-	//check_closed(game);
+	check_closed(game);
 }
 
 void	check_file(t_game *game)
