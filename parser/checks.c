@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/21 16:39:07 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:54:27 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,61 @@ void	check_textures(t_game *game)
 	}
 	if (i != 6)
 		ft_exit(game, 2);
+}
+
+
+void	check_closed2(t_game *game, int i, int l)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	while (game->map.map[i - 1][j])
+	{
+		if (game->map.map[i - 1][j] == '1' || game->map.map[i - 1][j] == ' ')
+			;
+		else
+			ft_exit(game, 3);
+		j++;
+	}
+	while (game->map.map[l])
+	{
+		k = ft_strlen(game->map.map[l]) - 1;
+		if (game->map.map[l][0] == '1' || game->map.map[l][0] == ' ')
+			;
+		else
+			ft_exit(game, 3);
+		if (game->map.map[l][k] == '1' || game->map.map[l][k] == ' ')
+			;
+		else
+			ft_exit(game, 3);
+		l++;
+	}
+}
+
+void	check_closed3(t_game *game)
+{
+	int	j;
+	int	l;
+	int	i;
+
+	i = 0;
+	l = 0;
+	j = 0;
+	while (game->map.map[i][j])
+	{
+		if (game->map.map[i][j] == '1' || game->map.map[i][j] == ' ')
+			;
+		else
+		{
+			ft_exit(game, 3);
+		}
+		j++;
+	}
+	j = 0;
+	while (game->map.map[i])
+		i++;
+	check_closed2(game, i, l);
 }
 
 int	get_map_width2(t_game *game)
@@ -159,72 +214,6 @@ void	check_closed(t_game *game)
 		i++;
 	}
     flood_fill(game, map, player_x, player_y);
-	print_matrix(map);
-	printf("\n");
 	free_matrix(map);
-   /* for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < width; j++)
-		{
-			if (game->map.map[i][j] == '0')
-			{
-				printf("Error: 0\n");
-				ft_exit(game, 3);
-			}
-		}
-	}*/
+	check_closed3(game);
 }
-
-/*void	check_closed2(t_game *game, int i, int l)
-{
-	int	j;
-	int	k;
-
-	j = 0;
-	while (game->map.map.map[i - 1][j])
-	{
-		if (game->map.map[i - 1][j] == '1' || game->map.map[i - 1][j] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		j++;
-	}
-	while (game->map.map[l])
-	{
-		k = ft_strlen(game->map.map[l]) - 1;
-		if (game->map.map[l][0] == '1' || game->map.map[l][0] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		if (game->map.map[l][k] == '1' || game->map.map[l][k] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		l++;
-	}
-}
-
-void	check_closed(t_game *game)
-{
-	int	j;
-	int	l;
-	int	i;
-
-	i = 0;
-	l = 0;
-	j = 0;
-	while (game->map.map[i][j])
-	{
-		if (game->map.map[i][j] == '1' || game->map.map[i][j] == ' ')
-			;
-		else
-		{
-			ft_exit(game, 3);
-		}
-		j++;
-	}
-	j = 0;
-	while (game->map.map[i])
-		i++;
-	check_closed2(game, i, l);
-}*/
