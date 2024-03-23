@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/23 19:15:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/24 00:29:04 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,79 +83,16 @@ void	check_textures(t_game *game)
 		ft_exit(game, 2);
 }
 
-
-void	check_closed_bottom(t_game *game, int i)
+int	get_map_size2(t_game *game)
 {
-	int	j;
-	int	k;
-	int l;
+	int	i;
 
-	l = 0;
-	j = 0;
-	while (game->map.map[i - 1][j])
-	{
-		if (game->map.map[i - 1][j] == '1' || game->map.map[i - 1][j] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		j++;
-	}
-	while (game->map.map[l]) //right, left
-	{
-		k = ft_strlen(game->map.map[l]) - 1;
-		if (game->map.map[l][0] == '1' || game->map.map[l][0] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		if (game->map.map[l][k] == '1' || game->map.map[l][k] == ' ')
-			;
-		else
-			ft_exit(game, 3);
-		l++;
-	}
+	i = 0;
+	while (game->map.map[i])
+		i++;
+	return (i);
 }
 
-void	check_space_top(t_game *game, int y, int x)
-{
-	if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
-		return ;
-	else if (game->map.map[y][x] == '1')
-		return ;
-	else if (game->map.map[y][x] == ' ')
-	{
-		check_space_top(game, y + 1, x);
-		check_space_top(game, y, x + 1);
-		check_space_top(game, y, x - 1);
-	}
-	else
-	{
-		printf("map %d, %d\n", y, x);
-		ft_exit(game, 3);
-	}
-}
-
-void	check_closed_top(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	x = 0;
-	while (game->map.map[y][x])
-	{
-		if (game->map.map[y][x] == '1')
-			;
-		else if (game->map.map[y][x] == ' ')
-			check_space_top(game, y + 1, x); //goes down, right, left to if it finds wall stop, 0 exit
-		else
-			ft_exit(game, 3);
-		x++;
-	}
-	x = 0;
-	while (game->map.map[y])
-		y++;
-	//check_closed_bottom(game, y);
-}
 
 int	get_map_width2(t_game *game)
 {
@@ -173,6 +110,146 @@ int	get_map_width2(t_game *game)
 		i++;
 	}
 	return (width);
+}
+
+void	check_space_left(t_game *game, int y, int x)
+{
+	if (x < 0 || y >= get_map_size2(game) || x >= get_map_width2(game) || y < 0)
+		return ;
+	/*else if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
+		return ;*/
+	else if (game->map.map[y][x] == '1')
+		return ;
+	else if (game->map.map[y][x] == ' ')
+	{
+		check_space_left(game, y, x + 1);
+		check_space_left(game, y + 1, x);
+		check_space_left(game, y - 1, x);
+	}
+	else
+		ft_exit(game, 3);
+}
+
+void	check_space_right(t_game *game, int y, int x)
+{
+	if (x < 0 || y >= get_map_size2(game) || x >= get_map_width2(game) || y < 0)
+		return ;
+	/*else if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
+		return ;*/
+	else if (game->map.map[y][x] == '1')
+		return ;
+	else if (game->map.map[y][x] == ' ')
+	{
+		check_space_right(game, y, x - 1);
+		check_space_right(game, y + 1, x);
+		check_space_right(game, y - 1, x);
+	}
+	else
+		ft_exit(game, 3);
+}
+
+void	check_closed_edges(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = get_map_width2(game);
+	while (game->map.map[y])
+	{
+		if (game->map.map[y][0] == '1' || game->map.map[y][0] == ' ')
+			;
+		else if (game->map.map[y][0] == ' ')
+			check_space_left(game, y, 1);
+		else
+			ft_exit(game, 3);
+		if (game->map.map[y][x] == '1' || game->map.map[y][x] == ' ')
+			;
+		else if (game->map.map[y][x] == ' ')
+			check_space_right(game, y, x - 1);
+		else
+			ft_exit(game, 3);
+		y++;
+	}
+}
+
+void	check_space_bottom(t_game *game, int y, int x)
+{
+	if (x < 0 || y >= get_map_size2(game) || x >= get_map_width2(game) || y < 0)
+		return ;
+	/*else if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
+		return ;*/
+	else if (game->map.map[y][x] == '1')
+		return ;
+	else if (game->map.map[y][x] == ' ')
+	{
+		check_space_bottom(game, y - 1, x);
+		check_space_bottom(game, y, x + 1);
+		check_space_bottom(game, y, x - 1);
+	}
+	else
+		ft_exit(game, 3);
+}
+
+void	check_closed_bottom(t_game *game, int y)
+{
+	int	x;
+	int l;
+
+	l = 0;
+	x = 0;
+	while (game->map.map[y][x])
+	{
+		if (game->map.map[y][x] == '1')
+			;
+		else if (game->map.map[y][x] == ' ')
+			check_space_bottom(game, y - 1, x);
+		else
+			ft_exit(game, 3);
+		x++;
+	}
+}
+
+void	check_space_top(t_game *game, int y, int x)
+{
+	if (x < 0 || y < 0 || y >= get_map_size2(game) || x >= get_map_width2(game))
+		return ;
+	else if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
+		return ;
+	else if (game->map.map[y][x] == '1')
+		return ;
+	else if (game->map.map[y][x] == ' ')
+	{
+		check_space_top(game, y + 1, x);
+		check_space_top(game, y, x + 1);
+		check_space_top(game, y, x - 1);
+	}
+	else
+		ft_exit(game, 3);
+}
+
+void	check_closed_top(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	while (game->map.map[y][x])
+	{
+		if (game->map.map[y][x] == '1')
+			;
+		else if (game->map.map[y][x] == ' ')
+			check_space_top(game, y + 1, x);
+		else
+			ft_exit(game, 3);
+		x++;
+	}
+	x = 0;
+	while (game->map.map[y])
+		y++;
+	check_closed_bottom(game, y - 1);
+	check_closed_edges(game);
 }
 
 void flood_fill(t_game *game, char **map, int x, int y)
