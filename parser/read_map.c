@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/22 12:51:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/23 17:56:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,27 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
+void	check_characters(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		j = 0;
+		while (game->map.map[i][j])
+		{
+			if (game->map.map[i][j] != '0' && game->map.map[i][j] != '1' && game->map.map[i][j] != 'N'
+				&& game->map.map[i][j] != 'S' && game->map.map[i][j] != 'E'
+					&& game->map.map[i][j] != 'W' && game->map.map[i][j] != ' ')
+				ft_exit(game, 3);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	parse_map(t_game *game, int i)
 {
 	int	j;
@@ -118,6 +139,7 @@ void	parse_map(t_game *game, int i)
 		k++;
 	}
 	game->map.map[k] = NULL;
+	check_characters(game);
 	print_matrix(game->map.map);
 	printf("\n");
 	check_closed(game);

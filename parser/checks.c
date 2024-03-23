@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/22 12:54:27 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/23 19:15:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,13 @@ void	check_textures(t_game *game)
 }
 
 
-void	check_closed2(t_game *game, int i, int l)
+void	check_closed_bottom(t_game *game, int i)
 {
 	int	j;
 	int	k;
+	int l;
 
+	l = 0;
 	j = 0;
 	while (game->map.map[i - 1][j])
 	{
@@ -98,7 +100,7 @@ void	check_closed2(t_game *game, int i, int l)
 			ft_exit(game, 3);
 		j++;
 	}
-	while (game->map.map[l])
+	while (game->map.map[l]) //right, left
 	{
 		k = ft_strlen(game->map.map[l]) - 1;
 		if (game->map.map[l][0] == '1' || game->map.map[l][0] == ' ')
@@ -113,29 +115,46 @@ void	check_closed2(t_game *game, int i, int l)
 	}
 }
 
-void	check_closed3(t_game *game)
+void	check_space_top(t_game *game, int y, int x)
 {
-	int	j;
-	int	l;
-	int	i;
-
-	i = 0;
-	l = 0;
-	j = 0;
-	while (game->map.map[i][j])
+	if (game->map.map[y][x] == '\n' || game->map.map[y][x] == '\0')
+		return ;
+	else if (game->map.map[y][x] == '1')
+		return ;
+	else if (game->map.map[y][x] == ' ')
 	{
-		if (game->map.map[i][j] == '1' || game->map.map[i][j] == ' ')
-			;
-		else
-		{
-			ft_exit(game, 3);
-		}
-		j++;
+		check_space_top(game, y + 1, x);
+		check_space_top(game, y, x + 1);
+		check_space_top(game, y, x - 1);
 	}
-	j = 0;
-	while (game->map.map[i])
-		i++;
-	check_closed2(game, i, l);
+	else
+	{
+		printf("map %d, %d\n", y, x);
+		ft_exit(game, 3);
+	}
+}
+
+void	check_closed_top(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	while (game->map.map[y][x])
+	{
+		if (game->map.map[y][x] == '1')
+			;
+		else if (game->map.map[y][x] == ' ')
+			check_space_top(game, y + 1, x); //goes down, right, left to if it finds wall stop, 0 exit
+		else
+			ft_exit(game, 3);
+		x++;
+	}
+	x = 0;
+	while (game->map.map[y])
+		y++;
+	//check_closed_bottom(game, y);
 }
 
 int	get_map_width2(t_game *game)
@@ -215,5 +234,5 @@ void	check_closed(t_game *game)
 	}
     flood_fill(game, map, player_x, player_y);
 	free_matrix(map);
-	check_closed3(game);
+	check_closed_top(game);
 }
