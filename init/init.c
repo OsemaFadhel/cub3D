@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 16:41:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:41:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_map(t_game *game)
 	game->map.map = 0;
 	game->map.player_orientation = 0;
 	game->map.start_line = 0;
+	game->map.width = 0;
+	game->map.height = 0;
 	game->map.x = 0;
 	game->map.y = 0;
 	game->map.player_found = 0;

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/23 17:56:44 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:52:29 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,49 +72,25 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-void	check_characters(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map.map[i])
-	{
-		j = 0;
-		while (game->map.map[i][j])
-		{
-			if (game->map.map[i][j] != '0' && game->map.map[i][j] != '1' && game->map.map[i][j] != 'N'
-				&& game->map.map[i][j] != 'S' && game->map.map[i][j] != 'E'
-					&& game->map.map[i][j] != 'W' && game->map.map[i][j] != ' ')
-				ft_exit(game, 3);
-			j++;
-		}
-		i++;
-	}
-}
-
 void	parse_map(t_game *game, int i)
 {
-	int	j;
 	int	l;
 	int	m;
 	int	k;
-	int	width;
 
-	j = 0;
 	k = 0;
-	width = get_map_width(game, i);
-	j = get_map_size(game);
+	game->map.width = get_map_width(game, i);
+	game->map.height = get_map_size(game);
 
-	game->map.map = malloc(sizeof(char *) * (j + 1));
+	game->map.map = malloc(sizeof(char *) * (game->map.height + 1));
 	while (game->pars.file[i])
 	{
 		l = 0;
 		m = 0;
-		game->map.map[k] = malloc(sizeof(char) * (width + 1));
+		game->map.map[k] = malloc(sizeof(char) * (game->map.width + 1));
 		while (game->pars.file[i][m])
 		{
-			if (game->pars.file[i][m] == ' ')
+			if (game->pars.file[i][m] == ' ' || game->pars.file[i][m] == '\n')
 				game->map.map[k][l] = ' ';
 			else if (game->pars.file[i][m] == '\t')
 			{
@@ -129,7 +105,7 @@ void	parse_map(t_game *game, int i)
 			l++;
 			m++;
 		}
-		while (l < width)
+		while (l < game->map.width)
 		{
 			game->map.map[k][l] = ' ';
 			l++;
@@ -139,8 +115,8 @@ void	parse_map(t_game *game, int i)
 		k++;
 	}
 	game->map.map[k] = NULL;
-	check_characters(game);
 	print_matrix(game->map.map);
+	check_characters(game);
 	printf("\n");
 	check_closed(game);
 }

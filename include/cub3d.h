@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 15:40:22 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/28 16:07:25 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ typedef struct s_map
 {
 	char			**map;
 	char			player_orientation;
+	int				width;
+	int				height;
 	int				start_line;
 	int				x;
 	int				y;
@@ -188,6 +190,10 @@ void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
 int		get_map_size(t_game *game);
+void	check_characters(t_game *game);
+void	check_closed_top(t_game *game);
+void	check_closed_bottom(t_game *game, int y);
+void	check_closed_edges(t_game *game);
 
 /* image_convert.c */
 
