@@ -1,7 +1,7 @@
-WE ./textures/wall_3.xpm
-NO ./textures/wall_1.xpm
-SO ./textures/wall_2.xpm
-EA ./textures/wall_4.xpm
+WE ./textures/oswall1.xpm
+NO ./textures/oswall2.xpm
+SO ./textures/oswall3.xpm
+EA ./textures/oswall4.xpm
 
 F 255,255, 10
 C 225,255,255

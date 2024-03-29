@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/03/29 22:05:08 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/03/29 22:38:49 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ $(NAME): $(OBJ)
 			@echo "\033[0;31ma8          88       88  88P     8a         Y8,   a8       Y88\033[0m"
 			@echo "\033[0;31m8b          88       88  88       d8           8b  8b       88\033[0m"
 			@echo "\033[0;31m88a,   ,aa  88a,   ,a88  88b,   ,a8B  Y8,     a88  88a,   ,d88\033[0m"
-			@echo "\033[0;31m iaYbbd8aa    aYbbdPI    8YbYbbd8a8     Y888888P     B8bbdP Y8\033[0m"
+			@echo "\033[0;31m iaD4n13la    aYa7yPI    8YbYbbd8a8     Y888888P     B8bbdP Y8\033[0m"
 			@echo "                                        "
 			@echo "                                        "
 			@echo "\033[0;32mLinked into executable \033[0m\033[0;32mcub3d\033[0m."
