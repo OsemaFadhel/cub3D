@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/03/29 17:07:06 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/03/29 22:05:08 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a $(MLX_PATH)/libmlx.a
 # src
 
 SRC 		=	main.c init/init.c init/init_pos.c \
-				movement/key.c movement/line_algo.c \
+				movement/key.c movement/line_algo.c movement/line_algo2.c \
 				parser/read_map.c parser/read_file.c parser/checks.c parser/set_rgb.c \
 				parser/image_convert.c parser/check_closed.c parser/check_closed_1.c \
 				parser/check_closed_2.c parser/check_closed_3.c \
-				raycasting/raycasting.c raycasting/draw_window.c \
+				raycasting/raycasting.c raycasting/draw_window.c raycasting/raycasting2.c\
 				exit.c \
 
 OBJ			= $(SRC:.c=.o)

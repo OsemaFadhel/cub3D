@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 15:39:30 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:54:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_key_press(int keycode, t_game *game)
 	return (0);
 }
 
-int	ft_key_release(int	keycode, t_game *game)
+int	ft_key_release(int keycode, t_game *game)
 {
 	if (keycode == W)
 		game->player.move_flag_y = 0;

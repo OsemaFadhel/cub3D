@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:54:45 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:12:07 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:52:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	set_ceil(t_game *game, char **rgb)
 	char	*str;
 	int		i;
 
-	i = 0;
+	i = -1;
 	rgb = ft_split(game->pars.c, ',');
-	while (rgb[i])
-		i++;
+	while (rgb[++i])
+		;
 	if (i != 3)
 	{
 		free_matrix(rgb);
 		ft_exit(game, 2);
 	}
-	i = 0;
-	while (rgb[i])
+	i = -1;
+	while (rgb[++i])
 	{
 		str = ft_strtrim(rgb[i], " ");
 		game->pars.ceil[i] = ft_atoi(str);
@@ -36,9 +36,9 @@ void	set_ceil(t_game *game, char **rgb)
 			free_matrix(rgb);
 			ft_exit(game, 2);
 		}
-		i++;
 		free(str);
 	}
+	free_matrix(rgb);
 }
 
 void	set_floor(t_game *game, char **rgb)
@@ -55,8 +55,8 @@ void	set_floor(t_game *game, char **rgb)
 		free_matrix(rgb);
 		ft_exit(game, 2);
 	}
-	i = 0;
-	while (rgb[i])
+	i = -1;
+	while (rgb[++i])
 	{
 		str = ft_strtrim(rgb[i], " ");
 		game->pars.floor[i] = ft_atoi(str);
@@ -65,9 +65,9 @@ void	set_floor(t_game *game, char **rgb)
 			free_matrix(rgb);
 			ft_exit(game, 2);
 		}
-		i++;
 		free(str);
 	}
+	free_matrix(rgb);
 }
 
 int	create_rgb(int t, int r, int g, int b)
@@ -88,8 +88,6 @@ void	set_rgb(t_game *game)
 	char	**rgb;
 
 	set_ceil(game, rgb);
-	//free_matrix(rgb);
 	set_floor(game, rgb);
-	//free_matrix(rgb);
 	get_color(game);
 }

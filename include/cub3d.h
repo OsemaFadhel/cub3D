@@ -6,12 +6,12 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 18:41:31 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 22:14:16 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef cub3d_H
-# define cub3d_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,19 +32,19 @@
 # define S 1
 # define D 2
 # define ESC 53
-#  define NORTH_SOUTH 1
-#  define EAST_WEST 0
+# define NORTH_SOUTH 1
+# define EAST_WEST 0
 
 typedef struct s_axis
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }				t_axis;
 
 typedef struct s_dbl
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 }				t_dbl;
 
 typedef struct s_player
@@ -140,8 +140,8 @@ typedef struct s_textures
 typedef struct s_pars
 {
 	char	**file;
-	t_dbl   plane;
-	t_dbl   dir;
+	t_dbl	plane;
+	t_dbl	dir;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -157,26 +157,24 @@ typedef struct s_pars
 
 typedef struct s_game
 {
-	int 		run;
-	t_map 		map;
+	int			run;
+	t_map		map;
 	t_pars		pars;
 	t_wall		wall;
 	t_player	player;
 	t_camera	camera;
 	t_draw		draw;
-	t_ray	ray;
-	t_textures textures;
-	t_mlx	mlx;
-	t_axis	*map_axis;
-	t_dbl	player_dbl;
+	t_ray		ray;
+	t_textures	textures;
+	t_mlx		mlx;
+	t_axis		*map_axis;
+	t_dbl		player_dbl;
 }				t_game;
-
 
 /* init */
 
 void	init(t_game *game);
 void	init_camera_position(t_player *player, t_map *map, t_camera *camera);
-
 
 /* utils */
 
@@ -209,17 +207,19 @@ void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game);
 
 /* raycasting.c */
 
+void	raycasting(t_game *game);
 int		game_loop(t_game *game);
 void	draw_columns(t_game *game, int *x);
+void	dda_algo(t_ray *ray, t_player *player, t_wall *wall, t_map *map);
+void	step_and_side_distance(t_player *player, t_ray *ray, t_map *map);
+void	ray_length(t_ray *ray);
+void	ray_pos_and_dir(t_game *game, int *x);
 
 /* movement */
 
 int		ft_key_press(int keycode, t_game *game);
-int		ft_key_release(int	keycode, t_game *game);
-
+int		ft_key_release(int keycode, t_game *game);
 void	ft_ismoving(t_game *game);
-
-
 
 /* exit.c */
 
@@ -231,6 +231,5 @@ void	ft_left(t_game *game);
 void	ft_right(t_game *game);
 void	cam_left(t_game *game);
 void	cam_right(t_game *game);
-
 
 #endif

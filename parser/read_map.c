@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 18:40:21 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:48:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	parse_map(t_game *game, int i)
 	}
 	game->map.map[game->pars.k] = NULL;
 }
-
 
 void	parser(char **av, t_game *game) //xpm_img
 {

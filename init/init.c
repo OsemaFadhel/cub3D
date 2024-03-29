@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 18:34:24 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:53:38 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	init_textures(t_game *game)
 	game->textures.wall_we = 0;
 }
 
-void init_parser(t_game *game)
+void	init_parser(t_game *game)
 {
 	game->pars.file = NULL;
 	game->pars.no = NULL;

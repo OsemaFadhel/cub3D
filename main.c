@@ -6,22 +6,17 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 18:27:16 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 22:09:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-int	print_matrix(char **matrix)
+int	game_loop(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		printf("%s\n", matrix[i]);
-		i++;
-	}
+	raycasting(game);
+	mlx_put_image_to_window(&game->mlx.init, game->mlx.win,
+		game->mlx.img, 0, 0);
 	return (0);
 }
 
@@ -50,23 +45,23 @@ int	init_mlx(t_mlx *mlx, t_game *game)
 	mlx->address = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->size_line, &mlx->endian);
 	if (!mlx->address)
-		ft_exit(game, 4);\
-	ft_mlx_xpm_file_to_image(mlx, game); // parser/image_convert.c
-						//in parse there is already one, well se later when we create the textures
-	run_mlx(mlx, game); //raycasting.c
+		ft_exit(game, 4);
+	ft_mlx_xpm_file_to_image(mlx, game);
+	run_mlx(mlx, game);
 	return (0);
 }
 
 void	init_struct(char **av)
 {
 	t_game	game;
-	init(&game); //init.c
+
+	init(&game);
 	printf("Parsing the map\n");
-	parser(av, &game); //parser osema
+	parser(av, &game);
 	printf("Initializing the game\n");
-	init_camera_position(&game.player, &game.map, &game.camera); //init_pos.c
+	init_camera_position(&game.player, &game.map, &game.camera);
 	printf("Initializing mlx\n");
-	init_mlx(&game.mlx, &game); //main.c
+	init_mlx(&game.mlx, &game);
 }
 
 int	main(int ac, char **av)

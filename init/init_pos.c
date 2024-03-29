@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:00:47 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/28 16:02:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:53:29 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	get_player_pos_ori(t_map *map) //new ose
 
 void	init_camera_position(t_player *player, t_map *map, t_camera *camera)
 {
-	//6 get_player_pos_ori(map);
 	if (map->player_orientation == 'N' || map->player_orientation == 'S')
 		init_camera_position_ns(player, map, camera);
 	else if (map->player_orientation == 'E' || map->player_orientation == 'W')
