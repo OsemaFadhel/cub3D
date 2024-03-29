@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/28 16:07:25 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:06:52 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ void	check_characters(t_game *game);
 void	check_closed_top(t_game *game);
 void	check_closed_bottom(t_game *game, int y);
 void	check_closed_edges(t_game *game);
+void	check_space_left_up(t_game *game, int y, int x);
+void	check_space_left_down(t_game *game, int y, int x);
 
 /* image_convert.c */
 

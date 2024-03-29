@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:54:45 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 21:29:55 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:12:07 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	set_ceil(t_game *game, char **rgb)
 		i++;
 	if (i != 3)
 	{
-		//free_matrix(rgb);
+		free_matrix(rgb);
 		ft_exit(game, 2);
 	}
 	i = 0;
@@ -33,7 +33,7 @@ void	set_ceil(t_game *game, char **rgb)
 		game->pars.ceil[i] = ft_atoi(str);
 		if (game->pars.ceil[i] < 0 || game->pars.ceil[i] > 255)
 		{
-			//free_matrix(rgb);
+			free_matrix(rgb);
 			ft_exit(game, 2);
 		}
 		i++;
@@ -52,7 +52,7 @@ void	set_floor(t_game *game, char **rgb)
 		i++;
 	if (i != 3)
 	{
-		//free_matrix(rgb);
+		free_matrix(rgb);
 		ft_exit(game, 2);
 	}
 	i = 0;
@@ -62,27 +62,30 @@ void	set_floor(t_game *game, char **rgb)
 		game->pars.floor[i] = ft_atoi(str);
 		if (game->pars.floor[i] < 0 || game->pars.floor[i] > 255)
 		{
-			//free_matrix(rgb);
+			free_matrix(rgb);
 			ft_exit(game, 2);
 		}
 		i++;
 		free(str);
 	}
 }
-int create_rgb(int t, int r, int g, int b)
+
+int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	get_color(t_game *game)
 {
-	game->textures.ceil = create_rgb(0, game->pars.ceil[0], game->pars.ceil[1], game->pars.ceil[2]);
-	game->textures.floor = create_rgb(0, game->pars.floor[0], game->pars.floor[1], game->pars.floor[2]);
+	game->textures.ceil = create_rgb(0, game->pars.ceil[0],
+			game->pars.ceil[1], game->pars.ceil[2]);
+	game->textures.floor = create_rgb(0, game->pars.floor[0],
+			game->pars.floor[1], game->pars.floor[2]);
 }
 
 void	set_rgb(t_game *game)
 {
-	char **rgb;
+	char	**rgb;
 
 	set_ceil(game, rgb);
 	//free_matrix(rgb);

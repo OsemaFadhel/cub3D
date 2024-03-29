@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/18 15:52:19 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:12:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game)
 	texture_check(&game->textures.width, &game->textures.height);
 	ft_xpm(game);
 }
-
