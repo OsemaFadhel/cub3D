@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 21:53:38 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 22:26:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	init_parser(t_game *game)
 
 void	init(t_game *game)
 {
+	init_parser(game);
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);

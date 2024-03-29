@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:14:16 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 22:18:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ void	free_matrix(char **matrix);
 void	read_file(char *file, t_game *game);
 void	parser(char **av, t_game *game);
 void	parse_map(t_game *game, int i);
-void	check_file(t_game *game);
+int		check_file(t_game *game);
 void	read_file(char *file, t_game *game);
 void	check_textures(t_game *game);
 void	check_closed(t_game *game);
