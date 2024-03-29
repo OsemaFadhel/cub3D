@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 18:04:23 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 18:40:21 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,100 +62,56 @@ int	get_map_width(t_game *game, int i)
 	return (width);
 }
 
-void	free_matrix(char **matrix)
+void	parse_map_while(t_game *game, int i)
 {
-	int	i;
-
-	i = -1;
-	while (matrix[++i])
-		free(matrix[i]);
-	free(matrix);
+	while (game->pars.file[i][game->pars.m])
+	{
+		if (game->pars.file[i][game->pars.m] == ' '
+			|| game->pars.file[i][game->pars.m] == '\n')
+			game->map.map[game->pars.k][game->pars.l] = ' ';
+		else if (game->pars.file[i][game->pars.m] == '\t')
+		{
+			game->map.map[game->pars.k][game->pars.l] = ' ';
+			game->map.map[game->pars.k][game->pars.l + 1] = ' ';
+			game->map.map[game->pars.k][game->pars.l + 2] = ' ';
+			game->map.map[game->pars.k][game->pars.l + 3] = ' ';
+			game->pars.l += 3;
+		}
+		else
+			game->map.map[game->pars.k][game->pars.l]
+				= game->pars.file[i][game->pars.m];
+		game->pars.l++;
+		game->pars.m++;
+	}
 }
 
 void	parse_map(t_game *game, int i)
 {
-	int	l;
-	int	m;
-	int	k;
-
-	game->map.width = get_map_width(game, i);
-	game->map.height = get_map_size(game);
 	game->map.map = malloc(sizeof(char *) * (game->map.height + 1));
-	k = 0;
 	while (game->pars.file[i])
 	{
-		l = 0;
-		m = 0;
-		game->map.map[k] = malloc(sizeof(char) * (game->map.width + 1));
-		while (game->pars.file[i][m])
+		game->pars.l = 0;
+		game->pars.m = 0;
+		game->map.map[game->pars.k] = malloc(sizeof(char)
+				* (game->map.width + 1));
+		parse_map_while(game, i);
+		while (game->pars.l < game->map.width)
 		{
-			if (game->pars.file[i][m] == ' ' || game->pars.file[i][m] == '\n')
-				game->map.map[k][l] = ' ';
-			else if (game->pars.file[i][m] == '\t')
-			{
-				game->map.map[k][l] = ' ';
-				game->map.map[k][l + 1] = ' ';
-				game->map.map[k][l + 2] = ' ';
-				game->map.map[k][l + 3] = ' ';
-				l += 3;
-			}
-			else
-				game->map.map[k][l] = game->pars.file[i][m];
-			l++;
-			m++;
+			game->map.map[game->pars.k][game->pars.l] = ' ';
+			game->pars.l++;
 		}
-		while (l < game->map.width)
-		{
-			game->map.map[k][l] = ' ';
-			l++;
-		}
-		game->map.map[k][l] = '\0';
+		game->map.map[game->pars.k][game->pars.l] = '\0';
 		i++;
-		k++;
+		game->pars.k++;
 	}
-	game->map.map[k] = NULL;
-	print_matrix(game->map.map);
-	check_characters(game);
-	printf("\n");
-	check_closed(game);
+	game->map.map[game->pars.k] = NULL;
 }
 
-void	check_file(t_game *game)
-{
-	int	i;
 
-	i = 0;
-	check_textures(game);
-	if (!game->pars.no || !game->pars.ea || !game->pars.so
-		|| !game->pars.we || !game->pars.c || !game->pars.f)
-		ft_exit(game, 2);
-	while (game->pars.file[i])
-	{
-		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
-			break ;
-		i++;
-	}
-	parse_map(game, i);
-}
-
-int	print_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		printf("%s\n", matrix[i]);
-		i++;
-	}
-	return (0);
-}
-
-void	parser(char **av, t_game *game)
+void	parser(char **av, t_game *game) //xpm_img
 {
 	read_file(av[1], game);
 	check_map_name(av[1]);
 	check_file(game);
 	set_rgb(game);
-	//XPM_img
 }

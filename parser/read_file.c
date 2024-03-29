@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 19:18:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 18:40:27 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,26 @@ void	read_file(char *file, t_game *game)
 	}
 	close(fd);
 	read__file2(file, game, i);
+}
+
+void	check_file(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	check_textures(game);
+	if (!game->pars.no || !game->pars.ea || !game->pars.so
+		|| !game->pars.we || !game->pars.c || !game->pars.f)
+		ft_exit(game, 2);
+	while (game->pars.file[i])
+	{
+		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
+			break ;
+		i++;
+	}
+	game->map.width = get_map_width(game, i);
+	game->map.height = get_map_size(game);
+	parse_map(game, i);
+	check_characters(game);
+	check_closed(game);
 }

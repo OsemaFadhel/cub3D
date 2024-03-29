@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:06:52 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 18:41:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,9 @@ typedef struct s_pars
 	char	*c;
 	int		ceil[3];
 	int		floor[3];
+	int		l;
+	int		m;
+	int		k;
 }				t_pars;
 
 typedef struct s_game
@@ -184,12 +187,15 @@ void	free_matrix(char **matrix);
 
 void	read_file(char *file, t_game *game);
 void	parser(char **av, t_game *game);
+void	parse_map(t_game *game, int i);
+void	check_file(t_game *game);
 void	read_file(char *file, t_game *game);
 void	check_textures(t_game *game);
 void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
 int		get_map_size(t_game *game);
+int		get_map_width(t_game *game, int i);
 void	check_characters(t_game *game);
 void	check_closed_top(t_game *game);
 void	check_closed_bottom(t_game *game, int y);

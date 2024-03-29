@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/28 15:41:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 18:34:24 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ void init_parser(t_game *game)
 	game->pars.floor[0] = -1;
 	game->pars.floor[1] = -1;
 	game->pars.floor[2] = -1;
+	game->pars.l = 0;
+	game->pars.m = 0;
+	game->pars.k = 0;
 }
 
 void	init(t_game *game)
