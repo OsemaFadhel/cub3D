@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:00:20 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 23:07:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 	{
 		game->textures.y = (int)(y * 2 - 1366 + game->draw.line_height)
 			* (game->textures.height / 2) / game->draw.line_height;
-		if (game->wall.side == NORTH_SOUTH
-			&& game->ray.ray_dir_y > 0)
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
 			game->textures.choice = 0;
-		if (game->wall.side == NORTH_SOUTH
-			&& game->ray.ray_dir_y < 0)
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
 			game->textures.choice = 1;
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
 			game->textures.choice = 2;
