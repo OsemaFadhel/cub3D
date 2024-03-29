@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/28 15:52:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 01:42:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ void	parse_map(t_game *game, int i)
 	int	m;
 	int	k;
 
-	k = 0;
 	game->map.width = get_map_width(game, i);
 	game->map.height = get_map_size(game);
 
 	game->map.map = malloc(sizeof(char *) * (game->map.height + 1));
+	k = 0;
 	while (game->pars.file[i])
 	{
 		l = 0;

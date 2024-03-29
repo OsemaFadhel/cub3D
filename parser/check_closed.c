@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:04:46 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/28 16:24:16 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/29 02:06:43 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_space_left(t_game *game, int y, int x)
 {
-	if (x < 0 || y >= game->map.height || x >= game->map.width || y < 0)
+	if (x < 0 || y > game->map.height || x > game->map.width || y < 0)
 		return ;
 	/*else if (game->map.map[y][x] == '\0')
 		return ;*/
@@ -33,7 +33,7 @@ void	check_space_left(t_game *game, int y, int x)
 
 void	check_space_right(t_game *game, int y, int x)
 {
-	if (x < 0 || y >= game->map.height || x >= game->map.width || y < 0)
+	if (x < 0 || y > game->map.height || x > game->map.width || y < 0)
 		return ;
 	/*else if (game->map.map[y][x] == '\0')
 		return ;*/
@@ -55,7 +55,7 @@ void	check_closed_edges(t_game *game)
 	int	y;
 
 	y = 0;
-	x = game->map.width;
+	x = game->map.width - 1;
 	while (game->map.map[y])
 	{
 		if (game->map.map[y][0] == '1' || game->map.map[y][0] == ' ')
@@ -76,15 +76,12 @@ void	check_closed_edges(t_game *game)
 
 void	check_space_bottom(t_game *game, int y, int x)
 {
-	if (game->map.map[y][x] == '\0')
-		return ;
 	if (x < 0 || y < 0 || y >= game->map.height || x >= game->map.width)
 		return ;
-	if (game->map.map[y][x] == '1')
+	else if (game->map.map[y][x] == '1')
 		return ;
 	else if (game->map.map[y][x] == ' ')
 	{
-		printf("y = %d, x = %d\n", y, x);
 		check_space_bottom(game, y - 1, x);
 		check_space_bottom(game, y, x + 1);
 		check_space_bottom(game, y, x - 1);
@@ -102,8 +99,7 @@ void	check_closed_bottom(t_game *game, int y)
 	x = 0;
 	while (game->map.map[y][x])
 	{
-		printf("x = %d  ,", x);
-		printf("char = %c\n", game->map.map[y][x]);
+		printf("map[%d][%d] = %c\n", y, x, game->map.map[y][x]);
 		if (game->map.map[y][x] == '1')
 			;
 		else if (game->map.map[y][x] == ' ')
@@ -118,8 +114,6 @@ void	check_closed_bottom(t_game *game, int y)
 void	check_space_top(t_game *game, int y, int x)
 {
 	if (x < 0 || y < 0 || y >= game->map.height || x >= game->map.width)
-		return ;
-	else if (game->map.map[y][x] == '\0')
 		return ;
 	else if (game->map.map[y][x] == '1')
 		return ;
