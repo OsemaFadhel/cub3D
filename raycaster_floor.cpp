@@ -30,6 +30,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "quickcg.h"
 using namespace QuickCG;
 
+//https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
+
 /*
 g++ *.cpp -lSDL -O3 -W -Wall -ansi -pedantic
 g++ *.cpp -lSDL

@@ -35,3 +35,23 @@ int	mlx_put_image_to_window(t_xvar *xvar,t_win_list *win,t_img *img,
   if (xvar->do_flush)
     XFlush(xvar->display);
 }
+
+/*void    mlx_put_image_to_window(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, mlx_img_list_t *img_ptr, int x, int y)
+{
+  mlx_img_ctx_t	*imgctx;
+
+  if (!win_ptr->pixmgt)
+    return ;
+
+  [(id)(win_ptr->winid) selectGLContext];
+  imgctx = add_img_to_ctx(img_ptr, win_ptr);
+
+  // update texture
+  glBindTexture(GL_TEXTURE_2D, imgctx->texture);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, img_ptr->width, img_ptr->height, 0,
+	       GL_BGRA, GL_UNSIGNED_BYTE, img_ptr->buffer);
+
+  [(id)(win_ptr->winid) mlx_gl_draw_img:img_ptr andCtx:imgctx andX:x andY:y];
+
+  win_ptr->nb_flush ++;
+}*/
