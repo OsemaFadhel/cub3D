@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:52:55 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/30 13:50:41 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,8 @@ void	dda_algo(t_ray *ray, t_player *player, t_wall *wall, t_map *map);
 void	step_and_side_distance(t_player *player, t_ray *ray, t_map *map);
 void	ray_length(t_ray *ray);
 void	ray_pos_and_dir(t_game *game, int *x);
+void	fill_floor_and_ceiling(t_game *game, int *x, int y);
+int		fill_wall_texture(t_game *game, int *x, int y);
 
 /* movement */
 

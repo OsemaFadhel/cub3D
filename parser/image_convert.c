@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:12:31 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/30 14:06:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_xpm(t_game *game)
 			&x, &y, &z);
 	if (!game->textures.stored[3])
 		ft_exit(game, 4);
+	game->textures.stored[4] = NULL;
 }
 
 void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game)

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 23:07:56 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/03/30 14:24:49 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	y = game->draw.start_pos;
-	while (y < game->draw.end_pos)
+
+	while (y <= game->draw.end_pos)
 	{
 		game->textures.y = (int)(y * 2 - 1366 + game->draw.line_height)
 			* (game->textures.height / 2) / game->draw.line_height;
@@ -40,9 +41,9 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 			game->textures.choice = 3;
 		game->textures.colour = ((unsigned int *)
 				game->textures.stored[game->textures.choice])
-		[game->textures.x + game->textures.y * game->textures.width];
+		[game->textures.x + game->textures.y * 64];
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
-		++y;
+		y++;
 	}
 	return (y);
 }
@@ -76,11 +77,11 @@ void	draw_columns(t_game *game, int *x)
 			+ game->wall.perp_wall_dist * game->ray.ray_dir_x;
 	game->textures.wall_x -= floor(game->textures.wall_x);
 	game->textures.x = (int)(game->textures.wall_x
-			* (double)game->textures.width);
+			* (double)64);
 	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-		game->textures.x = game->textures.width - game->textures.x - 1;
+		game->textures.x = 64 - game->textures.x - 1;
 	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-		game->textures.x = game->textures.width - game->textures.x - 1;
+		game->textures.x = 64 - game->textures.x - 1;
 	y += fill_wall_texture(game, x, y);
 	fill_floor_and_ceiling(game, x, y);
 }
