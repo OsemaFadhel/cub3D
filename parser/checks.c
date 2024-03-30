@@ -50,6 +50,7 @@ void	check_textures(t_game *game)
 		else if (game->pars.file[i][0] == 'W' && game->pars.file[i][1] == 'E' && game->pars.file[i][2] == ' ')
 		{
 			str = ft_strchr(game->pars.file[i], ' ');
+
 			if (!str)
 				ft_exit(game, 2);
 			game->pars.we = ft_strdup(str + 1);
