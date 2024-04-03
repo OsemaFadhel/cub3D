@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 13:58:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/03 18:11:50 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	calculate_height_line(t_wall *wall, t_draw *draw)
 	if (draw->end_pos >= 769)
 		draw->end_pos = 769 - 1;
 }
-
+/*
 void	draw_background(t_game *game)
 {
 	int	j;
@@ -65,7 +65,7 @@ void	draw_background(t_game *game)
 		k++;
 	}
 	//now raycasting for the walls
-}
+}*/
 
 void	raycasting(t_game *game)
 {
@@ -74,7 +74,7 @@ void	raycasting(t_game *game)
 	x = 0;
 	ft_ismoving(game);
 	//draw_background(game);
-	while (x <= 1366)
+	while (x < 1366)
 	{
 		ray_pos_and_dir(game, &x);
 		ray_length(&game->ray);
@@ -84,6 +84,6 @@ void	raycasting(t_game *game)
 		perpendicular_ray_distance(&game->wall, &game->ray);
 		calculate_height_line(&game->wall, &game->draw);
 		draw_columns(game, &x);
-		++x;
+		x++;
 	}
 }

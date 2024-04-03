@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 17:42:32 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/03 18:12:13 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	y = game->draw.start_pos;
 
-	while (y <= game->draw.end_pos)
+	while (y < game->draw.end_pos)
 	{
 		game->textures.y = (int)(y * 2 - 1366 + game->draw.line_height)
 			* (game->textures.height / 2) / game->draw.line_height;
@@ -39,14 +39,9 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 			game->textures.choice = 2;
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
 			game->textures.choice = 3;
-		/*printf("choice = %d\n", game->textures.choice);
-		printf("stored = %d\n", game->textures.stored[game->textures.choice]);
-		printf("colour = %d\n", game->textures.stored[game->textures.choice]);
-		*/
 		game->textures.colour = ((unsigned int *) game->textures.stored[game->textures.choice])
 			[game->textures.x + game->textures.y * 64];
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y,
-			game->textures.colour);
+		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
 		y++;
 	}
 	return (y);
@@ -62,7 +57,7 @@ void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.floor);
 		my_mlx_put_pixel(&game->mlx, *x, 769 - y - 1,
 			game->textures.ceil);
-		++y;
+		y++;
 	}
 }
 
