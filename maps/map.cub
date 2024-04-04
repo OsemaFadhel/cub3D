@@ -1,6 +1,6 @@
-WE ./textures/oswall1.xpm
-NO ./textures/oswall2.xpm
-SO ./textures/oswall3.xpm
+WE ./textures/oswall4.xpm
+NO ./textures/oswall4.xpm
+SO ./textures/oswall4.xpm
 EA ./textures/oswall4.xpm
 
 F 255,255, 10

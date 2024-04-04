@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 16:45:50 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 16:55:38 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	my_mlx_put_pixel(t_game *game, int x, int y, int color)
 
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
-	y = game->draw.start_pos;
+	y = 0;
 
 	while (y < game->draw.end_pos)
 	{
@@ -39,6 +39,11 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 			game->textures.choice = 2;
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
 			game->textures.choice = 3;
+		/*printf("game->textures.choice: %p\n", game->textures.choice);
+		printf("game->textures.stored[game->textures.choice]: %p\n", game->textures.stored[game->textures.choice]);
+		printf("game->textures.height: %d\n", game->textures.height);
+		printf("game->textures.y: %d, %p\n", game->textures.y, game->textures.y);
+		printf("game->textures.x: %d, %p\n", game->textures.x, game->textures.x);*/
 		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
 			[game->textures.height * game->textures.y + game->textures.x];
 		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
