@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 18:12:13 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 14:36:30 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 			game->textures.choice = 3;
 		game->textures.colour = ((unsigned int *) game->textures.stored[game->textures.choice])
 			[game->textures.x + game->textures.y * 64];
-		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
+		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
 		y++;
 	}
 	return (y);

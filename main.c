@@ -6,16 +6,22 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 18:10:01 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 14:45:35 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-int	game_loop(t_game *game)
+void	render(t_game *game)
 {
 	raycasting(game);
-	mlx_put_image_to_window(game->mlx.init, game->mlx.win, game->mlx.img, 0, 0);
+	//mlx_put_image_to_window(&game->mlx.init, game->mlx.win,
+	//	game->mlx.img, 0, 0);
+}
+
+int	game_loop(t_game *game)
+{
+	render(game);
 	return (0);
 }
 
@@ -25,7 +31,7 @@ int	run_mlx(t_mlx *mlx, t_game *game)
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
 	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
-	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
+	//mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);
 }

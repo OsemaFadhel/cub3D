@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 17:36:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 14:39:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 # include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 
-# define LEFT 123
-# define RIGHT 124
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define ESC 53
+# define LEFT 65361
+# define RIGHT 65363
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define ESC 65307
 # define NORTH_SOUTH 1
 # define EAST_WEST 0
 
