@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 15:05:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 16:40:55 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_xpm(t_game *game)
 	int	y;
 	int	z;
 
+	*game->textures.stored = malloc(sizeof(char *) * 4);
 	game->textures.stored[0] = mlx_get_data_addr(game->textures.wall_no,
 			&x, &y, &z);
 	if (!game->textures.stored[0])

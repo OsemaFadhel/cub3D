@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 15:08:19 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 15:23:01 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,6 @@ void	calculate_height_line(t_wall *wall, t_draw *draw)
 	if (draw->end_pos >= 768)
 		draw->end_pos = 768 - 1;
 }
-/*
-void	draw_background(t_game *game)
-{
-	int	j;
-	int	k;
-
-	j = 0;
-	k = 0;
-	while (k < 1366) //change 1920 with size of the window
-	{
-		mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.ceil);
-		while (j < 385)
-		{
-			mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.ceil);
-			j++;
-		}
-		j = 0;
-		k++;
-	}
-	j = 385;
-	k = 0;
-	while (k < 1366)
-	{
-		mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.floor);
-		while (j < 768)
-		{
-			mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.floor);
-			j++;
-		}
-		j = 385;
-		k++;
-	}
-	//now raycasting for the walls
-}*/
 
 void	raycasting(t_game *game)
 {
@@ -73,7 +39,6 @@ void	raycasting(t_game *game)
 
 	x = 0;
 	ft_ismoving(game);
-	//draw_background(game);
 	while (x < 1366)
 	{
 		ray_pos_and_dir(game, &x);

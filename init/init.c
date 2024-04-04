@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 17:44:08 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 16:29:52 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	init_textures(t_game *game)
 	game->textures.wall_x = 0;
 	game->textures.x = 0;
 	game->textures.y = 0;
-	game->textures.stored[0] = NULL;
-	game->textures.stored[1] = NULL;
-	game->textures.stored[2] = NULL;
-	game->textures.stored[3] = NULL;
+	game->textures.stored[0] = 0;
+	game->textures.stored[1] = 0;
+	game->textures.stored[2] = 0;
+	game->textures.stored[3] = 0;
 	game->textures.height = 64;
 	game->textures.width = 64;
 	game->textures.choice = 0;
