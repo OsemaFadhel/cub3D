@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 14:45:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 15:07:47 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	init_mlx(t_mlx *mlx, t_game *game)
 	mlx->init = mlx_init();
 	if (!mlx->init)
 		ft_exit(game, 4);
-	mlx->win = mlx_new_window(mlx->init, 1366, 769, "cub3d");
+	mlx->win = mlx_new_window(mlx->init, 1366, 768, "cub3d");
 	if (!mlx->win)
 		ft_exit(game, 4);
-	mlx->img = mlx_new_image(mlx->init, 1366, 769);
+	mlx->img = mlx_new_image(mlx->init, 1366, 768);
 	if (!mlx->img)
 		ft_exit(game, 4);
 	mlx->address = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,

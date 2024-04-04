@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 14:36:30 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 15:07:40 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= 1366 || y < 0 || y >= 766)
+	if (x < 0 || x >= 1366 || y < 0 || y >= 768)
 		return ;
 	dst = data->address + (y * data->size_line + x
 			* (data->bits_per_pixel / 8));
@@ -52,7 +52,7 @@ void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 	if (game->draw.end_pos < 0)
 		game->draw.end_pos = 1366;
 	y = game->draw.end_pos;
-	while (y < 769)
+	while (y < 768)
 	{
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.floor);
 		my_mlx_put_pixel(&game->mlx, *x, 769 - y - 1,

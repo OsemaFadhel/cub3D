@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/03 18:11:50 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 15:08:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	perpendicular_ray_distance(t_wall *wall, t_ray *ray)
 
 void	calculate_height_line(t_wall *wall, t_draw *draw)
 {
-	draw->line_height = abs((int)(769 / wall->perp_wall_dist));
-	draw->start_pos = -draw->line_height / 2 + (double)769 / 2;
+	draw->line_height = abs((int)(768 / wall->perp_wall_dist));
+	draw->start_pos = -draw->line_height / 2 + (double)768 / 2;
 	if (draw->start_pos < 0)
 		draw->start_pos = 0;
-	draw->end_pos = draw->line_height / 2 + (double)769 / 2;
-	if (draw->end_pos >= 769)
-		draw->end_pos = 769 - 1;
+	draw->end_pos = draw->line_height / 2 + (double)768 / 2;
+	if (draw->end_pos >= 768)
+		draw->end_pos = 768 - 1;
 }
 /*
 void	draw_background(t_game *game)
@@ -56,7 +56,7 @@ void	draw_background(t_game *game)
 	while (k < 1366)
 	{
 		mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.floor);
-		while (j < 769)
+		while (j < 768)
 		{
 			mlx_pixel_put(game->mlx.init, game->mlx.win, k, j, game->textures.floor);
 			j++;
