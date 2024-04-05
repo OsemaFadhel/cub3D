@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 13:15:15 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:14:56 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_map(t_game *game)
 void	init_ray_and_player(t_game *game)
 {
 	game->ray.ray_dir_x = 0;
-	game->ray.ray_dir_y = 0;
+	game->ray.ray_dir_y = 0.66;
 	game->ray.side_dist_x = 0;
 	game->ray.side_dist_y = 0;
 	game->ray.delta_dist_x = 0;
@@ -95,6 +95,8 @@ void	init(t_game *game)
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);
+	game->win_width = 1366;
+	game->win_height = 768;
 	game->mlx.init = 0;
 	game->mlx.win = 0;
 	game->mlx.img = 0;

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 09:51:17 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:13:28 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,20 @@ typedef struct s_map
 
 typedef struct s_textures
 {
-	double	wall_x;
-	int		x;
-	int		y;
-	char	*stored[4];
-	int		width;
-	int		height;
-	int		choice;
-	int		colour;
-	int		ceil;
-	int		floor;
-	void	*wall_no;
-	void	*wall_so;
-	void	*wall_we;
-	void	*wall_ea;
+	double			wall_x;
+	int				x;
+	int				y;
+	char			*stored[4];
+	int				width;
+	int				height;
+	int				choice;
+	unsigned int	colour;
+	int				ceil;
+	int				floor;
+	void			*wall_no;
+	void			*wall_so;
+	void			*wall_we;
+	void			*wall_ea;
 }	t_textures;
 
 typedef struct s_pars
@@ -158,6 +158,8 @@ typedef struct s_pars
 typedef struct s_game
 {
 	int			run;
+	int			win_width;
+	int			win_height;
 	t_map		map;
 	t_pars		pars;
 	t_wall		wall;

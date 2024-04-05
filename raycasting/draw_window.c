@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 13:43:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:15:40 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	my_mlx_put_pixel(t_game *game, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= 1366 || y < 0 || y >= 768)
+	if (x < 0 || x >= game->win_width || y < 0 || y >= game->win_height)
 		return ;
 	dst = game->mlx.address + (y * game->mlx.size_line + x
 			* (game->mlx.bits_per_pixel / 8));
@@ -26,24 +26,26 @@ void	my_mlx_put_pixel(t_game *game, int x, int y, int color)
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	int	tex_pos;
+	int step;
 	y = game->draw.start_pos;
+	step = 1.0 * 64 / game->draw.line_height;
+	tex_pos = (y - game->win_width / 2 + game->draw.line_height / 2) * step;
 
-	tex_pos = (y - 768 / 2 + game->draw.line_height / 2) *
-		64 / game->draw.line_height;
-	while (y < game->draw.end_pos)
+	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
+		game->textures.choice = 0;
+	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
+		game->textures.choice = 1;
+	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
+		game->textures.choice = 2;
+	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+		game->textures.choice = 3;
+	while (y <= game->draw.end_pos)
 	{
 		game->textures.y = (int)tex_pos & (64 - 1);
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
-			game->textures.choice = 0;
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-			game->textures.choice = 1;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-			game->textures.choice = 2;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
-			game->textures.choice = 3;
+		tex_pos += step;
 		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
 			[64 * game->textures.y + game->textures.x];
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
+			mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
 		y++;
 	}
 	return (y);
@@ -52,12 +54,12 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 {
 	if (game->draw.end_pos < 0)
-		game->draw.end_pos = 1366;
-	y = game->draw.end_pos;
-	while (y < 768)
+		game->draw.end_pos = game->win_height;
+	y = game->draw.end_pos + 1;
+	while (y < game->win_height)
 	{
 		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.floor);
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, 768 - y, game->textures.ceil);
+		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, game->win_height - y, game->textures.ceil);
 		y++;
 	}
 }

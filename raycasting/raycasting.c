@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 09:57:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:17:58 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	perpendicular_ray_distance(t_wall *wall, t_ray *ray)
 				- ray->delta_dist_y);
 }
 
-void	calculate_height_line(t_wall *wall, t_draw *draw)
+void	calculate_height_line(t_game *game, t_wall *wall, t_draw *draw)
 {
-	draw->line_height = abs((int)(768 / wall->perp_wall_dist));
-	draw->start_pos = -draw->line_height / 2 + 768 / 2;
+	draw->line_height = abs((int)(game->win_height / wall->perp_wall_dist));
+	draw->start_pos = -draw->line_height / 2 + game->win_height / 2;
 	if (draw->start_pos < 0)
 		draw->start_pos = 0;
-	draw->end_pos = draw->line_height / 2 + 768 / 2;
-	if (draw->end_pos >= 768)
-		draw->end_pos = 768 - 1;
+	draw->end_pos = draw->line_height / 2 + game->win_height / 2;
+	if (draw->end_pos >= game->win_height)
+		draw->end_pos = game->win_height - 1;
 }
 
 void	raycasting(t_game *game)
@@ -39,6 +39,7 @@ void	raycasting(t_game *game)
 
 	x = 0;
 	ft_ismoving(game);
+	printf(" win width = %d\n", game->win_width);
 	while (x < 1366)
 	{
 		ray_pos_and_dir(game, &x);
@@ -47,7 +48,7 @@ void	raycasting(t_game *game)
 		dda_algo(&game->ray, &game->player,
 			&game->wall, &game->map);
 		perpendicular_ray_distance(&game->wall, &game->ray);
-		calculate_height_line(&game->wall, &game->draw);
+		calculate_height_line(game, &game->wall, &game->draw);
 		draw_columns(game, &x);
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 22:04:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 13:35:37 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:16:06 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ray_pos_and_dir(t_game *game, int *x)
 {
-	game->camera.current_x = 2 * (*x) / (double)1366 - 1;
+	game->camera.current_x = 2 * (*x) / (double)game->win_height - 1;
 	game->ray.ray_dir_x = game->player.director_vector_x
 		+ game->camera.plane_x * game->camera.current_x;
 	game->ray.ray_dir_y = game->player.director_vector_y
@@ -82,8 +82,6 @@ void	dda_algo(t_ray *ray, t_player *player,
 			wall->side = 1;
 		}
 		if (map->map[player->map_x][player->map_y] == '1')
-		{
 			wall->hit = 1;
-		}
 	}
 }

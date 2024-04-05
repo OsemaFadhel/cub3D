@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 13:13:39 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:15:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	run_mlx(t_mlx *mlx, t_game *game)
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
 	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
-	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
+	//mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);
 }
@@ -41,10 +41,10 @@ int	init_mlx(t_game *game)
 	game->mlx.init = mlx_init();
 	if (!game->mlx.init)
 		ft_exit(game, 4);
-	game->mlx.win = mlx_new_window(game->mlx.init, 1366, 768, "cub3d");
+	game->mlx.win = mlx_new_window(game->mlx.init, game->win_width, game->win_height, "cub3d");
 	if (!game->mlx.win)
 		ft_exit(game, 4);
-	game->mlx.img = mlx_new_image(game->mlx.init, 1366, 768);
+	game->mlx.img = mlx_new_image(game->mlx.init, game->win_width, game->win_height);
 	if (!game->mlx.img)
 		ft_exit(game, 4);
 	game->mlx.address = mlx_get_data_addr(game->mlx.img, &game->mlx.bits_per_pixel,
