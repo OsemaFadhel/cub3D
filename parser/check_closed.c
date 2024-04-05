@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:04:46 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 14:13:03 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:38:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	check_closed(t_game *game)
 			if (game->map.map[i][j] == 'S' || game->map.map[i][j] == 'N'
 				|| game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
-				game->map.player_x = i + 0.5;
-				game->map.player_y = j + 0.5;
+				game->map.player_x = i;
+				game->map.player_y = j;
 				game->map.player_orientation = game->map.map[i][j];
 				break ;
 			}

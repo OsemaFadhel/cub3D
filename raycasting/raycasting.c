@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 16:17:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:32:55 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ void	raycasting(t_game *game)
 
 	x = 0;
 	ft_ismoving(game);
-	printf(" win width = %d\n", game->win_width);
-	while (x < 1366)
+	while (x < game->win_width)
 	{
 		ray_pos_and_dir(game, &x);
 		ray_length(&game->ray);

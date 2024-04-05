@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 16:52:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:23:50 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,18 @@ void	ft_xpm(t_game *game)
 
 	game->textures.stored[0] = mlx_get_data_addr(game->textures.wall_no,
 			&x, &y, &z);
-	printf("game->textures.stored[0]: %p\n", game->textures.stored[0]);
 	if (!game->textures.stored[0])
 		ft_exit(game, 4);
 	game->textures.stored[1] = mlx_get_data_addr(game->textures.wall_so,
 			&x, &y, &z);
-	printf("game->textures.stored[1]: %p\n", game->textures.stored[1]);
 	if (!game->textures.stored[1])
 		ft_exit(game, 4);
 	game->textures.stored[2] = mlx_get_data_addr(game->textures.wall_ea,
 			&x, &y, &z);
-	printf("game->textures.stored[2]: %p\n", game->textures.stored[2]);
 	if (!game->textures.stored[2])
 		ft_exit(game, 4);
 	game->textures.stored[3] = mlx_get_data_addr(game->textures.wall_we,
 			&x, &y, &z);
-	printf("game->textures.stored[3]: %p\n", game->textures.stored[3]);
 	if (!game->textures.stored[3])
 		ft_exit(game, 4);
 }

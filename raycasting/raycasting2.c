@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 22:04:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 16:16:06 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:45:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ray_pos_and_dir(t_game *game, int *x)
 {
-	game->camera.current_x = 2 * (*x) / (double)game->win_height - 1;
+	game->camera.current_x = 2 * (*x) / (double)game->win_width - 1;
 	game->ray.ray_dir_x = game->player.director_vector_x
 		+ game->camera.plane_x * game->camera.current_x;
 	game->ray.ray_dir_y = game->player.director_vector_y
