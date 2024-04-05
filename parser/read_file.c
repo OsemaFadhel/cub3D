@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 23:29:57 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 23:54:03 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	read_file(char *file, t_game *game)
 	}
 	close(fd);
 	read__file2(file, game, i);
-	print_matrix(game->pars.file);
 }
 
 int	check_file(t_game *game)
