@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:25:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 23:38:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_map_name(char *str)
 	}
 }
 
-int	check_textures_3(t_game *game, int i, char *str)
+int	check_textures_3(t_game *game, int i, char *str, int *j)
 {
 	if (game->pars.file[i][0] == 'E' && game->pars.file[i][1] == 'A'
 			&& game->pars.file[i][2] == ' ')
@@ -34,6 +34,7 @@ int	check_textures_3(t_game *game, int i, char *str)
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.ea = ft_strdup(str + 1);
+		(*j)++;
 	}
 	else if (game->pars.file[i][0] == 'F' && game->pars.file[i][1] == ' ')
 	{
@@ -41,6 +42,7 @@ int	check_textures_3(t_game *game, int i, char *str)
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.f = ft_strdup(str + 1);
+		(*j)++;
 	}
 	else if (game->pars.file[i][0] == 'C' && game->pars.file[i][1] == ' ')
 	{
@@ -48,6 +50,7 @@ int	check_textures_3(t_game *game, int i, char *str)
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.c = ft_strdup(str + 1);
+		(*j)++;
 	}
 	else if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
 		return (-1);
@@ -80,9 +83,11 @@ int	check_textures_2(t_game *game, int i, char *str)
 void	check_textures(t_game *game)
 {
 	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
+	j = 0;
 	while (game->pars.file[i])
 	{
 		if (game->pars.file[i][0] == 'N' && game->pars.file[i][1] == 'O'
@@ -92,14 +97,15 @@ void	check_textures(t_game *game)
 			if (!str)
 				ft_exit(game, 2);
 			game->pars.no = ft_strdup(str + 1);
+			j++;
 		}
 		else if (check_textures_2(game, i, str) == 0)
-			;
-		else if (check_textures_3(game, i, str) == -1)
+			j++;
+		else if (check_textures_3(game, i, str, &j) == -1)
 			break ;
 		i++;
 	}
-	if (i != 6)
+	if (j != 6)
 		ft_exit(game, 2);
 }
 

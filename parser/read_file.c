@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:17:53 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 23:29:57 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ void	read__file2(char *file, t_game *game, int i)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[0] != '\n')
-		{
-			game->pars.file[i] = ft_strdup(line);
-			j = ft_strlen(game->pars.file[i]);
-			game->pars.file[i][j - 1] = '\0';
-			i++;
-		}
+		game->pars.file[i] = ft_strdup(line);
+		j = ft_strlen(game->pars.file[i]);
+		game->pars.file[i][j - 1] = '\0';
+		i++;
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -57,6 +54,7 @@ void	read_file(char *file, t_game *game)
 	}
 	close(fd);
 	read__file2(file, game, i);
+	print_matrix(game->pars.file);
 }
 
 int	check_file(t_game *game)
