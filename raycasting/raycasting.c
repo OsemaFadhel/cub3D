@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 15:23:01 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 09:57:35 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	perpendicular_ray_distance(t_wall *wall, t_ray *ray)
 void	calculate_height_line(t_wall *wall, t_draw *draw)
 {
 	draw->line_height = abs((int)(768 / wall->perp_wall_dist));
-	draw->start_pos = -draw->line_height / 2 + (double)768 / 2;
+	draw->start_pos = -draw->line_height / 2 + 768 / 2;
 	if (draw->start_pos < 0)
 		draw->start_pos = 0;
-	draw->end_pos = draw->line_height / 2 + (double)768 / 2;
+	draw->end_pos = draw->line_height / 2 + 768 / 2;
 	if (draw->end_pos >= 768)
 		draw->end_pos = 768 - 1;
 }
@@ -52,3 +52,4 @@ void	raycasting(t_game *game)
 		x++;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 15:23:00 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 19:21:21 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	run_mlx(t_mlx *mlx, t_game *game)
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
 	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
-	//mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
+	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);
 }
@@ -61,11 +61,9 @@ void	init_struct(char **av)
 	t_game	game;
 
 	init(&game);
-	printf("Parsing the map OSEMA\n");
 	parser(av, &game);
-	printf("Initializing the game DANIEL\n");
 	init_camera_position(&game.player, &game.map, &game.camera);
-	printf("Initializing mlx DANIEL\n");
+	printf("init_mlx\n");
 	init_mlx(&game.mlx, &game);
 }
 

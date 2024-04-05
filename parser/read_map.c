@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:26:23 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/04 19:14:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,25 @@ void	parse_map(t_game *game, int i)
 	game->map.map[game->pars.k] = NULL;
 }
 
+void	fill_spaces(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x])
+		{
+			if (game->map.map[y][x] == ' ')
+				game->map.map[y][x] = '1';
+			x++;
+		}
+		y++;
+	}
+}
+
 void	parser(char **av, t_game *game) //xpm_img
 {
 	int	i;
@@ -116,5 +135,6 @@ void	parser(char **av, t_game *game) //xpm_img
 	parse_map(game, i);
 	check_characters(game);
 	check_closed(game);
+	fill_spaces(game);
 	set_rgb(game);
 }
