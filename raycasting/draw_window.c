@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 16:52:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 17:02:36 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	my_mlx_put_pixel(t_game *game, int x, int y, int color)
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	int	tex_pos;
-	int step;
+	float step;
 	y = game->draw.start_pos;
-	step = 1.0 * 64 / game->draw.line_height;
+	step = (float) 1.0 * 64 / game->draw.line_height;
 	tex_pos = (y - game->win_width / 2 + game->draw.line_height / 2) * step;
 
 	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
