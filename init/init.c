@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 16:29:52 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 13:15:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,13 @@ void	init(t_game *game)
 	init_map(game);
 	init_ray_and_player(game);
 	init_textures(game);
-	game->mlx.init = NULL;
-	game->mlx.win = NULL;
-	game->mlx.img = NULL;
-	game->mlx.address = NULL;
+	game->mlx.init = 0;
+	game->mlx.win = 0;
+	game->mlx.img = 0;
+	game->mlx.address = 0;
+	game->mlx.bits_per_pixel = 0;
+	game->mlx.size_line = 0;
+	game->mlx.endian = 0;
 	game->run = 0;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;

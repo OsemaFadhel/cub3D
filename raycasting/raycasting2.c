@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 22:04:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 09:51:38 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 13:35:37 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	ray_pos_and_dir(t_game *game, int *x)
 	game->ray.ray_dir_y = game->player.director_vector_y
 		+ game->camera.plane_y * game->camera.current_x;
 	game->player.map_x = (int) game->map.player_x;
-	printf("player map_x: %d\n", game->player.map_x);
-	printf("map_x %d\n", (int) game->map.player_x);
 	game->player.map_y = (int) game->map.player_y;
 }
 
