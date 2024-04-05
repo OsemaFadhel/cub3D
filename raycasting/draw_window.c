@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 23:00:52 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/05 23:08:12 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
 			game->textures.choice = 2;
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
-			game->textures.choice = 3;		game->textures.y = (int)tex_pos & (64 - 1);
+			game->textures.choice = 3;
+		game->textures.y = (int)tex_pos & (64 - 1);
 		tex_pos += step;
 		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
 			[64 * game->textures.y + game->textures.x];
-			mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
+		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
 		y++;
 	}
 	return (y);
@@ -83,6 +84,6 @@ void	draw_columns(t_game *game, int *x)
 		game->textures.x = 64 - game->textures.x - 1;
 	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
 		game->textures.x = 64 - game->textures.x - 1;
-	fill_floor_and_ceiling(game, x, y);
 	y += fill_wall_texture(game, x, y);
+	fill_floor_and_ceiling(game, x, y);
 }
