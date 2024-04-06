@@ -6,22 +6,11 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 23:08:12 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/06 14:36:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	my_mlx_put_pixel(t_game *game, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || x >= game->win_width || y < 0 || y >= game->win_height)
-		return ;
-	dst = game->mlx.address + (y * game->mlx.size_line + x
-			* (game->mlx.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
