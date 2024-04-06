@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/06 13:42:40 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/06 14:32:28 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ void	raycasting(t_game *game)
 	while (x < game->win_width)
 	{
 		ray_pos_and_dir(game, &x);
-		ray_length(&game->ray);
-		step_and_side_distance(&game->player, &game->ray, &game->map);
-		dda_algo(&game->ray, &game->player,
-			&game->wall, &game->map);
+		step_and_side_distance(game);
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
 		x++;

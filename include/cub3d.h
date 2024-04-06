@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 22:54:11 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/06 14:35:46 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,15 +209,11 @@ void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game);
 
 /* raycasting.c */
 
-void	raycasting(t_game *game);
 int		game_loop(t_game *game);
-void	draw_columns(t_game *game, int *x);
-void	dda_algo(t_ray *ray, t_player *player, t_wall *wall, t_map *map);
-void	step_and_side_distance(t_player *player, t_ray *ray, t_map *map);
-void	ray_length(t_ray *ray);
+void	raycasting(t_game *game);
 void	ray_pos_and_dir(t_game *game, int *x);
-void	fill_floor_and_ceiling(t_game *game, int *x, int y);
-int		fill_wall_texture(t_game *game, int *x, int y);
+void	step_and_side_distance(t_game *game);
+void	draw_columns(t_game *game, int *x);
 
 /* movement */
 
