@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 22:08:34 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/06 14:41:13 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	ft_exit(t_game *game, int i)
 		printf("Error: map not closed\n");
 	if (i == 4)
 		printf("Error: raycasting\n");
+	if (i == 5)
+		printf("Error: texture file\n");
 	free_matrix(game->pars.file);
 	free(game->map.map);
 	exit(1);
