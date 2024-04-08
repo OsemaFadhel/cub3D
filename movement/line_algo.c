@@ -12,11 +12,11 @@
 
 #include "../include/cub3d.h"
 
-void	ft_front(t_game *game)
+void	ft_front(t_game *game, double c)
 {
 	int	x;
 	int	y;
-	double	c = 0.01;
+	//double	c = 0.1;
 
 	if (game->run == 1)
 	{
@@ -91,8 +91,9 @@ void	ft_right(t_game *game)
 
 void	ft_ismoving(t_game *game)
 {
+	double c = 0.1;
 	if (game->player.move_flag_y == 1)
-		ft_front(game);
+		ft_front(game, c);
 	if (game->player.move_flag_y == -1)
 		ft_back(game);
 	if (game->player.move_flag_x == -1)

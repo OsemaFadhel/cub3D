@@ -25,20 +25,21 @@ void  get_frame_time(t_game *game)
     game->old_time = game->time;
     game->time = get_time();
     game->frame_time = (game->time - game->old_time) / 1000.0;
-    game->frame_per_second = (1 / game->frame_time);
+    game->frame_per_second = (int)(1.0 / game->frame_time);
 
     if (game->frame_per_second > 60)
 	{
 		ft_sleep(((1.0 / 60) - game->frame_time) * 1000);
 		game->time = get_time();
 		game->frame_time = (game->time - game->old_time) / 1000.0;
-		game->frame_per_second = (1 / game->frame_time);
+		game->frame_per_second = (int)(1.0 / game->frame_time);
 	}
     //double c = game->frame_time * 3.0;
 
     fps = ft_itoa(game->frame_per_second);
 	free(fps);
 }
+
 
 
 

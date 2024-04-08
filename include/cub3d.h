@@ -231,7 +231,7 @@ void	get_frame_time(t_game *game);
 
 int		ft_exit(t_game *game, int i);
 int		ft_key_press(int keycode, t_game *game);
-void	ft_front(t_game *game);
+void	ft_front(t_game *game, double c);
 void	ft_back(t_game *game);
 void	ft_left(t_game *game);
 void	ft_right(t_game *game);

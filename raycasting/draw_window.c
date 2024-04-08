@@ -60,7 +60,7 @@ void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 	while (y < game->win_height)
 	{
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.floor);
-		my_mlx_put_pixel(&game->mlx, *x, game->win_height - y,
+		my_mlx_put_pixel(&game->mlx, *x, game->win_height - y - 1,
 			game->textures.ceil);
 		++y;
 	}
