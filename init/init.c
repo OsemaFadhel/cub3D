@@ -105,6 +105,10 @@ void	init(t_game *game)
 	game->mlx.size_line = 0;
 	game->mlx.endian = 0;
 	game->run = 0;
+	game->time = 0;
+	game->old_time = 0;
+	game->frame_per_second = 0;
+	game->frame_time = 0;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;

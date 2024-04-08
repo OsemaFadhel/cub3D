@@ -16,6 +16,8 @@
 int	game_loop(t_game *game)
 {
 	raycasting(game);
+	 mlx_put_image_to_window(game->mlx.init, game->mlx.win,
+	 	game->mlx.img, 0, 0);
 	return (0);
 }
 
@@ -25,6 +27,7 @@ int	run_mlx(t_mlx *mlx, t_game *game)
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
 	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
+	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);
 }

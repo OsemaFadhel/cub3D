@@ -12,6 +12,18 @@
 
 #include "../include/cub3d.h"
 
+void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || x >= 1366 || y < 0 || y >= 766)
+		return ;
+	dst = data->address + (y * data->size_line + x
+			* (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	double	tex_pos;
@@ -34,7 +46,7 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 		tex_pos += step;
 		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
 			[64 * game->textures.y + game->textures.x];
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.colour);
+		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
 		y++;
 	}
 	return (y);
@@ -47,9 +59,10 @@ void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 	y = game->draw.end_pos + 1;
 	while (y < game->win_height)
 	{
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, y, game->textures.floor);
-		mlx_pixel_put(game->mlx.init, game->mlx.win, *x, game->win_height - y, game->textures.ceil);
-		y++;
+		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.floor);
+		my_mlx_put_pixel(&game->mlx, *x, game->win_height - y,
+			game->textures.ceil);
+		++y;
 	}
 }
 

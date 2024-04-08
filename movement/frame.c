@@ -24,7 +24,7 @@ void  get_frame_time(t_game *game)
     char    *fps;
     game->old_time = game->time;
     game->time = get_time();
-    game->frame_time = (game->time - game->old_time) / 1000;
+    game->frame_time = (game->time - game->old_time) / 1000.0;
     game->frame_per_second = (1 / game->frame_time);
 
     if (game->frame_per_second > 60)
