@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 23:54:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/08 15:15:11 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void	fill_spaces(t_game *game)
 		{
 			if (game->map.map[y][x] == ' ')
 				game->map.map[y][x] = '1';
+			if (game->map.map[y][x] == 'N' || game->map.map[y][x] == 'S' || game->map.map[y][x] == 'W' || game->map.map[y][x] == 'E')
+				game->map.map[y][x] = '0';
 			x++;
 		}
 		y++;

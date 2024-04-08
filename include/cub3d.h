@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/06 14:35:46 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/08 15:09:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <string.h>
 # include <errno.h>
+# include <sys/time.h>
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
@@ -160,6 +161,10 @@ typedef struct s_game
 	int			run;
 	int			win_width;
 	int			win_height;
+	double		frame_time;
+	int			frame_per_second;
+	double		time;
+	double		old_time;
 	t_map		map;
 	t_pars		pars;
 	t_wall		wall;
@@ -220,16 +225,16 @@ void	draw_columns(t_game *game, int *x);
 int		ft_key_press(int keycode, t_game *game);
 int		ft_key_release(int keycode, t_game *game);
 void	ft_ismoving(t_game *game);
+void	get_frame_time(t_game *game);
 
 /* exit.c */
 
 int		ft_exit(t_game *game, int i);
 int		ft_key_press(int keycode, t_game *game);
-void	ft_front(t_game *game);
+void	ft_front(t_game *game, double c);
 void	ft_back(t_game *game);
 void	ft_left(t_game *game);
 void	ft_right(t_game *game);
 void	cam_left(t_game *game);
 void	cam_right(t_game *game);
-
 #endif

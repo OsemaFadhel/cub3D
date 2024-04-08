@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 16:24:43 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/08 14:20:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ void	init(t_game *game)
 	game->mlx.size_line = 0;
 	game->mlx.endian = 0;
 	game->run = 0;
+	game->time = 0;
+	game->old_time = 0;
+	game->frame_per_second = 0;
+	game->frame_time = 0;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;

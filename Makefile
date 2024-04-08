@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/03/29 22:38:49 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/04/08 14:21:47 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC 		=	main.c init/init.c init/init_pos.c \
 				parser/image_convert.c parser/check_closed.c parser/check_closed_1.c \
 				parser/check_closed_2.c parser/check_closed_3.c \
 				raycasting/raycasting.c raycasting/draw_window.c raycasting/raycasting2.c\
-				exit.c \
+				exit.c  movement/frame.c \
 
 OBJ			= $(SRC:.c=.o)
 
