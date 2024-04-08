@@ -34,13 +34,14 @@ void	raycasting(t_game *game)
 	int			x;
 
 	x = 0;
-	ft_ismoving(game);
 	while (x < game->win_width)
 	{
 		ray_pos_and_dir(game, &x);
 		step_and_side_distance(game);
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
+		get_frame_time(game);
+		ft_ismoving(game);
 		x++;
 	}
 }

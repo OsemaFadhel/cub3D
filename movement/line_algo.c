@@ -12,17 +12,16 @@
 
 #include "../include/cub3d.h"
 
-void	ft_front(t_game *game)
+void	ft_front(t_game *game, double c)
 {
 	int		x;
 	int		y;
-	double	c;
 
-	c = 0.01;
-	if (game->run == 1)
+	/*if (game->run == 1)
 	{
 		c = 0.1;
-	}
+	}*/
+
 	x = game->map.player_x + (game->player.director_vector_x + 0.01) * c;
 	y = game->map.player_y + (game->player.director_vector_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
@@ -35,65 +34,69 @@ void	ft_front(t_game *game)
 	}
 }
 
-void	ft_back(t_game *game)
+void	ft_back(t_game *game, double c)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
-	x = game->map.player_x - (game->player.director_vector_x + 0.01) * 0.02;
-	y = game->map.player_y - (game->player.director_vector_y + 0.01) * 0.02;
+	x = game->map.player_x - (game->player.director_vector_x + 0.01) * c;
+	y = game->map.player_y - (game->player.director_vector_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
-		game->map.player_x -= game->player.director_vector_x * 0.02;
+		game->map.player_x -= game->player.director_vector_x * c;
 	}
 	if (game->map.map[(int)(game->map.player_x)][y] != '1')
 	{
-		game->map.player_y -= game->player.director_vector_y * 0.02;
+		game->map.player_y -= game->player.director_vector_y * c;
 	}
 }
 
-void	ft_left(t_game *game)
+void	ft_left(t_game *game, double c)
 {
 	int	x;
 	int	y;
 
-	x = game->map.player_x - (game->camera.plane_x + 0.01) * 0.02;
-	y = game->map.player_y - (game->camera.plane_y + 0.01) * 0.02;
+	x = game->map.player_x - (game->camera.plane_x + 0.01) * c;
+	y = game->map.player_y - (game->camera.plane_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
-		game->map.player_x -= game->camera.plane_x * 0.02;
+		game->map.player_x -= game->camera.plane_x * c;
 	}
 	if (game->map.map[(int)game->map.player_x][y] != '1')
 	{
-		game->map.player_y -= game->camera.plane_y * 0.02;
+		game->map.player_y -= game->camera.plane_y * c;
 	}
 }
 
-void	ft_right(t_game *game)
+void	ft_right(t_game *game, double c)
 {
 	int	x;
 	int	y;
 
-	x = game->map.player_x + (game->camera.plane_x + 0.01) * 0.05;
-	y = game->map.player_y + (game->camera.plane_y + 0.01) * 0.05;
+	x = game->map.player_x + (game->camera.plane_x + 0.01) * c;
+	y = game->map.player_y + (game->camera.plane_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
-		game->map.player_x += game->camera.plane_x * 0.02;
+		game->map.player_x += game->camera.plane_x * c;
 	}
 	if (game->map.map[(int)game->map.player_x][y] != '1')
 	{
-		game->map.player_y += game->camera.plane_y * 0.02;
+		game->map.player_y += game->camera.plane_y * c;
 	}
 }
 
 void	ft_ismoving(t_game *game)
 {
+	double	c;
+
+	c = game->frame_time * 5.0;
+
 	if (game->player.move_flag_y == 1)
-		ft_front(game);
+		ft_front(game, c);
 	if (game->player.move_flag_y == -1)
-		ft_back(game);
+		ft_back(game, c);
 	if (game->player.move_flag_x == -1)
-		ft_left(game);
+		ft_left(game, c);
 	if (game->player.move_flag_x == 1)
-		ft_right(game);
+		ft_right(game, c);
 }

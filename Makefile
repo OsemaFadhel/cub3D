@@ -40,7 +40,7 @@ MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a $(MLX_PATH)/libmlx.a
 # src
 
 SRC 		=	main.c init/init.c init/init_pos.c \
-				movement/key.c movement/line_algo.c movement/line_algo2.c \
+				movement/key.c movement/line_algo.c movement/line_algo2.c movement/frame.c \
 				parser/read_map.c parser/read_file.c parser/checks.c parser/set_rgb.c \
 				parser/image_convert.c parser/check_closed.c parser/check_closed_1.c \
 				parser/check_closed_2.c parser/check_closed_3.c \
