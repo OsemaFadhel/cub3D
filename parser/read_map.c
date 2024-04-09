@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/09 20:23:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/09 20:49:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,6 @@ void	parser(char **av, t_game *game) //xpm_img
 	parse_map(game, i);
 	check_characters(game);
 	check_closed(game);
-	fill_spaces(game);
-	set_rgb(game);
+	fill_spaces(game); //check all characters are 1 or 0.
+	set_rgb(game); // check 3 ints.
 }
