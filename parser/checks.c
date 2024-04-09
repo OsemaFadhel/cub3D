@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 00:15:19 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 00:29:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,26 +130,4 @@ void	check_textures(t_game *game)
 	}
 	if (j != 6)
 		ft_exit(game, 2);
-}
-
-void	check_characters(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map.map[i])
-	{
-		j = 0;
-		while (game->map.map[i][j])
-		{
-			if (game->map.map[i][j] != '0' && game->map.map[i][j] != '1'
-				&& game->map.map[i][j] != 'N' && game->map.map[i][j] != 'S'
-				&& game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W'
-				&& game->map.map[i][j] != ' ')
-				ft_exit(game, 3);
-			j++;
-		}
-		i++;
-	}
 }
