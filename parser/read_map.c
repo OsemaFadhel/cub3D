@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/09 17:30:20 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/09 20:23:36 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,6 @@ void	parse_map(t_game *game, int i)
 		game->pars.k++;
 	}
 	game->map.map[game->pars.k] = NULL;
-	i = 0;
-	while (game->map.map[i])
-	{
-		if (game->map.map[i][0] == '\n')
-			ft_exit(game, 3);
-		i++;
-	}
 }
 
 void	fill_spaces(t_game *game)
