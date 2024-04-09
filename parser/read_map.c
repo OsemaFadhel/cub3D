@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/09 20:49:15 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 00:16:07 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	parse_map(t_game *game, int i)
 		game->pars.l = 0;
 		game->pars.m = 0;
 		parse_map_while(game, i);
+		game->map.map[game->pars.k][game->pars.l - 1] = ' ';
 		while (game->pars.l < game->map.width)
 		{
 			game->map.map[game->pars.k][game->pars.l] = ' ';

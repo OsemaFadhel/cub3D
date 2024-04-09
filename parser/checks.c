@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/05 23:53:38 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 00:15:19 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	check_textures_3(t_game *game, int i, char *str, int *j)
 			&& game->pars.file[i][2] == ' ')
 	{
 		str = ft_strchr(game->pars.file[i], ' ');
+		str[ft_strlen(str) - 1] = '\0';
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.ea = ft_strdup(str + skip_spaces(str));
@@ -56,6 +57,7 @@ int	check_textures_3(t_game *game, int i, char *str, int *j)
 	else if (game->pars.file[i][0] == 'F' && game->pars.file[i][1] == ' ')
 	{
 		str = ft_strchr(game->pars.file[i], ' ');
+		str[ft_strlen(str) - 1] = '\0';
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.f = ft_strdup(str + skip_spaces(str));
@@ -64,6 +66,7 @@ int	check_textures_3(t_game *game, int i, char *str, int *j)
 	else if (game->pars.file[i][0] == 'C' && game->pars.file[i][1] == ' ')
 	{
 		str = ft_strchr(game->pars.file[i], ' ');
+		str[ft_strlen(str) - 1] = '\0';
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.c = ft_strdup(str + skip_spaces(str));
@@ -80,6 +83,7 @@ int	check_textures_2(t_game *game, int i, char *str)
 			&& game->pars.file[i][2] == ' ')
 	{
 		str = ft_strchr(game->pars.file[i], ' ');
+		str[ft_strlen(str) - 1] = '\0';
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.so = ft_strdup(str + skip_spaces(str));
@@ -89,6 +93,7 @@ int	check_textures_2(t_game *game, int i, char *str)
 			&& game->pars.file[i][2] == ' ')
 	{
 		str = ft_strchr(game->pars.file[i], ' ');
+		str[ft_strlen(str) - 1] = '\0';
 		if (!str)
 			ft_exit(game, 2);
 		game->pars.we = ft_strdup(str + skip_spaces(str));
@@ -111,6 +116,7 @@ void	check_textures(t_game *game)
 			&& game->pars.file[i][2] == ' ')
 		{
 			str = ft_strchr(game->pars.file[i], ' ');
+			str[ft_strlen(str) - 1] = '\0';
 			if (!str)
 				ft_exit(game, 2);
 			game->pars.no = ft_strdup(str + skip_spaces(str));

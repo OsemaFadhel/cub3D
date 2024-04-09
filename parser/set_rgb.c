@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:54:45 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 21:52:20 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 00:22:38 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	set_ceil(t_game *game, char **rgb)
 	while (rgb[++i])
 	{
 		str = ft_strtrim(rgb[i], " ");
+		if (*str == '\0')
+			ft_exit(game, 2);
 		game->pars.ceil[i] = ft_atoi(str);
 		if (game->pars.ceil[i] < 0 || game->pars.ceil[i] > 255)
 		{
@@ -59,6 +61,8 @@ void	set_floor(t_game *game, char **rgb)
 	while (rgb[++i])
 	{
 		str = ft_strtrim(rgb[i], " ");
+		if (*str == '\0')
+			ft_exit(game, 2);
 		game->pars.floor[i] = ft_atoi(str);
 		if (game->pars.floor[i] < 0 || game->pars.floor[i] > 255)
 		{
