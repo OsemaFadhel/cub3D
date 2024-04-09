@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/09 20:29:00 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/09 20:40:26 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int	check_file(t_game *game)
 	while (game->pars.file[i])
 	{
 		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
-			break ;
+		{
+			if (game->pars.file[i - 1][0] == '\0' || game->pars.file[i - 1][0] == '\n')
+				break ;
+			ft_exit(game, 1);
+		}
 		i++;
 	}
 	game->map.width = get_map_width(game, i);
