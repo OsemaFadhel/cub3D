@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/08 15:15:11 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/09 17:30:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	parse_map_while(t_game *game, int i)
 	game->map.map[game->pars.k] = malloc(sizeof(char) * (game->map.width + 1));
 	while (game->pars.file[i][game->pars.m])
 	{
-		if (game->pars.file[i][game->pars.m] == ' '
-			|| game->pars.file[i][game->pars.m] == '\n')
+		if (game->pars.file[i][game->pars.m] == ' ')
 			game->map.map[game->pars.k][game->pars.l] = ' ';
 		else if (game->pars.file[i][game->pars.m] == '\t')
 		{
@@ -104,6 +103,13 @@ void	parse_map(t_game *game, int i)
 		game->pars.k++;
 	}
 	game->map.map[game->pars.k] = NULL;
+	i = 0;
+	while (game->map.map[i])
+	{
+		if (game->map.map[i][0] == '\n')
+			ft_exit(game, 3);
+		i++;
+	}
 }
 
 void	fill_spaces(t_game *game)
