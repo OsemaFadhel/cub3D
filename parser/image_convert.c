@@ -6,11 +6,21 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/06 14:43:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 01:07:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	free_texture(t_game *game)
+{
+	free(game->pars.ea);
+	free(game->pars.no);
+	free(game->pars.so);
+	free(game->pars.we);
+	free(game->pars.f);
+	free(game->pars.c);
+}
 
 void	ft_xpm(t_game *game)
 {
@@ -55,4 +65,5 @@ void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game)
 	if (!game->textures.wall_we)
 		ft_exit(game, 5);
 	ft_xpm(game);
+	free_texture(game);
 }
