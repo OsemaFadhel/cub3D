@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 03:08:39 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 20:46:23 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	game_loop(t_game *game)
 
 int	run_mlx(t_mlx *mlx, t_game *game)
 {
-	mlx_loop_hook(mlx->init, game_loop, game);
 	mlx_hook(mlx->win, 17, 0, ft_exit, game);
 	mlx_hook(mlx->win, 2, 0, ft_key_press, game);
 	mlx_hook(mlx->win, 3, 1, ft_key_release, game);
+	mlx_loop_hook(mlx->init, game_loop, game);
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->init);
 	return (1);
