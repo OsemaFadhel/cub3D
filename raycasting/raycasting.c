@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 03:00:56 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 18:36:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	raycasting(t_game *game)
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
 		get_frame_time(game);
-		ft_ismoving(game);
+		//ft_ismoving(game);
 		x++;
 	}
 }

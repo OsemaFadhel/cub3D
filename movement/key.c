@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/08 14:19:18 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 18:34:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		exit(0);
-	if (keycode == W && game->player.move_flag_y < 1)
-		game->player.move_flag_y = 1;
-	if (keycode == S && game->player.move_flag_y > -1)
-		game->player.move_flag_y = -1;
-	if (keycode == A)
-		game->player.move_flag_x = -1;
-	if (keycode == D)
-		game->player.move_flag_x = 1;
+	if (keycode == 'w') // && game->player.move_flag_y < 1)
+		ft_front(game);
+		//game->player.move_flag_y = 1;
+	if (keycode == 's') // && game->player.move_flag_y > -1)
+		//game->player.move_flag_y = -1;
+	if (keycode == 'a')
+		ft_left(game);
+		//game->player.move_flag_x = -1;
+	if (keycode == 'd')
+		ft_right(game);
+		//game->player.move_flag_x = 1;
 	if (keycode == 257)
 		game->run = 1;
 	if (keycode == LEFT)
