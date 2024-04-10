@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 02:58:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 03:53:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,12 @@ void	parser(char **av, t_game *game)
 {
 	int	i;
 
-	read_file(av[1], game);
 	check_map_name(av[1]);
+	read_file(av[1], game);
 	i = check_file(game);
 	parse_map(game, i);
 	check_closed(game);
 	fill_spaces(game);
 	set_rgb(game);
+	print_matrix(game->pars.file);
 }
