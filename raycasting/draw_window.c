@@ -26,14 +26,16 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 
 int	fill_wall_texture(t_game *game, int *x, int y)
 {
-	double	tex_pos;
-	double step;
+	//double	tex_pos;
+	//double step;
 	y = game->draw.start_pos;
-	step = (double) 1.0 * 64 / game->draw.line_height;
-	tex_pos = (y - game->win_width / 2 + game->draw.line_height / 2);
+	//step = (double) 1.0 * 64 / game->draw.line_height;
+	//tex_pos = (y - game->win_width / 2 + game->draw.line_height / 2);
 
 	while (y <= game->draw.end_pos)
 	{
+		game->textures.y = (int)(y * 2 - game->win_height + game->draw.line_height)
+			* (game->textures.height / 2) / game->draw.line_height;
 		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
 			game->textures.choice = 0;
 		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
@@ -42,10 +44,10 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 			game->textures.choice = 2;
 		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
 			game->textures.choice = 3;
-		game->textures.y = (int)tex_pos & (64 - 1);
-		tex_pos += step;
+		//game->textures.y = (int)tex_pos & (64 - 1);
+		//tex_pos += step;
 		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
-			[64 * game->textures.y + game->textures.x];
+			[game->textures.x + game->textures.y * game->textures.width];
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
 		y++;
 	}

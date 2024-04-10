@@ -41,7 +41,7 @@ void	raycasting(t_game *game)
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
 		get_frame_time(game);
-		ft_ismoving(game);
+		//ft_ismoving(game);
 		x++;
 	}
 }
