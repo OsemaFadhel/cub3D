@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:00:47 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/04 18:17:18 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 03:04:14 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,6 @@ static void	init_camera_position_ew(t_player *player, t_map *map,
 		camera->plane_y = 0;
 	}
 }
-/*
-void	get_player_pos_ori(t_map *map) //new ose
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map->map[i])
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (map->map[i][j] == 'N' || map->map[i][j] == 'S'
-				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
-			{
-				map->player_x = i;
-				map->player_y = j;
-				map->player_orientation = map->map[i][j];
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-}*/
 
 void	init_camera_position(t_player *player, t_map *map, t_camera *camera)
 {

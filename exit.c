@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 02:46:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 03:11:23 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,27 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int	ft_exit(t_game *game, int i)
+int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 is texture errors
 {
-	if (i == 1)
+	if (i < 5) //all parser errors
 	{
-		printf("Error: map not found\n");
+		if (i == 1)
+			printf("Error: map not found\n");
+		if (i == 2)
+			printf("Error: map textures\n");
+		if (i == 3)
+			printf("Error: map not closed\n");
+		if (i == 4) //image convert errors
+		{
+			free(game->mlx.init);
+			printf("Error: texture file\n");
+		}
 		exit(1);
 	}
-	if (i == 2)
-	{
-		printf("Error: map textures\n");
-		exit(1);
-	}
-	if (i == 3)
-		printf("Error: map not closed\n");
-	if (i == 4)
-		printf("Error: raycasting\n");
 	if (i == 5)
-		printf("Error: texture file\n");
+		printf("Error: raycasting\n");
+	if (i == 6)
+		printf("Error: mlx\n");
 	free_matrix(game->pars.file);
 	free_matrix(game->map.map);
 	mlx_destroy_image(game->mlx.init, game->mlx.img);
