@@ -6,61 +6,11 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 00:37:32 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 02:58:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	get_map_size(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->pars.file[i])
-	{
-		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
-			break ;
-		i++;
-	}
-	j = 0;
-	while (game->pars.file[i])
-	{
-		j++;
-		i++;
-	}
-	return (j);
-}
-
-int	get_map_width(t_game *game, int i)
-{
-	int	j;
-	int	k;
-	int	width;
-
-	j = 0;
-	width = 0;
-	while (game->pars.file[i])
-	{
-		k = 0;
-		j = 0;
-		while (game->pars.file[i][j])
-		{
-			if (game->pars.file[i][j] == ' ')
-				k++;
-			else if (game->pars.file[i][j] == '\t')
-				k += 4;
-			else
-				k++;
-			j++;
-		}
-		if (k > width)
-			width = k;
-		i++;
-	}
-	return (width);
-}
 
 void	parse_map_while(t_game *game, int i)
 {
@@ -109,7 +59,7 @@ void	parse_map(t_game *game, int i)
 void	check_characters(t_game *game)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = -1;
 	while (game->map.map[++i])
@@ -133,26 +83,26 @@ void	fill_spaces(t_game *game)
 	flag = 0;
 	while (game->map.map[y])
 	{
-		x = 0;
-		while (game->map.map[y][x])
+		x = -1;
+		while (game->map.map[y][++x])
 		{
 			if (game->map.map[y][x] == ' ')
 				game->map.map[y][x] = '1';
-			if (game->map.map[y][x] == 'N' || game->map.map[y][x] == 'S' || game->map.map[y][x] == 'W' || game->map.map[y][x] == 'E')
+			if (game->map.map[y][x] == 'N' || game->map.map[y][x] == 'S'
+				|| game->map.map[y][x] == 'W' || game->map.map[y][x] == 'E')
 			{
 				if (flag == 1)
 					ft_exit(game, 2);
 				game->map.map[y][x] = '0';
 				flag = 1;
 			}
-			x++;
 		}
 		y++;
 	}
 	check_characters(game);
 }
 
-void	parser(char **av, t_game *game) //xpm_img
+void	parser(char **av, t_game *game)
 {
 	int	i;
 

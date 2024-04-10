@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/08 15:09:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 02:48:05 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,8 @@ void	check_textures(t_game *game);
 void	check_closed(t_game *game);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
+void	set_floor(t_game *game);
+void	set_ceil(t_game *game);
 int		get_map_size(t_game *game);
 int		get_map_width(t_game *game, int i);
 void	check_characters(t_game *game);

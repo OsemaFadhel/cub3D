@@ -6,11 +6,24 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 00:07:47 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 02:56:15 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	check_map_name(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	if (str[i - 1] != 'b' || str[i - 2] != 'u' || str[i - 3] != 'c'
+		|| str[i - 4] != '.')
+	{
+		ft_printf("Error: map name must be .game\n");
+		exit(1);
+	}
+}
 
 int	read__file2(char *file, t_game *game, int i)
 {
@@ -38,7 +51,7 @@ int	read__file2(char *file, t_game *game, int i)
 	}
 	game->pars.file[i] = NULL;
 	close(fd);
-	return status;
+	return (status);
 }
 
 void	read_file(char *file, t_game *game)
@@ -76,7 +89,8 @@ int	check_file(t_game *game)
 	{
 		if (game->pars.file[i][0] == '1' || game->pars.file[i][0] == ' ')
 		{
-			if (game->pars.file[i - 1][0] == '\0' || game->pars.file[i - 1][0] == '\n')
+			if (game->pars.file[i - 1][0] == '\0'
+				|| game->pars.file[i - 1][0] == '\n')
 				break ;
 			ft_exit(game, 1);
 		}
