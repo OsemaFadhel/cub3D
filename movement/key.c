@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 18:34:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 20:12:08 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_key_press(int keycode, t_game *game)
 		ft_front(game);
 		//game->player.move_flag_y = 1;
 	if (keycode == 's') // && game->player.move_flag_y > -1)
+		ft_back(game);
 		//game->player.move_flag_y = -1;
 	if (keycode == 'a')
 		ft_left(game);
