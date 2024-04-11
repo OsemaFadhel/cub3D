@@ -54,8 +54,8 @@ typedef struct s_player
 	int		move_flag_y;
 	double	director_vector_x;
 	double	director_vector_y;
-	int		map_x;
-	int		map_y;
+	double	map_x;
+	double	map_y;
 }	t_player;
 
 typedef struct s_camera
