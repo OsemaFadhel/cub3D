@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 14:34:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:52:47 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,18 @@ void	perpendicular_ray_distance(t_game *game)
 void	raycasting(t_game *game)
 {
 	int	x;
+	int	y;
 
 	x = 0;
 	while (x < game->win_width)
 	{
+		y = 0;
 		ray_pos_and_dir(game, &x);
 		step_and_side_distance(game);
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
-		get_frame_time(game);
+		fill_wall_texture(game, &x, y);
+		fill_floor_and_ceiling(game, &x, y);
 		//ft_ismoving(game);
 		x++;
 	}

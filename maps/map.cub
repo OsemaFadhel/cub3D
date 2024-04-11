@@ -4,7 +4,7 @@ SO ./textures/oswall3.xpm
 EA ./textures/oswall4.xpm
 
 F 255, 255, 10
-C 225, 25, 5
+C 225, 105, 5
 
 1111111111 1
 1011000111 111111111

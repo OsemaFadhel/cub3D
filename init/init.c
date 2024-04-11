@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 15:50:50 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:01:54 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	init_ray_and_player(t_game *game)
 	game->player.director_vector_y = 0;
 	game->player.move_flag_x = 0;
 	game->player.move_flag_y = 0;
+	game->player.move_speed = 0;
+	game->player.rot_speed = 0;
 }
 
 void	init_textures(t_game *game)
@@ -105,10 +107,11 @@ void	init(t_game *game)
 	game->mlx.size_line = 0;
 	game->mlx.endian = 0;
 	game->run = 0;
-	game->time = 0;
-	game->old_time = 0;
-	game->frame_per_second = 0;
-	game->frame_time = 0;
+	game->frame.time = 0;
+	game->frame.old_time = 0;
+	game->frame.frame_per_second = 0;
+	game->frame.frame_time = 0;
+	game->frame.fps = 0;
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;

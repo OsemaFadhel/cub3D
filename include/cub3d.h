@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 15:04:14 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:01:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_player
 	double	director_vector_y;
 	int		map_x;
 	int		map_y;
+	double	move_speed;
+	double	rot_speed;
 }	t_player;
 
 typedef struct s_camera
@@ -156,15 +158,21 @@ typedef struct s_pars
 	int		k;
 }				t_pars;
 
+typedef struct s_frame
+{
+	double		frame_time;
+	int			frame_per_second;
+	double		time;
+	double		old_time;
+	char		*fps;
+}	t_frame;
+
 typedef struct s_game
 {
 	int			run;
 	int			win_width;
 	int			win_height;
-	double		frame_time;
-	int			frame_per_second;
-	double		time;
-	double		old_time;
+	t_frame		frame;
 	t_map		map;
 	t_pars		pars;
 	t_wall		wall;
@@ -220,7 +228,9 @@ int		game_loop(t_game *game);
 void	raycasting(t_game *game);
 void	ray_pos_and_dir(t_game *game, int *x);
 void	step_and_side_distance(t_game *game);
-void	draw_columns(t_game *game, int *x);
+int		draw_columns(t_game *game, int *x);
+void	fill_floor_and_ceiling(t_game *game, int *x, int y);
+int		fill_wall_texture(t_game *game, int *x, int y);
 
 /* movement */
 

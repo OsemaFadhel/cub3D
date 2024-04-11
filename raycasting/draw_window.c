@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 13:46:00 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:29:22 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,52 +23,22 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-/*int	fill_wall_texture(t_game *game, int *x, int y)
+int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	double	tex_pos;
 	double	step;
 
 	y = game->draw.start_pos;
-	step = (double) 1.0 * 64 / game->draw.line_height;
-	tex_pos = (y - game->win_width / 2 + game->draw.line_height / 2);
+	step = 1.0 * 64 / game->draw.line_height;
+	tex_pos = (game->draw.start_pos - game->win_height / 2
+			+ game->draw.line_height / 2) * step;
 	while (y <= game->draw.end_pos)
 	{
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
-			game->textures.choice = 0;
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-			game->textures.choice = 1;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-			game->textures.choice = 2;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
-			game->textures.choice = 3;
 		game->textures.y = (int)tex_pos & (64 - 1);
 		tex_pos += step;
 		game->textures.colour = ((unsigned int *)
 				game->textures.stored[game->textures.choice])
 		[64 * game->textures.y + game->textures.x];
-		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
-		y++;
-	}
-	return (y);
-}*/
-
-int	fill_wall_texture(t_game *game, int *x, int y)
-{
-	y = game->draw.start_pos;
-	while (y <= game->draw.end_pos)
-	{
-		game->textures.y = (int)(y * 2 - game->win_height + game->draw.line_height)
-			* (game->textures.height / 2) / game->draw.line_height;
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
-			game->textures.choice = 0;
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-			game->textures.choice = 1;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-			game->textures.choice = 2;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
-			game->textures.choice = 3;
-		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
-			[game->textures.x + game->textures.y * game->textures.width];
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
 		y++;
 	}
@@ -89,26 +59,28 @@ void	fill_floor_and_ceiling(t_game *game, int *x, int y)
 	}
 }
 
-void	draw_columns(t_game *game, int *x)
+int	draw_columns(t_game *game, int *x)
 {
 	int	y;
 
 	y = 0;
+	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
+		game->textures.choice = 0;
+	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
+		game->textures.choice = 1;
+	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
+		game->textures.choice = 2;
+	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+		game->textures.choice = 3;
 	if (game->wall.side == EAST_WEST)
-	{
 		game->textures.wall_x = game->map.player_y
 			+ game->wall.perp_wall_dist * game->ray.ray_dir_y;
-	}
 	else
 		game->textures.wall_x = game->map.player_x
 			+ game->wall.perp_wall_dist * game->ray.ray_dir_x;
-	game->textures.wall_x -= floor(game->textures.wall_x);
+	game->textures.wall_x -= floor((game->textures.wall_x));
 	game->textures.x = (int)(game->textures.wall_x
 			* (double)64);
-	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-		game->textures.x = 64 - game->textures.x - 1;
-	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-		game->textures.x = 64 - game->textures.x - 1;
-	y += fill_wall_texture(game, x, y);
-	fill_floor_and_ceiling(game, x, y);
+	game->textures.x = 64 - game->textures.x - 1;
+	return (y);
 }

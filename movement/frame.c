@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:20:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/08 14:20:15 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:07:25 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,24 @@ void	ft_sleep(u_int64_t time)
 	start = 0;
 	start = get_time();
 	while ((get_time() - start) < time)
-        usleep(time / 10);
+		usleep(time / 10);
 }
 
 
-void  get_frame_time(t_game *game)
+void	get_frame_time(t_game *game)
 {
-    char    *fps;
-    game->old_time = game->time;
-    game->time = get_time();
-    game->frame_time = (game->time - game->old_time) / 1000.0;
-    game->frame_per_second = (int)(1.0 / game->frame_time);
-
-    if (game->frame_per_second > 60)
+	game->frame.old_time = game->frame.time;
+	game->frame.time = get_time();
+	game->frame.frame_time = (game->frame.time - game->frame.old_time) / 1000.0;
+	game->frame.frame_per_second = (int)(1.0 / game->frame.frame_time);
+	if (game->frame.frame_per_second > 80)
 	{
-		ft_sleep(((1.0 / 60) - game->frame_time) * 1000);
-		game->time = get_time();
-		game->frame_time = (game->time - game->old_time) / 1000.0;
-		game->frame_per_second = (int)(1.0 / game->frame_time);
+		ft_sleep(((1.0 / 80) - game->frame.frame_time) * 1000);
+		game->frame.time = get_time();
+		game->frame.frame_time = (game->frame.time - game->frame.old_time) / 1000.0;
+		game->frame.frame_per_second = (int)(1.0 / game->frame.frame_time);
 	}
-    //double c = game->frame_time * 3.0;
-
-    fps = ft_itoa(game->frame_per_second);
-	free(fps);
+	game->frame.fps = ft_itoa(game->frame.frame_per_second);
+	game->player.move_speed = game->frame.frame_time * 5.0;
+	game->player.rot_speed = game->frame.frame_time * 3.0;
 }

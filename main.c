@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 20:46:23 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:08:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	game_loop(t_game *game)
 {
 	raycasting(game);
+	get_frame_time(game);
 	mlx_put_image_to_window(game->mlx.init, game->mlx.win,
 		game->mlx.img, 0, 0);
+	mlx_string_put(game->mlx.init, game->mlx.win, 15, 10, 0xFFFFFF, game->frame.fps);
 	return (0);
 }
 
