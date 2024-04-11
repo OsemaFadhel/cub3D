@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 18:36:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 13:46:00 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_mlx_put_pixel(t_mlx *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	fill_wall_texture(t_game *game, int *x, int y)
+/*int	fill_wall_texture(t_game *game, int *x, int y)
 {
 	double	tex_pos;
 	double	step;
@@ -46,6 +46,29 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 		game->textures.colour = ((unsigned int *)
 				game->textures.stored[game->textures.choice])
 		[64 * game->textures.y + game->textures.x];
+		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
+		y++;
+	}
+	return (y);
+}*/
+
+int	fill_wall_texture(t_game *game, int *x, int y)
+{
+	y = game->draw.start_pos;
+	while (y <= game->draw.end_pos)
+	{
+		game->textures.y = (int)(y * 2 - game->win_height + game->draw.line_height)
+			* (game->textures.height / 2) / game->draw.line_height;
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
+			game->textures.choice = 0;
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
+			game->textures.choice = 1;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
+			game->textures.choice = 2;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+			game->textures.choice = 3;
+		game->textures.colour = (( unsigned int * ) game->textures.stored[game->textures.choice])
+			[game->textures.x + game->textures.y * game->textures.width];
 		my_mlx_put_pixel(&game->mlx, *x, y, game->textures.colour);
 		y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 18:36:10 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 14:34:09 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	perpendicular_ray_distance(t_game *game)
 	else
 		game->wall.perp_wall_dist = (game->ray.side_dist_y
 				- game->ray.delta_dist_y);
-	game->draw.line_height = abs((int)(game->win_height
-				/ game->wall.perp_wall_dist));
+	game->draw.line_height = (int)(game->win_height
+				/ game->wall.perp_wall_dist);
 	game->draw.start_pos = -game->draw.line_height / 2 + game->win_height / 2;
 	if (game->draw.start_pos < 0)
 		game->draw.start_pos = 0;

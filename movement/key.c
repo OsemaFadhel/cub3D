@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 20:12:08 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 13:48:22 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,4 @@ int	ft_key_release(int keycode, t_game *game)
 		game->player.move_flag_x = 0;
 	return (0);
 }
+

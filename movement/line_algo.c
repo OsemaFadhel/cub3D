@@ -16,15 +16,15 @@ void	ft_front(t_game *game) //, double c)
 {
 	int	x;
 	int	y;
-	double	c = 2;
+	double	c = 0.04;
 
 	/*if (game->run == 1)
 	{
 		c = 0.1;
 	}*/
 
-	x = game->map.player_x + (game->player.director_vector_x) * c;
-	y = game->map.player_y + (game->player.director_vector_y) * c;
+	x = game->map.player_x + (game->player.director_vector_x + 0.01) * c;
+	y = game->map.player_y + (game->player.director_vector_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
 		game->map.player_x += game->player.director_vector_x * c;
@@ -39,9 +39,9 @@ void	ft_back(t_game *game)
 {
 	int		x;
 	int		y;
-	double c = 2;
-	x = game->map.player_x - (game->player.director_vector_x) * c;
-	y = game->map.player_y - (game->player.director_vector_y) * c;
+	double c = 0.04;
+	x = game->map.player_x - (game->player.director_vector_x + 0.01) * c;
+	y = game->map.player_y - (game->player.director_vector_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
 		game->map.player_x -= game->player.director_vector_x * c;
@@ -57,9 +57,9 @@ void	ft_left(t_game *game)
 	int	x;
 	int	y;
 
-	double c = 2;
-	x = game->map.player_x - (game->camera.plane_x) * c;
-	y = game->map.player_y - (game->camera.plane_y) * c;
+	double c = 0.04;
+	x = game->map.player_x - (game->camera.plane_x + 0.01) * c;
+	y = game->map.player_y - (game->camera.plane_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
 		game->map.player_x -= game->camera.plane_x * c;
@@ -75,9 +75,9 @@ void	ft_right(t_game *game)
 	int	x;
 	int	y;
 
-	double c = 2;
-	x = game->map.player_x + (game->camera.plane_x) * c;
-	y = game->map.player_y + (game->camera.plane_y) * c;
+	double c = 0.04;
+	x = game->map.player_x + (game->camera.plane_x + 0.01) * c;
+	y = game->map.player_y + (game->camera.plane_y + 0.01) * c;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
 	{
 		game->map.player_x += game->camera.plane_x * c;
