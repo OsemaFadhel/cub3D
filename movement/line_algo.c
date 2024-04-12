@@ -6,32 +6,60 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:48 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/02/12 17:56:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/10 20:5:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
-/*function line(int x0, int x1, int y0, int y1)
+void	ft_front(t_game *game) //, double c)
 {
-	int deltax := abs(x1 - x0)
-	int deltay := abs(y1 - y0)
-	int error := 0
-	int deltaerr := (deltay + 1)
-	int y := y0
-	int diry := y1 - y0
-	if diry > 0
-		diry = 1
-	if diry < 0
-		diry = -1
-	for x from x0 to x1
-	{
-		plot(x,y)
-		error := error + deltaerr
-		if error >= (deltax + 1)
-		{
-			y := y + diry
-			error := error - (deltax + 1)
-		}
-	}
-}*/
+	int	x;
+	int	y;
+
+	x = game->map.player_x + game->player.director_vector_x * game->player.move_speed;
+	y = game->map.player_y + game->player.director_vector_y * game->player.move_speed;
+	if (game->map.map[x][(int)game->map.player_y] != '1')
+		game->map.player_x += game->player.director_vector_x * game->player.move_speed;
+	if (game->map.map[(int)(game->map.player_x)][y] != '1')
+		game->map.player_y += game->player.director_vector_y * game->player.move_speed;
+}
+
+void	ft_back(t_game *game)
+{
+	int		x;
+	int		y;
+
+	x = game->map.player_x - game->player.director_vector_x * game->player.move_speed;
+	y = game->map.player_y - game->player.director_vector_y * game->player.move_speed;
+	if (game->map.map[x][(int)game->map.player_y] != '1')
+		game->map.player_x -= game->player.director_vector_x * game->player.move_speed;
+	if (game->map.map[(int)(game->map.player_x)][y] != '1')
+		game->map.player_y -= game->player.director_vector_y * game->player.move_speed;
+}
+
+void	ft_left(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = game->map.player_x - game->camera.plane_x * game->player.move_speed;
+	y = game->map.player_y - game->camera.plane_y * game->player.move_speed;
+	if (game->map.map[x][(int)game->map.player_y] != '1')
+		game->map.player_x -= game->camera.plane_x * game->player.move_speed;
+	if (game->map.map[(int)game->map.player_x][y] != '1')
+		game->map.player_y -= game->camera.plane_y * game->player.move_speed;
+}
+
+void	ft_right(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = game->map.player_x + game->camera.plane_x * game->player.move_speed;
+	y = game->map.player_y + game->camera.plane_y * game->player.move_speed;
+	if (game->map.map[x][(int)game->map.player_y] != '1')
+		game->map.player_x += game->camera.plane_x * game->player.move_speed;
+	if (game->map.map[(int)game->map.player_x][y] != '1')
+		game->map.player_y += game->camera.plane_y * game->player.move_speed;
+}

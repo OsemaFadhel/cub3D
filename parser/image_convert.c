@@ -6,21 +6,23 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:08:38 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/03 22:35:50 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:39:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	check_size(int *width, int *height) // to change
+void	free_texture(t_game *game)
 {
-	if (*width != 64)
-		exit(1);
-	if (*height != 64)
-		exit(1);
+	free(game->pars.ea);
+	free(game->pars.no);
+	free(game->pars.so);
+	free(game->pars.we);
+	free(game->pars.f);
+	free(game->pars.c);
 }
 
-static void	to_xpm_suite(t_game *game)
+void	ft_xpm(t_game *game)
 {
 	int	x;
 	int	y;
@@ -44,19 +46,24 @@ static void	to_xpm_suite(t_game *game)
 		ft_exit(game, 4);
 }
 
-void	to_xpm(t_mlx *mlx, t_game *game)
+void	ft_mlx_xpm_file_to_image(t_mlx *mlx, t_game *game)
 {
 	game->textures.wall_ea = mlx_xpm_file_to_image(mlx->init, game->pars.ea,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	if (!game->textures.wall_ea)
+		ft_exit(game, 4);
 	game->textures.wall_no = mlx_xpm_file_to_image(mlx->init, game->pars.no,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	if (!game->textures.wall_no)
+		ft_exit(game, 4);
 	game->textures.wall_so = mlx_xpm_file_to_image(mlx->init, game->pars.so,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
+	if (!game->textures.wall_so)
+		ft_exit(game, 4);
 	game->textures.wall_we = mlx_xpm_file_to_image(mlx->init, game->pars.we,
 			&game->textures.width, &game->textures.height);
-	check_size(&game->textures.width, &game->textures.height);
-	to_xpm_suite(game);
+	if (!game->textures.wall_we)
+		ft_exit(game, 4);
+	ft_xpm(game);
+	free_texture(game);
 }
