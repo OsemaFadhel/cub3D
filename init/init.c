@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:47:32 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 19:01:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:47:44 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	init(t_game *game)
 	game->camera.current_x = 0;
 	game->camera.plane_x = 0;
 	game->camera.plane_y = 0;
+	game->camera.cam_move = 0;
 	game->wall.perp_wall_dist = 0;
 	game->wall.hit = 0;
 	game->wall.side = 0;

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 11:47:39 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:47:25 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_camera
 	double	plane_x;
 	double	plane_y;
 	double	current_x;
+	int		cam_move;
 }	t_camera;
 
 typedef struct s_ray
@@ -238,16 +239,15 @@ int		ft_key_press(int keycode, t_game *game);
 int		ft_key_release(int keycode, t_game *game);
 void	ft_ismoving(t_game *game);
 void	get_frame_time(t_game *game);
-
-
-/* exit.c */
-
-int		ft_exit(t_game *game, int i);
-int		ft_key_press(int keycode, t_game *game);
 void	ft_front(t_game *game);
 void	ft_back(t_game *game);
 void	ft_left(t_game *game);
 void	ft_right(t_game *game);
 void	cam_left(t_game *game);
 void	cam_right(t_game *game);
+
+/* exit.c */
+
+int		ft_exit(t_game *game, int i);
+
 #endif

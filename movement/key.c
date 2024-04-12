@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:58:56 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:03:28 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:48:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@ int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		exit(0);
-	if (keycode == 'w') // && game->player.move_flag_y < 1)
-		ft_front(game);
-		//game->player.move_flag_y = 1;
-	if (keycode == 's') // && game->player.move_flag_y > -1)
-		ft_back(game);
-		//game->player.move_flag_y = -1;
-	if (keycode == 'a')
-		ft_left(game);
-		//game->player.move_flag_x = -1;
-	if (keycode == 'd')
-		ft_right(game);
-		//game->player.move_flag_x = 1;
-	if (keycode == 257)
-		game->run = 1;
+	if (keycode == W) // && game->player.move_flag_y < 1)
+		//ft_front(game);
+		game->player.move_flag_y = 1;
+	if (keycode == S) // && game->player.move_flag_y > -1)
+		//ft_back(game);
+		game->player.move_flag_y = -1;
+	if (keycode == A)
+		//ft_left(game);
+		game->player.move_flag_x = -1;
+	if (keycode == D)
+		//ft_right(game);
+		game->player.move_flag_x = 1;
 	if (keycode == LEFT)
-		cam_left(game);
+		game->camera.cam_move = -1;
 	if (keycode == RIGHT)
-		cam_right(game);
+		game->camera.cam_move = 1;
 	return (0);
 }
 
 int	ft_key_release(int keycode, t_game *game)
 {
+	printf("gelo\n");
 	if (keycode == W)
 		game->player.move_flag_y = 0;
 	if (keycode == S)
@@ -47,12 +46,10 @@ int	ft_key_release(int keycode, t_game *game)
 		game->player.move_flag_x = 0;
 	if (keycode == D)
 		game->player.move_flag_x = 0;
-	if (keycode == 257)
-		game->run = 0;
 	if (keycode == LEFT)
-		game->player.move_flag_x = 0;
+		game->camera.cam_move = 0;
 	if (keycode == RIGHT)
-		game->player.move_flag_x = 0;
+		game->camera.cam_move = 0;
 	return (0);
 }
 
