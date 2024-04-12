@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 18:52:47 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:08:18 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	raycasting(t_game *game)
 	int	y;
 
 	x = 0;
+	printf("player pos x= %d, y= %d\n", (int)game->map.player_y, (int)game->map.player_x);
 	while (x < game->win_width)
 	{
 		y = 0;
@@ -43,7 +44,7 @@ void	raycasting(t_game *game)
 		step_and_side_distance(game);
 		perpendicular_ray_distance(game);
 		draw_columns(game, &x);
-		fill_wall_texture(game, &x, y);
+		y += fill_wall_texture(game, &x, y);
 		fill_floor_and_ceiling(game, &x, y);
 		//ft_ismoving(game);
 		x++;

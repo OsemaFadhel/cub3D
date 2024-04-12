@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 18:29:22 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 13:52:40 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 	{
 		game->textures.y = (int)tex_pos & (64 - 1);
 		tex_pos += step;
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
+			game->textures.choice = 0;
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
+			game->textures.choice = 1;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
+			game->textures.choice = 2;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+			game->textures.choice = 3;
 		game->textures.colour = ((unsigned int *)
 				game->textures.stored[game->textures.choice])
 		[64 * game->textures.y + game->textures.x];
@@ -64,21 +72,13 @@ int	draw_columns(t_game *game, int *x)
 	int	y;
 
 	y = 0;
-	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
-		game->textures.choice = 0;
-	if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-		game->textures.choice = 1;
-	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
-		game->textures.choice = 2;
-	if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
-		game->textures.choice = 3;
 	if (game->wall.side == EAST_WEST)
 		game->textures.wall_x = game->map.player_y
 			+ game->wall.perp_wall_dist * game->ray.ray_dir_y;
 	else
 		game->textures.wall_x = game->map.player_x
 			+ game->wall.perp_wall_dist * game->ray.ray_dir_x;
-	game->textures.wall_x -= floor((game->textures.wall_x));
+	game->textures.wall_x -= (int)(game->textures.wall_x);
 	game->textures.x = (int)(game->textures.wall_x
 			* (double)64);
 	game->textures.x = 64 - game->textures.x - 1;
