@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 03:53:29 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:03:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 i
 	free(game->mlx.address);
 	free_matrix(game->textures.stored);
 	free(game->map_axis);
+	free(game->frame.fps);
 	exit(1);
 }

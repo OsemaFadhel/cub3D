@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:41:51 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:04:28 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	init_mlx(t_game *game)
 	game->mlx.init = mlx_init();
 	if (!game->mlx.init)
 		ft_exit(game, 6);
-	ft_mlx_xpm_file_to_image(&game->mlx, game);
 	game->mlx.win = mlx_new_window(game->mlx.init,
-			game->win_width, game->win_height, "cub3d");
+			game->win_width, game->win_height, "cub3D");
 	if (!game->mlx.win)
 		ft_exit(game, 6);
 	game->mlx.img = mlx_new_image(game->mlx.init,
@@ -52,6 +51,7 @@ int	init_mlx(t_game *game)
 			&game->mlx.size_line, &game->mlx.endian);
 	if (!game->mlx.address)
 		ft_exit(game, 6);
+	ft_mlx_xpm_file_to_image(&game->mlx, game);
 	run_mlx(&game->mlx, game);
 	return (0);
 }
