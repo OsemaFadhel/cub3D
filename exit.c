@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 16:03:42 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:15:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 i
 		printf("Error: raycasting\n");
 	if (i == 6)
 		printf("Error: mlx\n");
-	free_matrix(game->pars.file);
 	free_matrix(game->map.map);
+	//free(game->mlx.address);
+	//free_matrix(game->textures.stored);
+	//free(game->map_axis);
 	mlx_destroy_image(game->mlx.init, game->mlx.img);
 	mlx_destroy_window(game->mlx.init, game->mlx.win);
 	mlx_destroy_image(game->mlx.init, game->textures.wall_no);
@@ -69,11 +71,6 @@ int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 i
 	mlx_destroy_image(game->mlx.init, game->textures.wall_ea);
 	mlx_destroy_image(game->mlx.init, game->textures.wall_we);
 	mlx_destroy_display(game->mlx.init);
-	free(game->mlx.init);
-	free(game->mlx.init);
-	free(game->mlx.address);
-	free_matrix(game->textures.stored);
-	free(game->map_axis);
-	free(game->frame.fps);
+	//free(game->mlx.init);
 	exit(1);
 }
