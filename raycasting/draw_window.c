@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 13:52:40 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:35:17 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 		game->textures.y = (int)tex_pos & (64 - 1);
 		tex_pos += step;
 		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y > 0)
-			game->textures.choice = 0;
-		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
-			game->textures.choice = 1;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
 			game->textures.choice = 2;
-		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+		if (game->wall.side == NORTH_SOUTH && game->ray.ray_dir_y < 0)
 			game->textures.choice = 3;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x > 0)
+			game->textures.choice = 0;
+		if (game->wall.side == EAST_WEST && game->ray.ray_dir_x < 0)
+			game->textures.choice = 1;
 		game->textures.colour = ((unsigned int *)
 				game->textures.stored[game->textures.choice])
 		[64 * game->textures.y + game->textures.x];

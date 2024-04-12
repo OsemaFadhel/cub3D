@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:00:47 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:30:33 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:28:31 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static void	init_camera_position_ns(t_player *player, t_map *map,
 {
 	if (map->player_orientation == 'N')
 	{
-		player->director_vector_x = 0;
-		player->director_vector_y = -1;
-		camera->plane_x = -0.66;
-		camera->plane_y = 0;
+		player->director_vector_x = -1;
+		player->director_vector_y = 0;
+		camera->plane_x = 0;
+		camera->plane_y = 0.66;
 	}
 	if (map->player_orientation == 'S')
 	{
-		player->director_vector_x = 0;
-		player->director_vector_y = 1;
-		camera->plane_x = 0.66;
-		camera->plane_y = 0;
+		player->director_vector_x = 1;
+		player->director_vector_y = 0;
+		camera->plane_x = 0;
+		camera->plane_y = -0.66;
 	}
 }
 
@@ -36,17 +36,17 @@ static void	init_camera_position_ew(t_player *player, t_map *map,
 {
 	if (map->player_orientation == 'E')
 	{
-		player->director_vector_x = 1;
-		player->director_vector_y = 0;
-		camera->plane_x = 0;
-		camera->plane_y = -0.66;
+		player->director_vector_x = 0;
+		player->director_vector_y = 1;
+		camera->plane_x = 0.66;
+		camera->plane_y = 0;
 	}
 	if (map->player_orientation == 'W')
 	{
-		player->director_vector_x = -1;
-		player->director_vector_y = 0;
-		camera->plane_x = 0;
-		camera->plane_y = 0.66;
+		player->director_vector_x = 0;
+		player->director_vector_y = -1;
+		camera->plane_x = -0.66;
+		camera->plane_y = 0;
 	}
 }
 

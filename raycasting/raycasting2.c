@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 22:04:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 11:22:36 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:35:57 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	dda_algo(t_game *game)
 			game->player.map_y += game->ray.step_y;
 			game->wall.side = 1;
 		}
-		if (game->map.map[game->player.map_y][game->player.map_x] == '1')
+		if (game->map.map[game->player.map_x][game->player.map_y] == '1')
 			game->wall.hit = 1;
 	}
 }
