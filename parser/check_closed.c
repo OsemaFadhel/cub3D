@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:04:46 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 15:02:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 20:21:47 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ void	check_closed(t_game *game)
 	int		i;
 	int		j;
 	char	**map;
+	int		flag;
 
 	i = -1;
+	flag = 0;
 	while (++i < game->map.height)
 	{
 		j = -1;
@@ -86,10 +88,13 @@ void	check_closed(t_game *game)
 				game->map.player_x = i + 0.5;
 				game->map.player_y = j + 0.5;
 				game->map.player_orientation = game->map.map[i][j];
+				flag = 1;
 				break ;
 			}
 		}
 	}
+	if (!flag)
+		ft_exit(game, 2);
 	check_closed_top(game);
 	check_closed_bottom(game, game->map.height - 1);
 	check_closed_edges(game);

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 16:34:57 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 20:29:10 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_matrix(char **matrix)
 
 int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 is texture errors
 {
-	if (i < 5) //all parser errors
+	if (i < 4) //all parser errors
 	{
 		if (i == 1)
 			printf("Error: map file not found\n");
@@ -45,11 +45,6 @@ int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 i
 			printf("Error: map infos\n");
 		if (i == 3)
 			printf("Error: map not closed\n");
-		if (i == 4) //image convert errors
-		{
-			free(game->mlx.init);
-			printf("Error: texture file\n");
-		}
 		if (game->pars.no)
 			free(game->pars.no);
 		if (game->pars.so)
@@ -62,12 +57,17 @@ int	ft_exit(t_game *game, int i) //till 3 is parser errors, 4 is mlx errors, 5 i
 			free(game->pars.f);
 		if (game->pars.c)
 			free(game->pars.c);
-		if (game->pars.file)
-			free_matrix(game->pars.file);
 		if (game->map.map)
 			free_matrix(game->map.map);
 		exit(1);
 	}
+	if (i == 4) //image convert errors
+		{
+			printf("Error: textures\n");
+			free(game->mlx.init);
+			free_matrix(game->map.map);
+			exit(1);
+		}
 	if (i == 5)
 		printf("Error: raycasting\n");
 	if (i == 6)

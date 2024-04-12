@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 03:51:56 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 20:40:04 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_map_name(char *str)
 	if (str[i - 1] != 'b' || str[i - 2] != 'u' || str[i - 3] != 'c'
 		|| str[i - 4] != '.')
 	{
-		ft_printf("Error: map name must be .game\n");
+		ft_printf("Error: map file be .cub\n");
 		exit(1);
 	}
 }
@@ -98,6 +98,8 @@ int	check_file(t_game *game)
 		}
 		i++;
 	}
+	if (!game->pars.file[i])
+		ft_exit(game, 1);
 	game->map.width = get_map_width(game, i);
 	game->map.height = get_map_size(game);
 	return (i);

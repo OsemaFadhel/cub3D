@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 16:32:54 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 20:33:32 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,28 @@ void	fill_spaces(t_game *game)
 	check_characters(game);
 }
 
+void	check_textures_xpm(t_game *game)
+{
+	int	i;
+
+	i = ft_strlen(game->pars.no);
+	if (game->pars.no[i - 1] != 'm' || game->pars.no[i - 2] != 'p' || game->pars.no[i - 3] != 'x'
+		|| game->pars.no[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.so);
+	if (game->pars.so[i - 1] != 'm' || game->pars.so[i - 2] != 'p' || game->pars.so[i - 3] != 'x'
+		|| game->pars.so[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.ea);
+	if (game->pars.ea[i - 1] != 'm' || game->pars.ea[i - 2] != 'p' || game->pars.ea[i - 3] != 'x'
+		|| game->pars.ea[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.we);
+	if (game->pars.we[i - 1] != 'm' || game->pars.we[i - 2] != 'p' || game->pars.we[i - 3] != 'x'
+		|| game->pars.we[i - 4] != '.')
+		ft_exit(game, 2);
+}
+
 void	parser(char **av, t_game *game)
 {
 	int	i;
@@ -109,6 +131,7 @@ void	parser(char **av, t_game *game)
 	check_map_name(av[1]);
 	read_file(av[1], game);
 	i = check_file(game);
+	check_textures_xpm(game);
 	parse_map(game, i);
 	check_closed(game);
 	fill_spaces(game);
