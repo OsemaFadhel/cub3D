@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:01:51 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:31:05 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 20:51:48 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	check_closed_edges(t_game *game)
 	int	y;
 
 	y = 0;
-	x = game->map.width - 1;
+	x = game->map.width - 2;
 	while (game->map.map[y])
 	{
 		if (game->map.map[y][0] == '1' || game->map.map[y][0] == ' ')
