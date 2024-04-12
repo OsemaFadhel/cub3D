@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:59:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 15:56:06 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:32:54 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	init_struct(char **av)
 
 	init(&game);
 	parser(av, &game);
-	free_matrix(game.pars.file);
 	init_camera_position(&game.player, &game.map, &game.camera);
 	init_mlx(&game);
 }
