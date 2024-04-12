@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:47:25 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:37:14 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define S 115
 # define D 100
 # define ESC 65307
-# define NORTH_SOUTH 1
-# define EAST_WEST 0
+# define NORTH_SOUTH 0
+# define EAST_WEST 1
 
 typedef struct s_axis
 {
