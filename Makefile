@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/04/10 02:56:15 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/04/14 13:23:24 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ MLX_LINUX	= $(MLX_PATH)/libmlx_Linux.a $(MLX_PATH)/libmlx.a
 
 # src
 
-SRC 		=	main.c init/init.c init/init_pos.c \
+SRC 		=	main.c init/init.c init/init2.c init/init_pos.c \
 				movement/key.c movement/line_algo.c movement/line_algo2.c \
 				parser/read_map.c parser/read_file.c parser/checks.c parser/set_rgb.c \
 				parser/image_convert.c parser/check_closed.c parser/check_closed_1.c \

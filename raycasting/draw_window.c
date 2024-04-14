@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:38:37 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:41:38 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 13:32:34 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	fill_wall_texture(t_game *game, int *x, int y)
 	double	tex_pos;
 	double	step;
 
-	y = game->draw.start_pos;
 	step = 1.0 * 64 / game->draw.line_height;
 	tex_pos = (game->draw.start_pos - game->win_height / 2
 			+ game->draw.line_height / 2) * step;

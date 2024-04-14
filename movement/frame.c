@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:20:04 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/11 19:36:48 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 13:23:51 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_sleep(u_int64_t time)
 		usleep(time / 10);
 }
 
-
 void	get_frame_time(t_game *game)
 {
 	game->frame.old_time = game->frame.time;
@@ -41,7 +40,8 @@ void	get_frame_time(t_game *game)
 	{
 		ft_sleep(((1.0 / 60) - game->frame.frame_time) * 1000);
 		game->frame.time = get_time();
-		game->frame.frame_time = (game->frame.time - game->frame.old_time) / 1000.0;
+		game->frame.frame_time = (game->frame.time
+				- game->frame.old_time) / 1000.0;
 		game->frame.frame_per_second = (int)(1.0 / game->frame.frame_time);
 	}
 	game->frame.fps = ft_itoa(game->frame.frame_per_second);
