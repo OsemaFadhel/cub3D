@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 19:50:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 20:26:25 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_matrix(char **matrix)
 	i = 0;
 	while (matrix[i])
 	{
-		printf("%s", matrix[i]);
+		printf("%s\n", matrix[i]);
 		i++;
 	}
 	return (0);

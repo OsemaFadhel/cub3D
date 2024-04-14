@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 19:55:01 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 20:25:03 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	parse_map_while(t_game *game, int i)
 {
-	game->map.map[game->pars.k] = malloc(sizeof(char) * (game->map.width + 1));
 	while (game->pars.file[i][game->pars.m])
 	{
 		if (game->pars.file[i][game->pars.m] == ' ')
@@ -33,17 +32,18 @@ void	parse_map_while(t_game *game, int i)
 		game->pars.l++;
 		game->pars.m++;
 	}
+	game->map.map[game->pars.k][game->pars.l - 1] = ' ';
 }
 
 void	parse_map(t_game *game, int i)
 {
-	game->map.map = malloc(sizeof(char *) * (game->map.height + 1));
+	game->map.map = ft_calloc(sizeof(char *), (game->map.height + 1));
 	while (game->pars.file[i])
 	{
 		game->pars.l = 0;
 		game->pars.m = 0;
+		game->map.map[game->pars.k] = ft_calloc(sizeof(char), (game->map.width + 1));
 		parse_map_while(game, i);
-		game->map.map[game->pars.k][game->pars.l - 1] = ' ';
 		while (game->pars.l < game->map.width)
 		{
 			game->map.map[game->pars.k][game->pars.l] = ' ';
@@ -125,4 +125,5 @@ void	parser(char **av, t_game *game)
 	fill_spaces(game);
 	set_rgb(game);
 	free_matrix(game->pars.file);
+	print_matrix(game->map.map);
 }
