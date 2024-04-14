@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 19:57:21 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 19:58:52 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	read__file2(char *file, t_game *game, int i)
 		line = get_next_line(fd);
 	}
 	game->pars.file[i] = NULL;
-	return free(line), close(fd), status;
+	return (free(line), close(fd), status);
 }
 
 void	read_file(char *file, t_game *game)

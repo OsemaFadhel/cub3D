@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 19:54:47 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 19:59:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ void	check_textures(t_game *game)
 			break ;
 		i++;
 	}
-	printf("j = %d\n", j);
 	if (j != 6)
 		ft_exit(game, 2);
 }
