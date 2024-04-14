@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 13:28:09 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 19:57:21 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ int	read__file2(char *file, t_game *game, int i)
 		if (line[0] == '1' || line[0] == ' ')
 			flag = 1;
 		game->pars.file[i] = ft_strdup(line);
-		if (flag == 1 && game->pars.file[i++][0] == '\n')
+		if (flag == 1 && game->pars.file[i][0] == '\n')
 			status = -1;
+		i++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	game->pars.file[i] = NULL;
-	free(line);
-	close(fd);
-	return (status);
+	return free(line), close(fd), status;
 }
 
 void	read_file(char *file, t_game *game)

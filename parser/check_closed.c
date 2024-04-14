@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:04:46 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 13:38:13 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 19:49:45 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	check_closed(t_game *game, int i)
 	char	**map;
 	int		flag;
 
-	i = -1;
 	flag = 0;
+	printf("game->map.height = %d\n", i);
 	while (++i < game->map.height)
 	{
 		j = -1;
