@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/17 15:51:26 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:56:27 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	parse_map(t_game *game, int i)
 	{
 		game->pars.l = 0;
 		game->pars.m = 0;
-		game->map.map[game->pars.k] = ft_calloc(sizeof(char), (game->map.width + 1));
+		game->map.map[game->pars.k] = ft_calloc(sizeof(char),
+				(game->map.width + 1));
 		parse_map_while(game, i);
 		while (game->pars.l < game->map.width)
 		{
@@ -124,5 +125,4 @@ void	parser(char **av, t_game *game)
 	check_closed(game, i);
 	fill_spaces(game);
 	set_rgb(game);
-	//free_matrix(game->pars.file);
 }
