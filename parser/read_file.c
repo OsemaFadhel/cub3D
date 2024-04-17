@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:20:41 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 20:04:37 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:54:55 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_map_name(char *str)
 	}
 }
 
-int	read__file2(char *file, t_game *game, int i)
+int	read_file2(char *file, t_game *game, int i)
 {
 	int		fd;
 	char	*line;
@@ -72,7 +72,7 @@ void	read_file(char *file, t_game *game)
 	}
 	close(fd);
 	free(line);
-	if (read__file2(file, game, i) == -1)
+	if (read_file2(file, game, i) == -1)
 		ft_exit(game, 1);
 }
 

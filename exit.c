@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 20:26:25 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:51:42 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	ft_exit(t_game *game, int i)
 			free(game->pars.f);
 		if (game->pars.c)
 			free(game->pars.c);
+		if (game->pars.file)
+			free_matrix(game->pars.file);
 		if (game->map.map)
 			free_matrix(game->map.map);
 		exit(1);

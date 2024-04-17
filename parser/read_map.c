@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/14 20:25:03 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:51:26 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,5 @@ void	parser(char **av, t_game *game)
 	check_closed(game, i);
 	fill_spaces(game);
 	set_rgb(game);
-	free_matrix(game->pars.file);
-	print_matrix(game->map.map);
+	//free_matrix(game->pars.file);
 }
