@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/17 15:56:27 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:35:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	parse_map_while(t_game *game, int i)
 {
 	while (game->pars.file[i][game->pars.m])
 	{
-		if (game->pars.file[i][game->pars.m] == ' ')
+		if (game->pars.file[i][game->pars.m] == ' '
+			|| game->pars.file[i][game->pars.m] == '\n')
 			game->map.map[game->pars.k][game->pars.l] = ' ';
 		else if (game->pars.file[i][game->pars.m] == '\t')
 		{
