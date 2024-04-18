@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/17 17:00:58 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/18 10:31:22 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,29 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
+void	exit_texture(t_game *game)
+{
+	if (game->pars.no)
+		free(game->pars.no);
+	if (game->pars.so)
+		free(game->pars.so);
+	if (game->pars.we)
+		free(game->pars.we);
+	if (game->pars.ea)
+		free(game->pars.ea);
+	if (game->pars.f)
+		free(game->pars.f);
+	if (game->pars.c)
+		free(game->pars.c);
+}
+
 int	ft_exit2(t_game *game, int i)
 {
 	if (i == 4)
 	{
 		printf("Error: textures\n");
 		free(game->mlx.init);
+		exit_texture(game);
 		free_matrix(game->map.map);
 		free_matrix(game->pars.file);
 		exit(1);
@@ -73,18 +90,7 @@ int	ft_exit(t_game *game, int i)
 			printf("Error: map infos\n");
 		if (i == 3)
 			printf("Error: map not closed\n");
-		if (game->pars.no)
-			free(game->pars.no);
-		if (game->pars.so)
-			free(game->pars.so);
-		if (game->pars.we)
-			free(game->pars.we);
-		if (game->pars.ea)
-			free(game->pars.ea);
-		if (game->pars.f)
-			free(game->pars.f);
-		if (game->pars.c)
-			free(game->pars.c);
+		exit_texture(game);
 		if (game->pars.file)
 			free_matrix(game->pars.file);
 		if (game->map.map)
