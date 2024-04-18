@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/18 10:31:22 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/18 19:35:25 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ int	ft_exit2(t_game *game, int i)
 		printf("Error: raycasting\n");
 	if (i == 6)
 		printf("Error: mlx\n");
-	i = 0;
-	while (i < 8)
-		free(game->map.map[i++]);
-	free(game->map.map);
+	free_matrix(game->map.map);
 	free_matrix(game->pars.file);
 	mlx_destroy_window(game->mlx.init, game->mlx.win);
 	mlx_destroy_image(game->mlx.init, game->mlx.img);

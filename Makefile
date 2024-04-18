@@ -6,7 +6,7 @@
 #    By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 21:01:17 by ofadhel           #+#    #+#              #
-#    Updated: 2024/04/14 13:23:24 by ofadhel          ###   ########.fr        #
+#    Updated: 2024/04/18 19:35:42 by ofadhel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ DEFAULT = \033[0m
 
 # name
 
-NAME		= cub3d
+NAME		= cub3D
 
 # libft
 
