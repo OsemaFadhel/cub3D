@@ -17,12 +17,16 @@ void	ft_front(t_game *game) //, double c)
 	int	x;
 	int	y;
 
-	x = game->map.player_x + game->player.director_vector_x * game->player.move_speed;
-	y = game->map.player_y + game->player.director_vector_y * game->player.move_speed;
+	x = game->map.player_x + game->player.director_vector_x
+		* game->player.move_speed;
+	y = game->map.player_y + game->player.director_vector_y
+		* game->player.move_speed;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
-		game->map.player_x += game->player.director_vector_x * game->player.move_speed;
+		game->map.player_x += game->player.director_vector_x
+			* game->player.move_speed;
 	if (game->map.map[(int)(game->map.player_x)][y] != '1')
-		game->map.player_y += game->player.director_vector_y * game->player.move_speed;
+		game->map.player_y += game->player.director_vector_y
+			* game->player.move_speed;
 }
 
 void	ft_back(t_game *game)
@@ -30,12 +34,16 @@ void	ft_back(t_game *game)
 	int		x;
 	int		y;
 
-	x = game->map.player_x - game->player.director_vector_x * game->player.move_speed;
-	y = game->map.player_y - game->player.director_vector_y * game->player.move_speed;
+	x = game->map.player_x - game->player.director_vector_x
+		* game->player.move_speed;
+	y = game->map.player_y - game->player.director_vector_y
+		* game->player.move_speed;
 	if (game->map.map[x][(int)game->map.player_y] != '1')
-		game->map.player_x -= game->player.director_vector_x * game->player.move_speed;
+		game->map.player_x -= game->player.director_vector_x
+			* game->player.move_speed;
 	if (game->map.map[(int)(game->map.player_x)][y] != '1')
-		game->map.player_y -= game->player.director_vector_y * game->player.move_speed;
+		game->map.player_y -= game->player.director_vector_y
+			* game->player.move_speed;
 }
 
 void	ft_left(t_game *game)

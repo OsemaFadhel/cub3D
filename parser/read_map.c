@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:02:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 20:13:35 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:35:20 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	parse_map_while(t_game *game, int i)
 {
-	game->map.map[game->pars.k] = malloc(sizeof(char) * (game->map.width + 1));
 	while (game->pars.file[i][game->pars.m])
 	{
-		if (game->pars.file[i][game->pars.m] == ' ')
+		if (game->pars.file[i][game->pars.m] == ' '
+			|| game->pars.file[i][game->pars.m] == '\n')
 			game->map.map[game->pars.k][game->pars.l] = ' ';
 		else if (game->pars.file[i][game->pars.m] == '\t')
 		{
@@ -33,17 +33,19 @@ void	parse_map_while(t_game *game, int i)
 		game->pars.l++;
 		game->pars.m++;
 	}
+	game->map.map[game->pars.k][game->pars.l - 1] = ' ';
 }
 
 void	parse_map(t_game *game, int i)
 {
-	game->map.map = malloc(sizeof(char *) * (game->map.height + 1));
+	game->map.map = ft_calloc(sizeof(char *), (game->map.height + 1));
 	while (game->pars.file[i])
 	{
 		game->pars.l = 0;
 		game->pars.m = 0;
+		game->map.map[game->pars.k] = ft_calloc(sizeof(char),
+				(game->map.width + 1));
 		parse_map_while(game, i);
-		game->map.map[game->pars.k][game->pars.l - 1] = ' ';
 		while (game->pars.l < game->map.width)
 		{
 			game->map.map[game->pars.k][game->pars.l] = ' ';
@@ -54,23 +56,6 @@ void	parse_map(t_game *game, int i)
 		game->pars.k++;
 	}
 	game->map.map[game->pars.k] = NULL;
-}
-
-void	check_characters(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (game->map.map[++i])
-	{
-		j = -1;
-		while (game->map.map[i][++j])
-		{
-			if (game->map.map[i][j] != '0' && game->map.map[i][j] != '1')
-				ft_exit(game, 2);
-		}
-	}
 }
 
 void	fill_spaces(t_game *game)
@@ -102,6 +87,32 @@ void	fill_spaces(t_game *game)
 	check_characters(game);
 }
 
+void	check_textures_xpm(t_game *game)
+{
+	int	i;
+
+	i = ft_strlen(game->pars.no);
+	if (game->pars.no[i - 1] != 'm' || game->pars.no[i - 2] != 'p'
+		|| game->pars.no[i - 3] != 'x'
+		|| game->pars.no[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.so);
+	if (game->pars.so[i - 1] != 'm' || game->pars.so[i - 2] != 'p'
+		|| game->pars.so[i - 3] != 'x'
+		|| game->pars.so[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.ea);
+	if (game->pars.ea[i - 1] != 'm' || game->pars.ea[i - 2] != 'p'
+		|| game->pars.ea[i - 3] != 'x'
+		|| game->pars.ea[i - 4] != '.')
+		ft_exit(game, 2);
+	i = ft_strlen(game->pars.we);
+	if (game->pars.we[i - 1] != 'm' || game->pars.we[i - 2] != 'p'
+		|| game->pars.we[i - 3] != 'x'
+		|| game->pars.we[i - 4] != '.')
+		ft_exit(game, 2);
+}
+
 void	parser(char **av, t_game *game)
 {
 	int	i;
@@ -109,8 +120,10 @@ void	parser(char **av, t_game *game)
 	check_map_name(av[1]);
 	read_file(av[1], game);
 	i = check_file(game);
+	check_textures_xpm(game);
 	parse_map(game, i);
-	check_closed(game);
+	i = -1;
+	check_closed(game, i);
 	fill_spaces(game);
 	set_rgb(game);
 }

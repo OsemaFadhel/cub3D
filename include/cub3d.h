@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:34 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/12 14:37:14 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 13:31:33 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,13 +183,16 @@ typedef struct s_game
 	t_ray		ray;
 	t_textures	textures;
 	t_mlx		mlx;
-	t_axis		*map_axis;
+	t_axis		map_axis;
 	t_dbl		player_dbl;
 }				t_game;
 
 /* init */
 
 void	init(t_game *game);
+void	init_map(t_game *game);
+void	init_ray_and_player(t_game *game);
+void	init_textures(t_game *game);
 void	init_camera_position(t_player *player, t_map *map, t_camera *camera);
 
 /* utils */
@@ -205,7 +208,7 @@ void	parse_map(t_game *game, int i);
 int		check_file(t_game *game);
 void	read_file(char *file, t_game *game);
 void	check_textures(t_game *game);
-void	check_closed(t_game *game);
+void	check_closed(t_game *game, int i);
 void	check_map_name(char *str);
 void	set_rgb(t_game *game);
 void	set_floor(t_game *game);

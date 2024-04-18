@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 02:47:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 02:47:33 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:54:00 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ void	set_ceil2(t_game *game, char **rgb, char *str)
 		if (*str == '\0')
 		{
 			free_matrix(rgb);
+			free(str);
 			ft_exit(game, 2);
 		}
 		game->pars.ceil[i] = ft_atoi(str);
 		if (game->pars.ceil[i] < 0 || game->pars.ceil[i] > 255)
 		{
 			free_matrix(rgb);
+			free(str);
 			ft_exit(game, 2);
 		}
 		free(str);
@@ -65,12 +67,14 @@ void	set_floor2(t_game *game, char **rgb, char *str)
 		if (*str == '\0')
 		{
 			free_matrix(rgb);
+			free(str);
 			ft_exit(game, 2);
 		}
 		game->pars.floor[i] = ft_atoi(str);
 		if (game->pars.floor[i] < 0 || game->pars.floor[i] > 255)
 		{
 			free_matrix(rgb);
+			free(str);
 			ft_exit(game, 2);
 		}
 		free(str);

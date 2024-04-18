@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:05:54 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:06:28 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 13:27:12 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,23 @@ int	get_map_width(t_game *game, int i)
 		i++;
 	}
 	return (width);
+}
+
+void	check_characters(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (game->map.map[++i])
+	{
+		j = -1;
+		while (game->map.map[i][++j])
+		{
+			if (game->map.map[i][j] != '0' && game->map.map[i][j] != '1')
+				ft_exit(game, 2);
+		}
+	}
 }
 
 void	check_space_left_down(t_game *game, int y, int x)

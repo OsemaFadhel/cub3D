@@ -6,12 +6,11 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:23:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/10 03:51:26 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 19:59:39 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 int	skip_spaces(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:00:16 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/03/29 17:09:24 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/14 13:29:54 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	check_closed_bottom(t_game *game, int y)
 			ft_exit(game, 3);
 		x++;
 	}
+	check_closed_edges(game);
 }
