@@ -6,7 +6,7 @@
 /*   By: ofadhel <ofadhel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:40:17 by ofadhel           #+#    #+#             */
-/*   Updated: 2024/04/18 19:35:25 by ofadhel          ###   ########.fr       */
+/*   Updated: 2024/04/24 13:19:29 by ofadhel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ int	ft_exit2(t_game *game, int i)
 	if (i == 4)
 	{
 		printf("Error: textures\n");
-		free(game->mlx.init);
 		exit_texture(game);
 		free_matrix(game->map.map);
 		free_matrix(game->pars.file);
+		mlx_destroy_display(game->mlx.init);
+		free(game->mlx.init);
 		exit(1);
 	}
 	if (i == 5)
@@ -74,6 +75,8 @@ int	ft_exit2(t_game *game, int i)
 	mlx_destroy_image(game->mlx.init, game->textures.wall_so);
 	mlx_destroy_image(game->mlx.init, game->textures.wall_ea);
 	mlx_destroy_image(game->mlx.init, game->textures.wall_we);
+	mlx_destroy_display(game->mlx.init);
+	free(game->mlx.init);
 	exit(1);
 }
 
